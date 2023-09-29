@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserManagementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Client Routes
+
+// Route::prefix('users')->group(function () {
+
+//     // list users
+//     Route::get('/', [UserManagementController::class, 'dashboard']);
+// });
+
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/', function () {
+    return view('home');
 });
