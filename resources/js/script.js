@@ -1,5 +1,3 @@
-import './bootstrap';
-import '../css/app.css'; 
 const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
 
 allSideMenu.forEach(item=> {

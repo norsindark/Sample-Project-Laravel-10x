@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserManagementController;
+use App\Http\Controllers\Admin\DashboardController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,10 +23,9 @@ use App\Http\Controllers\UserManagementController;
 //     Route::get('/', [UserManagementController::class, 'dashboard']);
 // });
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/', function () {
-    return view('home');
+Route::prefix('admin')->group(function () {
+
+    Route::get('/', [DashboardController::class, 'index']);
+    // Route::resource('');
 });
