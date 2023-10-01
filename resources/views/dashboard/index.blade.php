@@ -113,10 +113,6 @@
 						</li>
 					</ul>
 				</div>
-				<!-- <a href="#" class="btn-download">
-					<i class='bx bxs-cloud-download' ></i>
-					<span class="text">Download PDF</span>
-				</a> -->
 			</div>
 
 			<ul class="box-info">
@@ -147,95 +143,83 @@
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
-						<h3>Recent Orders</h3>
+						<h3>User List</h3>
 						<i class='bx bx-search'></i>
 						<i class='bx bx-filter'></i>
 					</div>
 					<table>
 						<thead>
 							<tr>
-								<th>User ID</th>
-								<th>Email</th>
-								<th>UserName</th>
-								<!-- <th>Password</th> -->
-								<!-- <th>Role</th> -->
-								<th>Created</th>
+								<th style="padding-right: 12px;">ID</th>
+								<th>Name</th>
+								<th style="display: flex; justify-content:center;">Email</th>
 								<th>Status</th>
+								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody>
+						<tbody>
+							@if(!empty($users))
 							@foreach ($users as $user)
 							<tr>
 								<td>{{ $user->UserID }}</td>
+								<td>{{ $user->name }}</td>
 								<td>{{ $user->Email }}</td>
-								<td>{{ $user->UserName }}</td>
-								<!-- <td>{{ $user->Password }}</td> -->
-								<!-- <td>{{ $user->Role }}</td> -->
-								<td>{{ $user->created_at }}</td>
-								<td><span class="status completed">Completed</span></td>
+								@if ($user->Status == 1)
+								<td><span class="status completed">Activated</span></td>
+								@elseif ($user->Status == 2)
+								<td><span class="status completed">Not Activated</span></td>
+								@endif
+
+								<td>
+									<a class="status process" href="{{ route('dashboard.edit', ['id' => $user->UserID]) }}">Edit</a>
+
+								</td>
+								<td>
+									<form method="POST" action="{{ route('dashboard.destroy', ['id' => $user->UserID]) }}">
+										@csrf
+										@method('DELETE')
+								<td>
+									<form method="POST" action="{{ route('dashboard.destroy', ['id' => $user->UserID]) }}">
+										@csrf
+										@method('DELETE')
+										<button class="status dagger" style="background-color: red; border:none;" type="submit" class="btn btn-danger" onclick="confirmDelete('{{ route('dashboard.destroy', ['id' => $user->UserID]) }}')">Xóa</button>
+									</form>
+								</td>
+
+
+								</form>
+								</td>
+
 							</tr>
 							@endforeach
-							<!-- <tr>
-								<td>
-									<img src="./z4635511186773_bad560a7ad742707529a6c306a73b0f1.jpg">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="./z4635511186773_bad560a7ad742707529a6c306a73b0f1.jpg">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status process">Process</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="./z4635511186773_bad560a7ad742707529a6c306a73b0f1.jpg">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-							<tr>
-								<td>
-									<img src="./z4635511186773_bad560a7ad742707529a6c306a73b0f1.jpg">
-									<p>John Doe</p>
-								</td>
-								<td>01-10-2021</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr> -->
+							@else {
+							<td>{{ $nocation }}</td>
+							}
+							@endif
+						</tbody>
+
 						</tbody>
 					</table>
 				</div>
 				<div class="user">
 					<div class="head">
 						<h3>Users</h3>
-						<i class='bx bx-plus'></i>
+						<a class="status process" href="{{ route('dashboard.create')}}"><i class='bx bx-plus'></i></a>
 						<i class='bx bx-filter'></i>
 					</div>
 					<ul class="user-list">
+						@if(!empty($users))
 						@foreach ($users as $user)
 						<li class="completed">
 							<p>{{ $user->UserName }}</p>
 							<i class='bx bx-dots-vertical-rounded'></i>
 						</li>
 						@endforeach
-
-						<!--<li class="not-completed">
-							<p>User List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="completed">
-							<p>User List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li>
-						<li class="not-completed">
-							<p>User List</p>
-							<i class='bx bx-dots-vertical-rounded' ></i>
-						</li> -->
+						@else {
+						<td>{{ $nocation }}</td>
+						}
+						@endif
 					</ul>
 				</div>
 			</div>
@@ -243,9 +227,35 @@
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
-
-
-	<!-- <script src="{{ asset('js/app.js') }}"></script> -->
 </body>
+<script>
+	function confirmDelete(deleteUrl) {
+		if (confirm('Bạn có chắc chắn muốn xóa người dùng này không?')) {
+
+			// Nếu người dùng xác nhận xóa, thực hiện yêu cầu DELETE
+			var form = document.createElement('form');
+			form.method = 'POST';
+			form.action = deleteUrl;
+
+			var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+			var methodInput = document.createElement('input');
+			methodInput.name = '_method';
+			methodInput.value = 'DELETE';
+
+			var csrfTokenInput = document.createElement('input');
+			csrfTokenInput.name = '_token';
+			csrfTokenInput.value = csrfToken;
+
+			form.appendChild(methodInput);
+			form.appendChild(csrfTokenInput);
+
+			document.body.appendChild(form);
+			form.submit();
+		} else {
+			// Hủy xóa, chuyển hướng đến trang dashboard.index
+			window.location.href = "{{ route('dashboard.index') }}";
+		}
+	}
+</script>
 
 </html>
