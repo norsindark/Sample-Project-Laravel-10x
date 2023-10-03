@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -13,20 +12,40 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
-     * The attributes that are mass assignable.
+     * Tên bảng tương ứng trong cơ sở dữ liệu.
      *
-     * @var array<int, string>
+     * @var string
+     */
+    protected $table = 'users';
+
+    /**
+     * Tên trường khóa chính.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'UserID';
+
+    public $timestamps = false;
+
+    /**
+     * Các thuộc tính có thể gán dữ liệu vào.
+     *
+     * @var array
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'name',     // Tên người dùng
+        'email',    // Email người dùng
+        'password', // Mật khẩu người dùng
+        'UserName', // Tên người dùng (nếu có)
+        'Role',  // Quyền hạn người dùng (nếu có)
+        'created_at',   // ngày tạo
+        'Status',   // Trạng thái người dùng (nếu có)
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
+     * Các thuộc tính nên được ẩn khi trả về dữ liệu.
      *
-     * @var array<int, string>
+     * @var array
      */
     protected $hidden = [
         'password',
@@ -34,9 +53,9 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be cast.
+     * Các thuộc tính nên được định dạng.
      *
-     * @var array<string, string>
+     * @var array
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
