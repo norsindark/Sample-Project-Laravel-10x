@@ -8,8 +8,8 @@
 	<!-- Boxicons -->
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
-	<!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
-	@vite(['resources/css/app.css', 'resources/js/app.js'])
+	<link href="{{ asset('dashboard/css/styles.css') }}" rel="stylesheet">
+	<!-- @vite(['resources/css/app.css', 'resources/js/app.js']) -->
 
 	<title>Dashboard</title>
 </head>
@@ -162,28 +162,28 @@
 							@if(!empty($users))
 							@foreach ($users as $user)
 							<tr>
-								<td>{{ $user->UserID }}</td>
+								<td>{{ $user->id }}</td>
 								<td>{{ $user->name }}</td>
-								<td>{{ $user->Email }}</td>
-								@if ($user->Status == 1)
+								<td>{{ $user->email }}</td>
+								@if ($user->status == 1)
 								<td><span class="status completed">Activated</span></td>
 								@elseif ($user->Status == 2)
 								<td><span class="status completed">Not Activated</span></td>
 								@endif
 
 								<td>
-									<a class="status process" href="{{ route('dashboard.edit', ['id' => $user->UserID]) }}">Edit</a>
+									<a class="status process" href="{{ route('dashboard.user.edit', ['id' => $user->id]) }}">Edit</a>
 
 								</td>
 								<td>
-									<form method="POST" action="{{ route('dashboard.destroy', ['id' => $user->UserID]) }}">
+									<form method="POST" action="{{ route('dashboard.user.destroy', ['id' => $user->id]) }}">
 										@csrf
 										@method('DELETE')
 								<td>
-									<form method="POST" action="{{ route('dashboard.destroy', ['id' => $user->UserID]) }}">
+									<form method="POST" action="{{ route('dashboard.user.destroy', ['id' => $user->id]) }}">
 										@csrf
 										@method('DELETE')
-										<button class="status dagger" style="background-color: red; border:none;" type="submit" class="btn btn-danger" onclick="confirmDelete('{{ route('dashboard.destroy', ['id' => $user->UserID]) }}')">Xóa</button>
+										<button class="status dagger" style="background-color: red; border:none;" type="submit" class="btn btn-danger" onclick="confirmDelete('{{ route('dashboard.user.destroy', ['id' => $user->id]) }}')">Xóa</button>
 									</form>
 								</td>
 
@@ -205,14 +205,14 @@
 				<div class="user">
 					<div class="head">
 						<h3>Users</h3>
-						<a class="status process" href="{{ route('dashboard.create')}}"><i class='bx bx-plus'></i></a>
+						<a class="status process" href="{{ route('dashboard.user.create')}}"><i class='bx bx-plus'></i></a>
 						<i class='bx bx-filter'></i>
 					</div>
 					<ul class="user-list">
 						@if(!empty($users))
 						@foreach ($users as $user)
 						<li class="completed">
-							<p>{{ $user->UserName }}</p>
+							<p>{{ $user->username }}</p>
 							<i class='bx bx-dots-vertical-rounded'></i>
 						</li>
 						@endforeach
@@ -228,7 +228,7 @@
 	</section>
 	<!-- CONTENT -->
 </body>
-<script>
+<!-- <script>
 	function confirmDelete(deleteUrl) {
 		if (confirm('Bạn có chắc chắn muốn xóa người dùng này không?')) {
 
@@ -256,6 +256,6 @@
 			window.location.href = "{{ route('dashboard.index') }}";
 		}
 	}
-</script>
-
+</script> -->
+<script>"{{ asset('dashboard/js/script.css') }}"</script>
 </html>

@@ -3,11 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class Users extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -23,7 +23,7 @@ class User extends Authenticatable
      *
      * @var string
      */
-    protected $primaryKey = 'UserID';
+    protected $primaryKey = 'id';
 
     public $timestamps = false;
 
@@ -36,10 +36,10 @@ class User extends Authenticatable
         'name',     // Tên người dùng
         'email',    // Email người dùng
         'password', // Mật khẩu người dùng
-        'UserName', // Tên người dùng (nếu có)
-        'Role',  // Quyền hạn người dùng (nếu có)
+        'userName', // Tên người dùng (nếu có)
+        'role',  // Quyền hạn người dùng (nếu có)
         'created_at',   // ngày tạo
-        'Status',   // Trạng thái người dùng (nếu có)
+        'status',   // Trạng thái người dùng (nếu có)
     ];
 
     /**

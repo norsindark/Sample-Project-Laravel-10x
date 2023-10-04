@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\Dashboard\Users\UserController;
 
 
 /*
@@ -24,28 +25,29 @@ use App\Http\Controllers\Admin\DashboardController;
 // });
 
 
-Route::prefix('admin')->group(function () {
+Route::prefix('dashboard')->group(function () {
 
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+    Route::get('/home', [DashboardController::class, 'index'])->name('dashboard.index');
 
-    Route::get('/dashboard/{id}/update', 'DashboardController@edit')->name('dashboard.update');
+    Route::prefix('user')->group(function () {
 
-    // Tạo tuyến để hiển thị trang chỉnh sửa thông tin người dùng từ trang Dashboard
-    Route::get('/dashboard/{id}/edit', [DashboardController::class, 'edit'])->name('dashboard.edit');
+        Route::get('/{id}/update', 'DashboardController@edit')->name('dashboard.user.update');
 
-    // Tạo tuyến để xử lý cập nhật thông tin người dùng từ trang Dashboard
-    Route::put('/dashboard/{id}', [DashboardController::class, 'update'])->name('dashboard.update');
+        // Tạo route để hiển thị trang chỉnh sửa thông tin người dùng từ trang Dashboard
+        Route::get('/{id}/edit', [UserController::class, 'edit'])->name('dashboard.user.edit');
 
-    // tạo tuyến add user
-    Route::get('/dashboard/create', [DashboardController::class, 'create'])->name('dashboard.create');
+        // Tạo route để xử lý cập nhật thông tin người dùng từ trang Dashboard
+        Route::put('/{id}', [UserController::class, 'update'])->name('dashboard.user.update');
 
-    //thêm vào CSDL
-    Route::post('/dashboard/store', [DashboardController::class, 'store'])->name('dashboard.store');
+        // tạo route add user
+        Route::get('/create', [UserController::class, 'create'])->name('dashboard.user.create');
 
-    //xóa user
-    Route::delete('/dashboard/{id}', [DashboardController::class, 'destroy'])->name('dashboard.destroy');
+        //thêm vào CSDL
+        Route::post('/store', [UserController::class, 'store'])->name('dashboard.user.store');
 
-
+        //xóa user
+        Route::delete('/{id}', [UserController::class, 'destroy'])->name('dashboard.user.destroy');
+    });
 });
 
 Route::get('/', 'App\Http\Controllers\User\HomeController@index')->name('home');
@@ -54,5 +56,3 @@ Route::get('/san-pham', 'App\Http\Controllers\User\ProductController@index')->na
 Route::get('/danh-muc', 'App\Http\Controllers\User\CategoryController@index')->name('danh-muc');
 Route::get('/gio-hang', 'App\Http\Controllers\User\CartController@index')->name('gio-hang');
 Route::get('/thanh-toan', 'App\Http\Controllers\User\CheckoutController@index')->name('thanh-toan');
-
-

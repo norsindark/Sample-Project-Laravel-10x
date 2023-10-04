@@ -8,8 +8,8 @@
     <!-- Boxicons -->
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <!-- My CSS -->
-    <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link href="{{ asset('dashboard/css/styles.css') }}" rel="stylesheet">
+    <!-- @vite(['resources/css/app.css', 'resources/js/app.js']) -->
 
     <title>Dashboard</title>
 </head>
@@ -140,7 +140,7 @@
                 </li>
             </ul>
 
-            <form method="POST" action="{{ route('dashboard.store') }}">
+            <form method="POST" action="{{ route('dashboard.user.store') }}">
                 @csrf
 
                 <div class="form-group">
@@ -180,5 +180,5 @@
     </section>
     <!-- CONTENT -->
 </body>
-
+<script>"{{ asset('dashboard/js/script.css') }}"</script>
 </html>
