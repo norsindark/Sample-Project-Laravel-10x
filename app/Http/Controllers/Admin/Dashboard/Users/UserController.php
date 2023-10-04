@@ -16,7 +16,7 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('dashboard.create');
+        return view('dashboard.users.create');
     }
 
     public function store(Request $request)
@@ -32,7 +32,7 @@ class UserController extends Controller
         $user->save();
 
         // Điều hướng người dùng sau khi thêm tài khoản (ví dụ: chuyển hướng về danh sách người dùng)
-        return redirect()->route('dashboard.index')->with('success', 'Tài khoản mới đã được thêm thành công.');
+        return redirect()->route('dashboard.users.index')->with('success', 'Tài khoản mới đã được thêm thành công.');
     }
 
     public function destroy($id)
@@ -42,16 +42,16 @@ class UserController extends Controller
 
         // Kiểm tra xem người dùng tồn tại
         if (!$user) {
-            return redirect()->route('dashboard.index')->with('error', 'Người dùng không tồn tại.');
+            return redirect()->route('dashboard.users.index')->with('error', 'Người dùng không tồn tại.');
         }
 
         // Kiểm tra xem người dùng đã xác nhận xóa hay không
         if (request()->has('confirmed') && request('confirmed') == 'true') {
             // Thực hiện xóa người dùng
             $user->delete();
-            return redirect()->route('dashboard.index')->with('success', 'Người dùng đã được xóa thành công.');
+            return redirect()->route('dashboard.users.index')->with('success', 'Người dùng đã được xóa thành công.');
         } else {
-            return redirect()->route('dashboard.index')->with('warning', 'Bạn đã hủy bỏ việc xóa người dùng.');
+            return redirect()->route('dashboard.users.index')->with('warning', 'Bạn đã hủy bỏ việc xóa người dùng.');
         }
     }
 }

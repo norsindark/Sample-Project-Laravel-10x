@@ -22,14 +22,14 @@ class DashboardController extends Controller
         // $users = DB::select('SELECT * FROM users');
 
         if (!empty($users)) {
-            return view('dashboard.index', compact('users'));
+            return view('dashboard.users.index', compact('users'));
         } else {
             $nocation = 'empty users';
-            return view('dashboard.index', compact('nocation'));
+            return view('dashboard.users.index', compact('nocation'));
         }
 
         // dd($users);
         // Trả về trang hiển thị danh sách người dùng
-        return view('dashboard.index', compact('users'));
+        return view('dashboard.users.index', compact('users'));
     }
 }
