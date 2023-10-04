@@ -48,3 +48,11 @@ Route::prefix('admin')->group(function () {
 
 });
 
+Route::get('/', 'App\Http\Controllers\User\HomeController@index')->name('home');
+Route::get('/tin-tuc', 'App\Http\Controllers\User\BlogController@index')->name('tin-tuc');
+Route::get('/san-pham', 'App\Http\Controllers\User\ProductController@index')->name('san-pham');
+Route::get('/danh-muc', 'App\Http\Controllers\User\CategoryController@index')->name('danh-muc');
+Route::get('/gio-hang', 'App\Http\Controllers\User\CartController@index')->name('gio-hang');
+Route::get('/thanh-toan', 'App\Http\Controllers\User\CheckoutController@index')->name('thanh-toan');
+
+

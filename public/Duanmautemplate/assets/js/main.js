@@ -120,10 +120,10 @@ jQuery(function($) {
             }
         }); /*owl end*/
     }); /*each*/
-    
-    
-    
-    
+
+
+
+
     /*=======================================
 	Quantity control and cart
 	=======================================*/
@@ -408,3 +408,37 @@ jQuery(function($) {
 
 
 }); /*end ready*/ /*end*/
+
+
+/* ClICK SHOW LOGIN*/
+
+    $(document).ready(function () {
+    $('a[href="#qvt-userrr"]').click(function (e) {
+        e.preventDefault(); // Ngăn chặn sự kiện mặc định khi nhấp vào liên kết
+        $('.quickViewWrap').removeClass('xv-hide');
+        // Thêm lớp 'active' cho <div class="quickViewWrap">
+        $('.quickViewWrap').addClass('wideQView');
+        $('.quickViewWrap').addClass('xv-show');
+
+    });
+});
+
+$(document).ready(function () {
+    // Xử lý sự kiện click cho liên kết "Đăng ký"
+    $("#show-signup-link, #show-signup-button").click(function (e) {
+        e.preventDefault();
+        $("#login-form").hide();
+        $("#signup-form").show();
+        $(".input_signup").hide();
+        $(".input_login").show();
+    });
+
+    // Xử lý sự kiện click cho liên kết "Đăng nhập"
+    $("#show-login-link, #show-login-button").click(function (e) {
+        e.preventDefault();
+        $("#signup-form").hide();
+        $("#login-form").show();
+        $(".input_login").hide();
+        $(".input_signup").show();
+    });
+});
