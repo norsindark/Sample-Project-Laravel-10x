@@ -28,7 +28,7 @@ class DashboardController extends Controller
             return view('dashboard.users.index', compact('nocation'));
         }
 
-        // dd($users);
+        dd($users);
         // Trả về trang hiển thị danh sách người dùng
         return view('dashboard.users.index', compact('users'));
     }
