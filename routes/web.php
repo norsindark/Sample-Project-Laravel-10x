@@ -8,6 +8,7 @@ use App\Http\Controllers\User\LoginController;
 use App\Http\Controllers\User\afterLoginController;
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,8 +34,9 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/home', [DashboardController::class, 'index'])->name('dashboard.index');
 
     Route::prefix('user')->group(function () {
+        Route::get('/', 'App\Http\Controllers\Admin\Dashboard\Users\UserController@index')->name('dashboard.user.index');
 
-        Route::get('/{id}/update', 'DashboardController@edit')->name('dashboard.user.update');
+ /*       Route::get('/{id}/update', 'DashboardController@edit')->name('dashboard.user.update');
 
         // Tạo route để hiển thị trang chỉnh sửa thông tin người dùng từ trang Dashboard
         Route::get('/{id}/edit', [UserController::class, 'edit'])->name('dashboard.user.edit');
@@ -49,7 +51,49 @@ Route::prefix('dashboard')->group(function () {
         Route::post('/store', [UserController::class, 'store'])->name('dashboard.user.store');
 
         //xóa user
-        Route::delete('/{id}', [UserController::class, 'destroy'])->name('dashboard.user.destroy');
+        Route::delete('/{id}', [UserController::class, 'destroy'])->name('dashboard.user.destroy');*/
+    });
+
+    Route::prefix('category')->group(function () {
+
+        Route::get('/', 'App\Http\Controllers\Admin\Dashboard\Category\CategoryControllder@index')->name('dashboard.category.index');
+        /*       Route::get('/{id}/update', 'DashboardController@edit')->name('dashboard.user.update');
+
+               // Tạo route để hiển thị trang chỉnh sửa thông tin người dùng từ trang Dashboard
+               Route::get('/{id}/edit', [UserController::class, 'edit'])->name('dashboard.user.edit');
+
+               // Tạo route để xử lý cập nhật thông tin người dùng từ trang Dashboard
+               Route::put('/{id}', [UserController::class, 'update'])->name('dashboard.user.update');
+
+               // tạo route add user
+               Route::get('/create', [UserController::class, 'create'])->name('dashboard.user.create');
+
+               //thêm vào CSDL
+               Route::post('/store', [UserController::class, 'store'])->name('dashboard.user.store');
+
+               //xóa user
+               Route::delete('/{id}', [UserController::class, 'destroy'])->name('dashboard.user.destroy');*/
+    });
+
+    Route::prefix('product')->group(function () {
+
+        Route::get('/', 'App\Http\Controllers\Admin\Dashboard\Product\ProductControllder@index')->name('dashboard.product.index');
+        /*       Route::get('/{id}/update', 'DashboardController@edit')->name('dashboard.user.update');
+
+               // Tạo route để hiển thị trang chỉnh sửa thông tin người dùng từ trang Dashboard
+               Route::get('/{id}/edit', [UserController::class, 'edit'])->name('dashboard.user.edit');
+
+               // Tạo route để xử lý cập nhật thông tin người dùng từ trang Dashboard
+               Route::put('/{id}', [UserController::class, 'update'])->name('dashboard.user.update');
+
+               // tạo route add user
+               Route::get('/create', [UserController::class, 'create'])->name('dashboard.user.create');
+
+               //thêm vào CSDL
+               Route::post('/store', [UserController::class, 'store'])->name('dashboard.user.store');
+
+               //xóa user
+               Route::delete('/{id}', [UserController::class, 'destroy'])->name('dashboard.user.destroy');*/
     });
 });
 

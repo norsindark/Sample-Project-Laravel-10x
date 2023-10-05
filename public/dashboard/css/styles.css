@@ -29,6 +29,7 @@ li {
 	--light-yellow: #FFF2C6;
 	--orange: #FD7238;
 	--light-orange: #FFE0D3;
+    --create: #275ffe;
 }
 
 html {
@@ -400,7 +401,7 @@ body {
 	color: var(--dark);
 }
 #content main .box-info li .text p {
-	color: var(--dark);	
+	color: var(--dark);
 }
 
 
@@ -589,4 +590,15 @@ body {
 	#content main .table-data .user .user-list {
 		min-width: 420px;
 	}
+}
+
+.Btn_create {
+    font-size: 16px;
+    padding: 6px 16px;
+    color: var(--light);
+    border-color: transparent;
+    border-radius: 20px;
+    font-weight: 700;
+    background: var(--create);
+    cursor:pointer;
 }
