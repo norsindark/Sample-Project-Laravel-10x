@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\Dashboard\Users\UserController;
+use App\Http\Controllers\User\RegisterController;
+use App\Http\Controllers\User\LoginController;
+use App\Http\Controllers\User\afterLoginController;
 
 
 /*
@@ -50,9 +53,23 @@ Route::prefix('dashboard')->group(function () {
     });
 });
 
-Route::get('/', 'App\Http\Controllers\User\HomeController@index')->name('home');
-Route::get('/tin-tuc', 'App\Http\Controllers\User\BlogController@index')->name('tin-tuc');
-Route::get('/san-pham', 'App\Http\Controllers\User\ProductController@index')->name('san-pham');
-Route::get('/danh-muc', 'App\Http\Controllers\User\CategoryController@index')->name('danh-muc');
-Route::get('/gio-hang', 'App\Http\Controllers\User\CartController@index')->name('gio-hang');
-Route::get('/thanh-toan', 'App\Http\Controllers\User\CheckoutController@index')->name('thanh-toan');
+Route::prefix('nhathuoc')->group(function () {
+    // Route::prefix('/')->group(function () {
+
+    // });
+    Route::prefix('/')->group(function () {
+        Route::post('/login', [LoginController::class, 'login'])->name('login');
+        Route::post('/register', [RegisterController::class, 'register'])->name('register');
+
+        Route::match(['get', 'post'], '/afterLogin', [afterLoginController::class, 'afterLogin'])
+            // ->middleware('checkrole:2')
+            ->name('afterLogin');
+
+        Route::get('/home', 'App\Http\Controllers\User\HomeController@index')->name('home');
+        Route::get('/tin-tuc', 'App\Http\Controllers\User\BlogController@index')->name('tin-tuc');
+        Route::get('/san-pham', 'App\Http\Controllers\User\ProductController@index')->name('san-pham');
+        Route::get('/danh-muc', 'App\Http\Controllers\User\CategoryController@index')->name('danh-muc');
+        Route::get('/gio-hang', 'App\Http\Controllers\User\CartController@index')->name('gio-hang');
+        Route::get('/thanh-toan', 'App\Http\Controllers\User\CheckoutController@index')->name('thanh-toan');
+    });
+});

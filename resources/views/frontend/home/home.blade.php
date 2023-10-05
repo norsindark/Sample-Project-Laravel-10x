@@ -1220,11 +1220,9 @@ Custom Block
                     <!--left column-->
 
                     <div class="col-xs-12 col-md-6">
-                        <a
-                            class="xv-block text-center"
+                        <a class="xv-block text-center"
                             href="#"
-                            style="background-image:url('/Duanmautemplate/assets/img/block-img2.jpg'); no-repeat"
-                        >
+                            style="background-image:url('/Duanmautemplate/assets/img/block-img2.jpg'); no-repeat" >
                             <span>Mới Trên Thị Trường</span>
                         </a>
                     </div>

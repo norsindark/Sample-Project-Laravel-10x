@@ -36,29 +36,15 @@
                 <a href="#" class="closeQPanel"><i class="fa fa-close"></i></a>
                 <!-- Form đăng nhập -->
                 <div class="form-container" id="login-form">
-                    <form method="post" action="login" id="login">
+                    <form method="post" action="{{ route('login') }}" id="login">
+                        @csrf
                         <p class="text-center">
                             <img src="/Duanmautemplate/assets/img/basic/padlock106.png" alt="" />
                         </p>
-                        <input
-                            type="text"
-                            name="username"
-                            placeholder="Username"
-                            id="login-username"
-                        />
-                        <input
-                            type="password"
-                            name="password"
-                            placeholder="Password"
-                            id="login-password"
-                        />
+                        <input type="text" name="username" placeholder="Username" id="login-username" />
+                        <input type="password" name="password" placeholder="Password" id="login-password" />
                         <a href="#" class="lost">Lost your password?</a><br /><br />
-                        <input
-                            type="submit"
-                            name="submit"
-                            value="Đăng Nhập"
-                            class="btn-blue btn"
-                        />
+                        <input type="submit" name="submit" value="Đăng Nhập" class="btn-blue btn" />
                     </form>
                 </div>
 
@@ -70,41 +56,17 @@
 
                 <!-- Form đăng ký (ẩn ban đầu) -->
                 <div class="form-container" id="signup-form" style="display: none;">
-                    <form method="post" action="signup" id="signup">
+                    <form method="post" action="{{ route('register') }}" id="signup">
+                        @csrf
                         <p class="text-center">
                             <i class="fa-solid fa-user-plus" style="color: #ffffff; font-size: 52px; margin: auto"></i>
                             {{--<img src="/Duanmautemplate/assets/img/basic/padlock106.png" alt="" />--}}
                         </p>
-                        <input
-                            type="text"
-                            name="username"
-                            placeholder="Username"
-                            id="signup-username"
-                        />
-                        <input
-                            type="text"
-                            name="email"
-                            placeholder="email"
-                            id="signup-email"
-                        />
-                        <input
-                            type="password"
-                            name="password"
-                            placeholder="Password"
-                            id="signup-password"
-                        />
-                        <input
-                            type="confirmpassword"
-                            name="confirmpassword"
-                            placeholder="Nhập lại Password"
-                            id="signup-confirmpassword"
-                        />
-                        <input
-                            type="submit"
-                            name="submit"
-                            value="Đăng kí"
-                            class="btn-blue btn"
-                        />
+                        <input type="text" name="username" placeholder="Username" id="signup-username" />
+                        <input type="text" name="email" placeholder="email" id="signup-email" />
+                        <input type="password" name="password" placeholder="Password" id="signup-password" />
+                        <input type="password" name="confirmpassword" placeholder="Nhập lại Password" id="signup-confirmpassword" />
+                        <input type="submit" name="submit" value="Đăng kí" class="btn-blue btn" />
                     </form>
                 </div>
 
@@ -121,12 +83,7 @@
                 <a href="#" class="closeQPanel"><i class="fa fa-close"></i></a>
                 <ul class="quickShoping-list">
                     <li>
-                        <a
-                            data-pid="xyz101"
-                            data-qty="2"
-                            class="qv-remove-prod fa fa-remove"
-                            href="#"
-                        ></a>
+                        <a data-pid="xyz101" data-qty="2" class="qv-remove-prod fa fa-remove" href="#"></a>
                         <a href="#"><img src="/Duanmautemplate/assets/img/news-img-2.png" alt="" /></a>
                         <span>x2</span>
                     </li>
@@ -141,11 +98,7 @@
             <div id="qvt-wishlist" class="qv-panel">
                 <a href="#" class="closeQPanel"><i class="fa fa-close"></i></a>
                 <ul class="quickShoping-list empty"></ul>
-                <a
-                    href="#"
-                    class="btn btn-blue triggerCart"
-                    title="View Wishlist Page"
-                >
+                <a href="#" class="btn btn-blue triggerCart" title="View Wishlist Page">
                     <i class="fa fa-heart"></i>
                     <span>Visit Checkout Page</span>
                 </a>
@@ -154,11 +107,7 @@
             <div id="qvt-compare" class="qv-panel">
                 <a href="#" class="closeQPanel"><i class="fa fa-close"></i></a>
                 <ul class="quickShoping-list empty"></ul>
-                <a
-                    href="#"
-                    class="btn btn-blue triggerCompare"
-                    title="Compare Items"
-                >
+                <a href="#" class="btn btn-blue triggerCompare" title="Compare Items">
                     <i class="fa fa-exchange"></i>
                     <span>Visit Checkout Page</span>
                 </a>
