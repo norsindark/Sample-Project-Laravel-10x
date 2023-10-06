@@ -6,13 +6,7 @@
 
 @section('content')
     <!--=======Page Content Area=========-->
-    @extends('frontend/layouts.master')
 
-    @section('title')
-        <title>manageruser page</title>
-    @endsection
-
-    @section('content')
         <!--=======Page Content Area=========-->
         <main id="pageContentArea">
             <!--========================================
@@ -22,7 +16,7 @@
                 <div class="blog-main-slider" style="background-image: radial-gradient(circle, #7ca3dc, #1e71de);">
                     <div class="overlay"></div>
                     <div class="container">
-                        <h2>Quản lí số địa chỉ</h2>
+                        <h2>QUẢN LÍ TÀI KHOẢN</h2>
                         <p>Hiển thị thông tin tài khoản và các thông tin khác.</p>
                     </div>
                 </div>
@@ -31,14 +25,14 @@
             grid and list view
             ===========================================-->
             <div class="container">
-                <div class="product-overview pt-50 pb-50">
+                <div class="product-overview pt-50 pb-50 fix_pading">
                     <div class="row">
                         <div class="col-xs-12 col-sm-3 hidden-xs">
                             @include('frontend.manageruser.components.sidebar')
                         </div>
                         <div class="col-xs-12 col-sm-9">
-                            <header class="sec-heading style text-center">
-                                <div class="category-wrap">
+                            <header class="sec-heading style text-center fix_secheading">
+                                <div class="category-wrap fix_top-category">
                                 <span class="categorise" style="font-size: 20px;
     font-weight: 700;">Quản lí số địa chỉ</span>
                                 </div>
@@ -62,7 +56,6 @@
 
         </main><!--pageContentArea-->
 
-    @endsection
 
 
 @endsection

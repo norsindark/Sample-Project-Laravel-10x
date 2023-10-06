@@ -23,15 +23,15 @@
         grid and list view
         ===========================================-->
         <div class="container">
-            <div class="product-overview pt-50 pb-50">
+            <div class="product-overview pt-50 pb-50 fix_pading">
                 <div class="row">
                     <div class="col-xs-12 col-sm-3 hidden-xs">
                        @include('frontend.manageruser.components.sidebar')
                     </div>
                     <div class="col-xs-12 col-sm-9">
-                        <header class="sec-heading style text-center">
+                        <header class="sec-heading style text-center fix_secheading">
                             <div class="category-wrap">
-                                <span class="categorise" style="font-size: 20px;
+                                <span class="categorise wrap_text-center" style="font-size: 20px;
     font-weight: 700;">Thông tin cá nhân</span>
                             </div>
                         </header>
@@ -40,7 +40,7 @@
 
                                 </div>
 
-                                <div class="text-center">
+                                <div class="wrap_text-center">
                                     <div class="info-list">
                                         <div class="item-info">
                                             <span class="text_item-info">Họ và tên</span>

@@ -5,14 +5,7 @@
 @endsection
 
 @section('content')
-    <!--=======Page Content Area=========-->
-    @extends('frontend/layouts.master')
 
-    @section('title')
-        <title>manageruser page</title>
-    @endsection
-
-    @section('content')
         <!--=======Page Content Area=========-->
         <main id="pageContentArea">
             <!--========================================
@@ -31,13 +24,13 @@
             grid and list view
             ===========================================-->
             <div class="container">
-                <div class="product-overview pt-50 pb-50">
+                <div class="product-overview pt-50 pb-50  fix_product">
                     <div class="row">
-                        <div class="col-xs-12 col-sm-3 hidden-xs">
+                        <div class="col-xs-12 col-sm-3 hidden-xs fix_position">
                             @include('frontend.manageruser.components.sidebar')
                         </div>
                         <div class="col-xs-12 col-sm-9">
-                            <header class="sec-heading style text-center">
+                            <header class="sec-heading style text-center fix_secheading">
                                 <div class="category-wrap">
                                 <span class="categorise" style="font-size: 20px;
     font-weight: 700;">Đơn hàng của bạn</span>
@@ -81,7 +74,7 @@
                                 </table>
                                 <div class="imgnoproduct_block">
                                 </div>
-                                <div class="text-center">
+                                <div class="text-center text-center-fix">
                                     <h4>Bạn chưa có đơn hàng nào</h4>
                                     <span>Khám phá thêm sản phẩm tại trang website</span>
                                 </div>
@@ -94,8 +87,6 @@
             </div><!--container-->
 
         </main><!--pageContentArea-->
-
-    @endsection
 
 
 @endsection

@@ -5272,11 +5272,11 @@ http://tobiasahlin.com/spinkit/
     margin: 30px auto;
 }
 
-.text-center {
+.wrap_text-center {
     position: relative;
-    top: 60px;
+    top: 30px;
     right: 0;
-
+    text-align: center !important;
 }
 
 .item-info {
@@ -5306,7 +5306,7 @@ http://tobiasahlin.com/spinkit/
 }
 
 .product-overview {
-    padding-top: 60px !important;
+    padding-top: 30px !important;
 }
 
 .search_addresss > button {
@@ -5363,4 +5363,36 @@ http://tobiasahlin.com/spinkit/
     right: 0;
     background-size: cover;
     margin: 30px auto;
+}
+
+.fix_pading {
+    padding: 0 !important;
+}
+
+.fix_secheading {
+    height: 0 !important;
+}
+
+.info-list {
+    position: relative;
+    top: 30px;
+    right: 0;
+    text-align: center !important;
+}
+
+.fix_position {
+    position: relative;
+    top: -32px;
+}
+.text-center-fix {
+    position: relative;
+    top: 60px;
+}
+
+.fix_product {
+    padding: 0;
+}
+
+.fix_top-category {
+    top: 60px !important;
 }
