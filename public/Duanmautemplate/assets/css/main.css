@@ -2155,7 +2155,7 @@ Timer
     font-size: 34px;
 }
 .counter-wrapper > div{
-    background: url(../img/timer-bg.jpg) center center #323d44;
+    background: url(../img/) center center #323d44;
     display: inline-block;
     height: 100px;
     width: 70px;
