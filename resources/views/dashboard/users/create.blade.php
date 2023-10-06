@@ -9,7 +9,7 @@
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <!-- My CSS -->
     <link href="{{ asset('dashboard/css/styles.css') }}" rel="stylesheet">
-    <!-- @vite(['resources/css/app.css', 'resources/js/app.js']) -->
+    <!-- {{--@vite(['resources/css/app.css', 'resources/js/app.js'])--}} -->
 
     <title>Dashboard</title>
 </head>

@@ -17,7 +17,7 @@ class DashboardController extends Controller
 
     public function index()
     {
-        // Lấy danh sách người dùng từ cơ sở dữ liệu
+      /*  // Lấy danh sách người dùng từ cơ sở dữ liệu
         $users = Users::all();
         // $users = DB::select('SELECT * FROM users');
 
@@ -26,10 +26,11 @@ class DashboardController extends Controller
         } else {
             $nocation = 'empty users';
             return view('dashboard.users.index', compact('nocation'));
-        }
+        }*/
 
-        dd($users);
+        //dd($users);
         // Trả về trang hiển thị danh sách người dùng
-        return view('dashboard.users.index', compact('users'));
+        //compact('users')
+        return view('dashboard.home.home');
     }
 }
