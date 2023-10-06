@@ -9,7 +9,7 @@ Header
     <div class="header-top">
         <div class="container">
             <div class="row">
-                <div class="col-xs-12 col-md-6">
+                <div class="col-xs-12 col-md-5">
                     <ul class="top-nav">
                         <li><a href="#">BẢO VỆ NGƯỜI MUA</a></li>
                         <li class="parent">
@@ -21,7 +21,7 @@ Header
                         </li>
                     </ul>
                 </div>
-                <div class="col-xs-12 col-md-6">
+                <div class="col-xs-12 col-md-7">
                     <ul class="top-nav text-right">
                         <li>
                             <a href="#"><i class="fa fa-exchange"></i>SO SÁNH SẢN PHẨM</a>
@@ -29,11 +29,17 @@ Header
                         <li>
                             <a href="#"><i class="fa fa-heart"></i>DANH SÁCH YÊU THÍCH</a>
                         </li>
-                        <li>
+                        <li class="@if(session('user_logged_in')) topnav-hide @else topnav-show @endif">
                             <a href="#qvt-userrr"><i class="fa fa-user"></i>ĐĂNG NHẬP</a>
                         </li>
-                        <li>
+                        <li class="@if(session('user_logged_in')) topnav-hide @else topnav-show @endif">
                             <a href="#"><i class="fa fa-lock"></i>ĐĂNG KÍ</a>
+                        </li>
+                        <li class="@if(session('user_logged_in')) topnav-show @else topnav-hide @endif">
+                            <a href="{{route('manageruser')}}"><i class="fa fa-solid fa-bars-progress"></i>QUẢN LÍ TÀI KHOẢN</a>
+                        </li>
+                        <li class="@if(session('user_logged_in')) topnav-show @else topnav-hide @endif">
+                            <a href=""><i class="fa fa-solid fa-right-from-bracket"></i>CHECK OUT</a>
                         </li>
                     </ul>
                 </div>

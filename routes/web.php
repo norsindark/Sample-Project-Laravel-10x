@@ -105,6 +105,7 @@ Route::prefix('nhathuoc')->group(function () {
         Route::post('/login', [LoginController::class, 'login'])->name('login');
         Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
+
         Route::match(['get', 'post'], '/afterLogin', [afterLoginController::class, 'afterLogin'])
             // ->middleware('checkrole:2')
             ->name('afterLogin');
@@ -115,5 +116,11 @@ Route::prefix('nhathuoc')->group(function () {
         Route::get('/danh-muc', 'App\Http\Controllers\User\CategoryController@index')->name('danh-muc');
         Route::get('/gio-hang', 'App\Http\Controllers\User\CartController@index')->name('gio-hang');
         Route::get('/thanh-toan', 'App\Http\Controllers\User\CheckoutController@index')->name('thanh-toan');
+    });
+    // Quản lí tài khoản
+     Route::prefix('/afterlogin') ->group(function () {
+        Route::get('quan-li-tai-khoan', 'App\Http\Controllers\User\ManagerUser\ManagerUserController@index')->name('manageruser');
+        Route::get('don-hang-cua-ban', 'App\Http\Controllers\User\ManagerUser\ManagerOderController@index')->name('manageroder');
+        Route::get('quan-li-so-dia-chi', 'App\Http\Controllers\User\ManagerUser\ManagerAddressController@index')->name('manageraddress');
     });
 });
