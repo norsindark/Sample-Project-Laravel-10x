@@ -14,9 +14,81 @@ class UserController extends Controller
     {
     }
 
-    public function index() {
-        return view('dashboard.users.index');
+    // index 
+
+    public function index()
+    {
+        // Lấy danh sách người dùng từ cơ sở dữ liệu
+        $users = Users::all();
+
+        if (!empty($users)) {
+            return view('dashboard.users.index', compact('users'));
+        } else {
+            $nocation = 'empty users';
+            return view('dashboard.users.index', compact('nocation'));
+        }
+
+        // hiển thị danh sách người dùng
+        //
+        return view('dashboard.users.index', compact('users'));
     }
+
+    // edit
+
+    public function edit($id)
+    {
+        // Lấy thông tin người dùng theo ID
+        $user = Users::findOrFail($id);
+
+        // Trả về view chỉnh sửa với dữ liệu người dùng
+        return view('dashboard.users.edit', compact('user'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        // Validate dữ liệu đầu vào
+        $rules = [
+            'username' => 'required|string',
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'role' => 'required|int|in:1,2',
+            'status' => 'required|int|in:1,2,3',
+            'address' => 'nullable|string',
+        ];
+
+        // Kiểm tra xem người dùng đã nhập mật khẩu mới hay không
+        if ($request->filled('password')) {
+            $rules['password'] = 'required|string';
+        }
+
+        $request->validate($rules);
+
+        // Lấy thông tin người dùng theo ID
+        $user = Users::findOrFail($id);
+
+        // Cập nhật thông tin người dùng
+        $data = [
+            'username' => $request->input('username'),
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'role' => $request->input('role'),
+            'status' => $request->input('status'),
+            'address' => $request->input('address'),
+        ];
+
+        // Kiểm tra xem người dùng đã nhập mật khẩu mới hay chưa
+        if ($request->filled('password')) {
+            $data['password'] = bcrypt($request->input('password'));
+        }
+
+        $user->update($data);
+
+        // Chuyển hướng về trang danh sách người dùng sau khi cập nhật
+        return redirect()->route('dashboard.user.index')->with('success', 'Update success.');
+    }
+
+
+    // create 
 
     public function create()
     {
@@ -32,11 +104,12 @@ class UserController extends Controller
         $user->Password = Hash::make($request->input('password'));
         $user->Role = $request->input('role');
         $user->Status = $request->input('status');
-        $user->name = $request->input('name');
+        $user->Name = $request->input('name');
+        $user->Address = $request->input('address');
         $user->save();
 
-        // Điều hướng người dùng sau khi thêm tài khoản (ví dụ: chuyển hướng về danh sách người dùng)
-        return redirect()->route('dashboard.users.index')->with('success', 'Tài khoản mới đã được thêm thành công.');
+        // Điều hướng người dùng sau khi thêm tài khoản
+        return redirect()->route('dashboard.user.index')->with('success', 'New account add success.');
     }
 
     public function destroy($id)

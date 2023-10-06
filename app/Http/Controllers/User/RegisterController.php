@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Users;
+use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
@@ -17,7 +18,19 @@ class RegisterController extends Controller
             return redirect()->back()->with('error', 'Mật khẩu và mật khẩu xác nhận không khớp.');
         }
 
-        // Validate và lưu tài khoản mới vào cơ sở dữ liệu
+        // Sử dụng Validator để kiểm tra dữ liệu
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email|unique:users,Email', // Kiểm tra email không trùng lặp
+            'username' => 'required|unique:users,UserName', // Kiểm tra username không trùng lặp
+            'password' => 'required|string|min:6', // Mật khẩu phải có ít nhất 6 ký tự
+        ]);
+
+        // Kiểm tra xem có lỗi không
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        // Lưu tài khoản mới vào cơ sở dữ liệu
         $user = new Users();
         $user->Email = $request->input('email');
         $user->UserName = $request->input('username');

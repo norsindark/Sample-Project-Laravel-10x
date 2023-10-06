@@ -116,7 +116,7 @@
                 </div>
             </div>
 
-            <ul class="box-info">
+            <!-- <ul class="box-info">
                 <li>
                     <i class='bx bxs-calendar-check'></i>
                     <span class="text">
@@ -138,19 +138,18 @@
                         <p>Total Sales</p>
                     </span>
                 </li>
-            </ul>
+            </ul> -->
 
             <form method="POST" action="{{ route('dashboard.user.store') }}">
                 @csrf
+                <div class="form-group">
+                    <label for="username">UserName</label>
+                    <input type="text" name="username" id="username" class="form-control" required>
+                </div>
 
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email" class="form-control" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="username">UserName</label>
-                    <input type="text" name="username" id="username" class="form-control" required>
                 </div>
 
                 <div class="form-group">
@@ -173,6 +172,11 @@
                     <input type="text" name="name" id="name" class="form-control" required>
                 </div>
 
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="textarea" name="address" id="address" class="form-control" required>
+                </div>
+
                 <button type="submit" class="btn btn-primary">Thêm tài khoản</button>
             </form>
         </main>
@@ -180,5 +184,8 @@
     </section>
     <!-- CONTENT -->
 </body>
-<script>"{{ asset('dashboard/js/script.css') }}"</script>
+<script>
+    "{{ asset('dashboard/js/script.css') }}"
+</script>
+
 </html>

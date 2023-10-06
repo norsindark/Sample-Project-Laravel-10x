@@ -34,6 +34,16 @@
         <div class="quickviewTabs">
             <div id="qvt-user" class="qv-panel">
                 <a href="#" class="closeQPanel"><i class="fa fa-close"></i></a>
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+
                 <!-- Form đăng nhập -->
                 <div class="form-container" id="login-form">
                     <form method="post" action="{{ route('login') }}" id="login">
