@@ -36,9 +36,17 @@
                 <i class='bx bx-search'></i>
                 <i class='bx bx-filter'></i>
             </div>
-            <div class="nocation">
-                <h4>{{session('success')}}</h4>
+            @if(session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
             </div>
+            @endif
+            @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+            @endif
+
             <table>
                 <thead>
                     <tr>
@@ -54,7 +62,7 @@
                         <td>{{ $category->CategoryId }}</td>
                         <td>{{ $category->CategoryName }}</td>
                         <td>
-                            <a class="status completed" href="#">Show Product</a>
+                            <a class="status completed" href="{{ route('dashboard.category.showProduct', ['CategoryId' => $category->CategoryId]) }}">Show Product</a>
                             <a class="status process" href="{{ route('dashboard.category.edit', ['id' => $category->CategoryId]) }}">Edit</a>
                             <form method="POST" action="{{ route('dashboard.category.destroy', ['CategoryId' => $category->CategoryId]) }}">
                                 @csrf

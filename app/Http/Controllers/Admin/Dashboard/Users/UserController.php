@@ -122,13 +122,8 @@ class UserController extends Controller
             return redirect()->route('dashboard.users.index')->with('error', 'Người dùng không tồn tại.');
         }
 
-        // Kiểm tra xem người dùng đã xác nhận xóa hay không
-        if (request()->has('confirmed') && request('confirmed') == 'true') {
-            // Thực hiện xóa người dùng
-            $user->delete();
-            return redirect()->route('dashboard.users.index')->with('success', 'Người dùng đã được xóa thành công.');
-        } else {
-            return redirect()->route('dashboard.users.index')->with('warning', 'Bạn đã hủy bỏ việc xóa người dùng.');
-        }
+        // xóa
+        $user->delete();
+        return redirect()->route('dashboard.user.index')->with('success', 'Người dùng đã được xóa thành công.');
     }
 }

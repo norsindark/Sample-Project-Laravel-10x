@@ -53,12 +53,30 @@ Route::prefix('dashboard')->group(function () {
         // Xóa danh mục
         Route::delete('{CategoryId}', [CategoryControllder::class, 'destroy'])->name('dashboard.category.destroy');
 
+        // show product
+        Route::get('showProduct/{CategoryId}', [CategoryControllder::class, 'showProduct'])->name('dashboard.category.showProduct');
     });
 
 
     Route::prefix('product')->group(function () {
 
+        // Danh sách các danh mục
         Route::get('/', [ProductControllder::class, 'index'])->name('dashboard.product.index');
+
+        // Hiển thị form tạo danh mục
+        Route::get('/create', [ProductControllder::class, 'create'])->name('dashboard.product.create');
+
+        // Lưu danh mục mới
+        Route::post('/store', [ProductControllder::class, 'store'])->name('dashboard.product.store');
+
+        // Hiển thị form chỉnh sửa danh mục
+        Route::get('/{id}/edit', [ProductControllder::class, 'edit'])->name('dashboard.product.edit');
+
+        // Cập nhật danh mục
+        Route::put('/{id}', [ProductControllder::class, 'update'])->name('dashboard.catproductegory.update');
+
+        // Xóa danh mục
+        Route::delete('{ProductId}', [ProductControllder::class, 'destroy'])->name('dashboard.product.destroy');
     });
 });
 

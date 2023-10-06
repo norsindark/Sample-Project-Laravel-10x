@@ -10,14 +10,17 @@ class CreateProductsTable extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->bigIncrements('ProductId');
+            $table->id('ProductId'); // Sử dụng kiểu số nguyên tự tăng làm khóa chính
+            $table->string('Id_Product')->unique(); // Mã sản phẩm và đảm bảo tính duy nhất
             $table->string('ProductName');
             $table->string('Description');
-            $table->double('Price');
-            $table->double('Sale')->default(0);
-            $table->binary('Image');
-            $table->integer('Status')->default('1');
-            $table->timestamp('Created_At')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->decimal('Price', 10, 2); // Sử dụng kiểu số thập phân để lưu giá sản phẩm
+            $table->decimal('Sale', 10, 1)->default(0); // Giá giảm giá (nếu có)
+            $table->binary('Image'); // Hình ảnh sản phẩm 
+            $table->integer('quantity'); // Số lượng sản phẩm
+            $table->dateTime('expire'); // Ngày hết hạn (hoặc sử dụng kiểu ngày thích hợp)
+            $table->integer('Status')->default(1); // Trạng thái sản phẩm (1: Còn hàng, 0: Hết hàng, hoặc tùy chỉnh)
+            $table->timestamps(); // Thêm cột created_at và updated_at 
         });
     }
 

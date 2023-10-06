@@ -14,8 +14,7 @@ class RegisterController extends Controller
     {
         // Kiểm tra xem "password" và "confirmPassword" có khớp nhau không
         if ($request->input('password') !== $request->input('confirmpassword')) {
-            // Trả về thông báo lỗi nếu không khớp
-            return redirect()->back()->with('error', 'Mật khẩu và mật khẩu xác nhận không khớp.');
+            return redirect()->back()->with('error', 'Mật khẩu và mật khẩu xác nhận không khớp.')->withInput();
         }
 
         // Sử dụng Validator để kiểm tra dữ liệu
@@ -27,7 +26,15 @@ class RegisterController extends Controller
 
         // Kiểm tra xem có lỗi không
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+            $errors = $validator->errors();
+
+            if ($errors->has('email')) {
+                return redirect()->back()->with('error', 'Email đã tồn tại.')->withInput();
+            }
+
+            if ($errors->has('username')) {
+                return redirect()->back()->with('error', 'Username đã tồn tại.')->withInput();
+            }
         }
 
         // Lưu tài khoản mới vào cơ sở dữ liệu

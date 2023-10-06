@@ -40,6 +40,7 @@ class User extends Authenticatable
         'role',  // Quyền hạn người dùng (nếu có)
         'created_at',   // ngày tạo
         'status',   // Trạng thái người dùng (nếu có)
+        'address',
     ];
 
     /**

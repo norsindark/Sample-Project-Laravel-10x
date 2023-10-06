@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Categories;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
@@ -14,10 +15,11 @@ class Products extends Model
     protected $table = 'products';
 
     // Khóa chính
-    protected $primarykey = 'ProductId';
+    protected $primaryKey = 'ProductId';
 
-    // Các trường còn lại trong bảng
+    // các trường còn lại
     protected $fillable = [
+        'Id_Product',
         'ProductName',
         'Description',
         'Price',
@@ -26,11 +28,14 @@ class Products extends Model
         'Status',
         'CategoryID',
         'Created_At',
+        'quantity', // Thêm trường quantity
+        'expire',   // Thêm trường expire
     ];
+    
 
     // bảng trung gian
     public function categories()
     {
-        return $this->belongsToMany(Category::class, 'category_product', 'ProductId', 'CategoryId');
+        return $this->belongsToMany(Categories::class, 'category_product', 'ProductId', 'CategoryId');
     }
 }

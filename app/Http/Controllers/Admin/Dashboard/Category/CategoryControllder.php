@@ -8,15 +8,6 @@ use App\Models\Categories;
 
 class CategoryControllder extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    // public function index()
-    // {
-    //     $categories = Categories::all();
-
-    //     return view('dashboard.category.index', compact('categories'));
-    // }
 
     public function index()
     {
@@ -62,15 +53,6 @@ class CategoryControllder extends Controller
         }
     }
 
-
-    /**
-     * Display the specified resource.
-     */
-    // public function show(string $id)
-    // {
-    //     //
-    // }
-
     /**
      * Show the form for editing the specified resource.
      */
@@ -110,7 +92,6 @@ class CategoryControllder extends Controller
         }
     }
 
-
     /**
      * Remove the specified resource from storage.
      */
@@ -119,10 +100,27 @@ class CategoryControllder extends Controller
         // Tìm danh mục cần xóa
         $category = Categories::findOrFail($CategoryId);
 
-        // Thực hiện xóa
+        // Kiểm tra xem danh mục này có sản phẩm nào được liên kết không
+        if ($category->products()->count() > 0) {
+            return redirect()->route('dashboard.category.index')->with('error', 'xóa cc đang có sản phẩm.');
+        }
+
+        // Nếu không có sản phẩm nào liên kết, thực hiện xóa
         $category->delete();
 
         // Chuyển hướng hoặc trả về trang danh sách danh mục sau khi xóa
         return redirect()->route('dashboard.category.index')->with('success', 'Category deleted successfully.');
+    }
+
+    // show products
+    public function showProduct($CategoryId)
+    {
+        // Tìm danh mục cụ thể
+        $category = Categories::findOrFail($CategoryId);
+
+        // Lấy danh sách các sản phẩm liên quan thông qua phương thức products
+        $products = $category->products;
+
+        return view('dashboard.category.show_Products', compact('category', 'products'));
     }
 }

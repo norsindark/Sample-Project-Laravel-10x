@@ -73,7 +73,7 @@
                             <form method="POST" action="{{ route('dashboard.user.destroy', ['id' => $user->id]) }}">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="status process" style="background-color: red; border: none; margin-top: 0;" onclick="return confirm('Are you sure you want to delete this category?')">Del</button>
+                                <button type="submit" class="status process" style="background-color: red; border: none; margin-top: 0;" onclick="return confirm('Are you sure you want to delete this user?')">Del</button>
                             </form>
                         </td>
                     </tr>
