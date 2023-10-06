@@ -148,9 +148,9 @@ h6 {font-size: 14px;}
     color: #c0c0c0;
     font-size: 18px;
     position: absolute;
-    top: 5px;    
+    top: 5px;
     right: 42px;
-    cursor: pointer;   
+    cursor: pointer;
 }
 .btn-list .fa{
     font-size: 14px;
@@ -159,7 +159,7 @@ h6 {font-size: 14px;}
     color: #c0c0c0;
     font-size: 18px;
     position: absolute;
-    top: 5px;  
+    top: 5px;
     right: 15px;
     cursor: pointer;
 }
@@ -232,7 +232,7 @@ h6 {font-size: 14px;}
 .slider_controls1.style .owl-prev{
     background: #8a8b8f;
     border: none;
-    color: #191b23;  
+    color: #191b23;
     height: 40px;
     width: 40px;
     font-size: 35px;
@@ -246,7 +246,7 @@ h6 {font-size: 14px;}
 .slider_controls1.style .owl-next{
     background: #8a8b8f;
     border: none;
-    color: #191b23; 
+    color: #191b23;
     height: 40px;
     width: 40px;
     font-size: 35px;
@@ -283,7 +283,7 @@ h6 {font-size: 14px;}
     -moz-transform: translate(0px, -50%);
     -o-transform: translate(0px, -50%);
     -ms-transform: translate(0px, -50%);
-    
+
 }
 .slider_controls4 .owl-next{
     position: absolute;
@@ -306,7 +306,7 @@ h6 {font-size: 14px;}
     -moz-transform: translate(0px, -50%);
     -o-transform: translate(0px, -50%);
     -ms-transform: translate(0px, -50%);
-    
+
 }
 .slider_controls3 .owl-next{
     position: absolute;
@@ -353,7 +353,7 @@ h6 {font-size: 14px;}
     border: 1px solid #9e9e9e;
     border-radius: 50%;
     position: absolute;
-    top: 30px;    
+    top: 30px;
     cursor: pointer;
 }
 .btn-product-slider.style{
@@ -394,7 +394,7 @@ h6 {font-size: 14px;}
     border: #5fb7ea !important;
 }
 .btn-blue:hover{
-    background: #ff688f !important; 
+    background: #ff688f !important;
 }
 .btn-green {
     background: #75c74b;
@@ -433,7 +433,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7fccf9', end
     display: inline-block;
     min-width: 40px;
     text-align: center;
-    
+
 }
 .btn-rectangle{
     padding: 10px 0;
@@ -838,7 +838,7 @@ Header
     color: #fff;
     line-height: 50px;
     border-radius: 50%;
-    
+
 }
 
 .header-bottom .openCart.active{
@@ -856,7 +856,7 @@ Header
 .header-bottom ul.main_menu > li {
     display: inline-block;
     position: relative;
-    
+
 }
 
 .header-bottom ul.main_menu > li > a {
@@ -1225,7 +1225,7 @@ social links and search
 .search-form {
     position: relative;
     width: 175px;
-    display: block;   
+    display: block;
 }
 .style-wide .search-form{
     width: 200px;
@@ -1350,7 +1350,7 @@ social links and search
 .social-search.style .categorise{
     cursor: pointer;
     padding: 5px;
-    
+
 }
 .catagories-dropdown{
     padding-bottom: 15px;
@@ -1609,7 +1609,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1b1a25', end
 .xv-slider-content{
     padding-left: 85px;
     padding-top: 10px;
-    
+
 }
 .xv-slider-content h1{
     font-size: 48px;
@@ -1751,7 +1751,7 @@ new product
 .secondary-nav ul > li{
     font-size: 14px;
     display: block;
-} 
+}
 .secondary-nav ul > li > a{
     color: #616161;
     display: inline-block;
@@ -1846,7 +1846,7 @@ new product
     position: absolute;
     top: 2px;
     right: -175px;
-        
+
 }
 .sec-heading .category-wrap.style .fa.style{
     top: 1px;
@@ -1961,8 +1961,8 @@ new product
 }
 a.product-buy:after{
     content: "";
-    width: 0; 
-	height: 0; 
+    width: 0;
+	height: 0;
     position: absolute;
     right: 0;
     top: -5px;
@@ -1987,7 +1987,7 @@ a.product-buy:before{
     -ms-transform: skew(-42deg, 0deg) ;
 }
 a.product-buy:after{
-    
+
 }
 a.product-buy{
     text-decoration: none;
@@ -2292,7 +2292,7 @@ sign up
 }
 
 /*========================
-Page head 
+Page head
 ========================*/
 
 .page-head {
@@ -2356,7 +2356,7 @@ Widgets
 .widget_tag_cloud .widget-content a:hover {
     color: #fff;
     background: #ff688f;
-    
+
 }
 
 
@@ -2512,7 +2512,7 @@ Sales & Best Seller
     -o-transform: translateY(-23%);
     -ms-transform: translateY(-23%);
     cursor: pointer;
-    
+
 }
 .xv-accessories figcaption span.style .fa{
     padding: 5px;
@@ -2559,7 +2559,7 @@ Sales & Best Seller
     -o-transform: translateY(-45%);
     -ms-transform: translateY(-45%);
     cursor: pointer;
-    
+
 }
 .xv-accessories figcaption.style span.style .fa{
     padding: 5px;
@@ -2583,7 +2583,7 @@ Testimonials
     overflow: hidden;
     margin-left: auto;
     margin-right: auto;
-   
+
 }
 .testi-slide{
     max-width: 600px;
@@ -2604,7 +2604,7 @@ Testimonials
     content: "~";
     position: absolute;
     left: 0;
-    top: -2px; 
+    top: -2px;
 }
 .testi-slide cite:after{
     content: "~";
@@ -2766,7 +2766,7 @@ Products Panel
 }
 .ts-slide .ts-slide-content h6{
     margin: 5px 0;
-    
+
 }
 .tab-slide{
     position: relative;
@@ -3053,7 +3053,7 @@ grid
 .sec-heading.style .category-wrap{
     left: 18px;
     position: absolute;
-    top: 10px;
+    top: 30px;
     padding-bottom: 15px;
 }
 
@@ -3180,7 +3180,7 @@ grid
     font-family:'FontAwesome';
     top: 6px;
     right: -4px;
-    font-size: 12px;  
+    font-size: 12px;
     color: #616161;
 }
 .breadcrumb > li:last-child:after{
@@ -3194,7 +3194,7 @@ grid
     text-decoration: none;
 }
 .customeField{
-    max-width: 200px;
+    max-width: 276px;
 }
 .customeField > li{
     display: block;
@@ -3211,15 +3211,16 @@ grid
 .customeField span{
     border: 1px solid #bfbfbf;
     border-radius: 50%;
-    height: 14px;
-    width: 14px;
+    height: 20px;
+    width: 20px;
     display: block;
     position: absolute;
-    top: 2px;
+    top: 5px;
     right: 0;
 }
+}
 .customeField .fa{
-   
+
 }
 .customeField input[type="radio"]:checked + label{
     color: #ff688f;
@@ -3230,13 +3231,14 @@ grid
 .customeField input[type="radio"]:checked + label span i:after {
     position: absolute;
     content: "";
-    top: 2px;
-    left: 2px;
-    height: 8px;
-    width: 8px;
+    top: 4px;
+    left: 4px;
+    height: 10px;
+    width: 10px;
     border-radius: 50%;
     background: #ff688f;
-    
+}
+
 }
 .xv-product-slides.grid-view p{
     display: none;
@@ -3619,7 +3621,7 @@ cart page
     margin-top: 5px;
     font-weight: normal;
 }
-.quantity-control input{  
+.quantity-control input{
     height: 41px;
     width: 120px;
     text-align: center;
@@ -3654,7 +3656,7 @@ cart page
     font-size: 24px;
 }
 .cart-action{
-    
+
 }
 .cart-action li .fa{
     color: #fff;
@@ -3766,7 +3768,7 @@ cart page
     color: #616161 !important;
     height: 40px;
     width: 230px;
-} 
+}
 .accordian-form-button{
     padding-left: 173px;
 }
@@ -3939,7 +3941,7 @@ Quick View
     top: 0;
 }
 .quickViewWrap .quickView{
-    /*position: relative;*/ 
+    /*position: relative;*/
 }
 .quickActions{
     padding: 0;
@@ -4148,7 +4150,7 @@ a.qv-remove-prod{
     width: 100px;
 }
 .comment img {
-    
+
 }
 .comment .pad{
     padding-left: 125px;
@@ -4313,7 +4315,7 @@ break point 1024
         top: auto;
         margin: auto;
     }
-    
+
     .inner-row .xv-accessories figure, .xv-best-seller .xv-accessories figure{
         height: 250px;
     }
@@ -4324,7 +4326,7 @@ break point 1024
     .xv-accessories figcaption{
         margin-top: 15px;
     }
-    
+
     .closeQPanel{
         display: block;
     }
@@ -4430,10 +4432,10 @@ break point 1024
         padding-top: 0;
     }
     /*quickview ends*/
-    
+
     .header-bottom ul > li a{
         padding: 20px 10px;
-    } 
+    }
     .header-bottom ul.main_menu{
         padding: 0;
         background: #5FB7EA;
@@ -4488,7 +4490,7 @@ break point 1024
         width: 12px;
         background: #fff;
     }
-    
+
     .header-bottom ul.main_menu > li > a:hover{
         color: #fff;
         background: #ff4575;
@@ -4518,7 +4520,7 @@ break point 1024
     .header-bottom ul > li > ul > li a:hover{
         background: none;
     }
-    
+
 }
 /*=============================
 break point 990
@@ -4531,7 +4533,7 @@ break point 990
     h2 {font-size: 20px;}
     h3 {font-size: 16px;}
     .header-top .left-ul > li{
-        padding: 0;    
+        padding: 0;
     }
     .xv-slider-content{
         padding-left: 35px;
@@ -4563,8 +4565,8 @@ break point 990
     .xv-feature-item{
         padding-left: 25px;
     }
-    
-    
+
+
     .xv-benefits{
         padding-bottom: 40px;
     }
@@ -4654,7 +4656,7 @@ break point 800
         margin: 5px;
     }
 }
-    
+
 /*=============================
 break point 767
 ===========================*/
@@ -4667,7 +4669,7 @@ break point 767
         margin: 0;
         width: 100%;
     }
-    
+
     .style-wide .search-form .custome-select{
         position: relative;
         right: auto;
@@ -4690,7 +4692,7 @@ break point 767
     .xv-slider-wrap h4{
         font-size: 20px;
     }
-    
+
     .xv-benefit{
         margin-bottom: 30px;
         text-align: center;
@@ -4772,7 +4774,7 @@ break point 767
 break point 600
 ===========================*/
 @media(max-width: 600px){
-    
+
     .home .social-search.style2 {
     padding: 25px 10px 52px;
 }
@@ -4802,13 +4804,13 @@ break point 600
     .catagories-dropdown , .catagories-dropdown.style{
         right: 0;
     }
-    
+
     .social-search{
         padding: 25px 25px 80px;
     }
     .social-search.style2{
         padding: 25px 10px 60px;
-    } 
+    }
     .social-search.style.style-responsive{
         padding: 25px 10px 60px;
     }
@@ -4843,7 +4845,7 @@ break point 600
 break point 500
 ===========================*/
 @media(max-width: 500px){
-    
+
     .quickActions li a{
         font-size: 12px;
     }
@@ -4901,7 +4903,7 @@ break point 500
     .product-2-wrap{
         padding: 0;
     }
-    
+
     .product-2-wrap figure{
         left: 15px;
         position: absolute;
@@ -4920,7 +4922,7 @@ break point 500
         font-size: 26px;
     }
     .sign-up-form input[type="text"]{
-        height: 50px;    
+        height: 50px;
         font-size: 15px;
         padding-right: 130px;
     }
@@ -4958,9 +4960,9 @@ break point 500
     .tabs-pane .tab-sections > li{
         padding: 8px 0;
     }
-   
+
 }
-    
+
 /*=============================
 break point 430
 ===========================*/
@@ -4999,12 +5001,12 @@ break point 430
     .slidecaption {
     padding-left: 90px;
     }
-    
+
     .xv-accordian .table {
         margin-left: 40px;
-    } 
+    }
 }
-    
+
 /*=============================
 break point 360
 ===========================*/
@@ -5024,7 +5026,7 @@ break point 360
         width: auto;
     }
     .slidecaption{
-        
+
     }
     .blog .social > span{
         display: none;
@@ -5034,7 +5036,7 @@ break point 360
         left: 0;
         top: 0;
     }
-    
+
     .btn{
         width: 100%;
     }
@@ -5217,4 +5219,148 @@ http://tobiasahlin.com/spinkit/
 
 .form-show {
     display: block;
+}
+
+.topnav-show {
+    display: block;
+}
+
+.topnav-hide {
+    display: none !important;
+}
+
+.wrap_user {
+    background-image: url("https://nhathuoclongchau.com.vn/estore-images/profile/v2/background-info.png");
+    background-size: 278px 170px;
+    width: 278px; /* Đặt chiều rộng tương ứng với kích thước hình ảnh */
+    height: 170px; /* Đặt chiều cao tương ứng với kích thước hình ảnh */
+    display: flex;
+    flex-direction: column; /* Để đặt mô hình flex theo chiều dọc */
+    align-items: center;
+    text-align: center; /* Căn giữa văn bản theo chiều ngang */
+    justify-content: center;
+}
+
+
+.icon_user {
+    background-image: url("https://nhathuoclongchau.com.vn/estore-images/profile/v2/avatar-profile.svg");
+    width: 50px; /* Đặt chiều rộng của biểu tượng (tuỳ chỉnh kích thước theo nhu cầu của bạn) */
+    height: 50px; /* Đặt chiều cao của biểu tượng (tuỳ chỉnh kích thước theo nhu cầu của bạn) */
+    background-size: cover; /* Để hình ảnh nền bao phủ toàn bộ kích thước phần tử */
+}
+
+.name_user {
+    margin-top: 10px; /* Khoảng cách giữa biểu tượng và văn bản (tuỳ chỉnh theo nhu cầu của bạn) */
+    font-size: 24px;
+    color: #fff;
+}
+
+.wrap_informaiton {
+    background-color: #ecf0f3;
+    max-width: 100%;
+    height: 600px;
+}
+
+.avatar_block {
+    background-image: url(https://nhathuoclongchau.com.vn/estore-images/profile/v2/avatar-profile-large.svg);
+    width: 80px;
+    height: 80px;
+    position: relative;
+    top:60px;
+    right: 0;
+    background-size: cover;
+    margin: 30px auto;
+}
+
+.text-center {
+    position: relative;
+    top: 60px;
+    right: 0;
+
+}
+
+.item-info {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #b0afaf;
+    padding-bottom: 13px;
+    padding-top: 13px;
+    align-items: center;
+    width: 300px;
+    margin: auto;
+}
+
+.text_item-info {
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 400;
+    color: #4a4f63;
+}
+
+.btn_location {
+    position: relative;
+    top: 100px;
+    margin: auto;
+    right: 0;
+    display: flex;
+}
+
+.product-overview {
+    padding-top: 60px !important;
+}
+
+.search_addresss > button {
+    position: absolute;
+    bottom: 19px;
+    right: 5px;
+    font-size: 17px;
+    height: 36px;
+    width: 35px;
+    border: none;
+    border-radius: 20px;
+    background-color: #fff;
+    color: #ff527f;
+}
+
+.search_addresss > input {
+    border-radius: 50px;
+    padding: 0 20px;
+}
+
+.search_addresss {
+    position: absolute;
+    right: 25px;
+    width: 300px;
+    top: 22px;
+}
+
+.table_layout {
+    position: relative;
+    top: 120px;
+}
+
+
+.imgnoproduct_block {
+    background-image: url(https://nhathuoclongchau.com.vn/estore-images/default/profile/order-not-found.svg);
+    width: 50%;
+    height: 34%;
+    position: relative;
+    top:70px;
+    right: 0;
+    background-size: cover;
+    margin: 30px auto;
+}
+.text-center >h4 {
+    font-weight: 700;
+}
+
+.imgnoaddress_block {
+    background-image: url(https://nhathuoclongchau.com.vn/estore-images/profile/my-address/empty-address.svg);
+    width: 50%;
+    height: 34%;
+    position: relative;
+    top:70px;
+    right: 0;
+    background-size: cover;
+    margin: 30px auto;
 }
