@@ -25,6 +25,7 @@ class Products extends Model
         'Image',
         'Status',
         'CategoryID',
+        'Created_At',
     ];
 
     // bảng trung gian

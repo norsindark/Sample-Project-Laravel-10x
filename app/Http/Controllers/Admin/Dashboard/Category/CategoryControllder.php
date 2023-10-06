@@ -20,7 +20,7 @@ class CategoryControllder extends Controller
 
     public function index()
     {
-        $categories = Categories::orderBy('id', 'asc')->get(); // Sắp xếp theo trường 'id' tăng dần
+        $categories = Categories::orderBy('CategoryId', 'asc')->get(); // Sắp xếp theo trường 'id' tăng dần
         return view('dashboard.category.index', ['categories' => $categories]);
     }
 
@@ -39,12 +39,12 @@ class CategoryControllder extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|unique:categories',
+            'CategoryName' => 'required|string|unique:categories',
         ]);
 
         try {
             Categories::create([
-                'name' => $request->input('name'),
+                'CategoryName' => $request->input('CategoryName'),
             ]);
 
             return redirect()->route('dashboard.category.index')->with('success', 'Category created successfully.');
@@ -54,7 +54,7 @@ class CategoryControllder extends Controller
 
             if ($errorCode === 1062) {
                 // mã 1062 xuất hiện khi name trùng lặp
-                return redirect()->back()->withErrors(['name' => 'Category name already exists.'])->withInput();
+                return redirect()->back()->withErrors(['CategoryName' => 'Category name already exists.'])->withInput();
             }
 
             // Xử lý các trường hợp lỗi khác nếu cần
@@ -87,7 +87,7 @@ class CategoryControllder extends Controller
     {
         // Validate dữ liệu đầu vào
         $request->validate([
-            'name' => 'required|string|unique:categories,name,' . $id,
+            'CategoryName' => 'required|string|unique:categories,CategoryName,' . $id . ',CategoryId',
         ]);
 
         try {
@@ -96,7 +96,7 @@ class CategoryControllder extends Controller
 
             // Cập nhật thông tin category từ dữ liệu form
             $category->update([
-                'name' => $request->input('name'),
+                'CategoryName' => $request->input('CategoryName'),
             ]);
 
             return redirect()->route('dashboard.category.index')->with('success', 'Category updated successfully.');
@@ -104,7 +104,7 @@ class CategoryControllder extends Controller
             $errorCode = $e->errorInfo[1];
 
             if ($errorCode === 1062) {
-                return redirect()->back()->withErrors(['name' => 'Category name already exists.'])->withInput();
+                return redirect()->back()->withErrors(['CategoryName' => 'Category name already exists.'])->withInput();
             }
             return redirect()->back()->withInput()->withErrors(['error' => 'An error occurred while updating the category.']);
         }
@@ -114,8 +114,15 @@ class CategoryControllder extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($CategoryId)
     {
-        //
+        // Tìm danh mục cần xóa
+        $category = Categories::findOrFail($CategoryId);
+
+        // Thực hiện xóa
+        $category->delete();
+
+        // Chuyển hướng hoặc trả về trang danh sách danh mục sau khi xóa
+        return redirect()->route('dashboard.category.index')->with('success', 'Category deleted successfully.');
     }
 }

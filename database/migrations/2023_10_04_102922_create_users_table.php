@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('name')->default(DB::raw('`username`')); //  Name
             $table->integer('role')->default(2); //  Role với giá trị mặc định là 2
             $table->integer('status')->default(2); //  Status với giá trị mặc định là 2
-            $table->string('address'); //  địa chỉ
+            $table->string('address')->nullable(); //  địa chỉ
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));// default created now()
         });
     }

@@ -39,12 +39,12 @@
         <div class="table-data">
             <div class="Edit-category">
                 <h3>Edit Category</h3>
-                <form method="POST" action="{{ route('dashboard.category.update', ['id' => $category->id]) }}">
+                <form method="POST" action="{{ route('dashboard.category.update', ['id' => $category->CategoryId]) }}">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
                         <label for="category_name">Category Name</label>
-                        <input type="text" id="category_name" name="name" value="{{ $category->name }}" required>
+                        <input type="text" id="category_name" name="CategoryName" value="{{ $category->CategoryName }}" required>
                     </div>
                     <button type="submit" class="Btn_update">Update Category</button>
                 </form>

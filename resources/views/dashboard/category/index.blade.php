@@ -51,15 +51,15 @@
                     @if(!empty($categories))
                     @foreach ($categories as $category)
                     <tr>
-                        <td>{{ $category->id }}</td>
-                        <td>{{ $category->name }}</td>
+                        <td>{{ $category->CategoryId }}</td>
+                        <td>{{ $category->CategoryName }}</td>
                         <td>
                             <a class="status completed" href="#">Show Product</a>
-                            <a class="status process" href="{{ route('dashboard.category.edit', ['id' => $category->id]) }}">Edit</a>
-                            <form method="POST" action="{{ route('dashboard.category.destroy', ['id' => $category->id]) }}">
+                            <a class="status process" href="{{ route('dashboard.category.edit', ['id' => $category->CategoryId]) }}">Edit</a>
+                            <form method="POST" action="{{ route('dashboard.category.destroy', ['CategoryId' => $category->CategoryId]) }}">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="status process" style="background-color: red; border:none; margin-top:9px">Del</button>
+                                <button type="submit" class="status process" style="background-color: red; border: none; margin-top: 0;" onclick="return confirm('Are you sure you want to delete this category?')">Del</button>
                             </form>
 
                         </td>
@@ -75,5 +75,12 @@
 
     </div>
 </main>
+<script>
+    function confirmDelete(categoryId) {
+        if (confirm('Are you sure you want to delete this category?')) {
+            document.getElementById('delete-form-' + categoryId).submit();
+        }
+    }
+</script>
 <!-- MAIN -->
 @endsection

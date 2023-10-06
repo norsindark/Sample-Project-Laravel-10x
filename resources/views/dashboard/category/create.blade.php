@@ -43,7 +43,7 @@
                 @csrf
                 <div class="form-group">
                     <label for="category_name">Category Name</label>
-                    <input type="text" id="category_name" name="name" required>
+                    <input type="text" id="category_name" name="CategoryName" required>
                 </div>
                 <button type="submit" class="Btn_create">Create Category</button>
             </form>

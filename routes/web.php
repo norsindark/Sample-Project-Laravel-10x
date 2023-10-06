@@ -51,7 +51,8 @@ Route::prefix('dashboard')->group(function () {
         Route::put('/{id}', [CategoryControllder::class, 'update'])->name('dashboard.category.update');
 
         // Xóa danh mục
-        Route::delete('/{id}', [CategoryControllder::class, 'destroy'])->name('dashboard.category.destroy');
+        Route::delete('{CategoryId}', [CategoryControllder::class, 'destroy'])->name('dashboard.category.destroy');
+
     });
 
 

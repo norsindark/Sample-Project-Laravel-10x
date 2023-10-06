@@ -73,15 +73,8 @@
                             <form method="POST" action="{{ route('dashboard.user.destroy', ['id' => $user->id]) }}">
                                 @csrf
                                 @method('DELETE')
-                        <td>
-                            <button class="status dagger" style="background-color: red; border:none;" type="submit" class="btn btn-danger">Xóa</button>
-                            <!-- <form method="POST" action="{{ route('dashboard.user.destroy', ['id' => $user->id]) }}">
-                                @csrf
-                                @method('DELETE')
-                                 <button class="status dagger" style="background-color: red; border:none;" type="submit" class="btn btn-danger" onclick="confirmDelete('{{ route('dashboard.user.destroy', ['id' => $user->id]) }}')">Xóa</button>
-                            </form> -->
-                        </td>
-                        </form>
+                                <button type="submit" class="status process" style="background-color: red; border: none; margin-top: 0;" onclick="return confirm('Are you sure you want to delete this category?')">Del</button>
+                            </form>
                         </td>
                     </tr>
                     @endforeach
@@ -95,4 +88,11 @@
 
     </div>
 </main>
+<script>
+    function confirmDelete(categoryId) {
+        if (confirm('Are you sure you want to delete this user?')) {
+            document.getElementById('delete-form-' + categoryId).submit();
+        }
+    }
+</script>
 @endsection
