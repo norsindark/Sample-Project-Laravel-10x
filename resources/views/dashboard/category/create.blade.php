@@ -17,15 +17,17 @@
                 </li>
                 <li><i class='bx bx-chevron-right'></i></li>
                 <li>
-                    <a class="active" href="#">User</a>
+                    <a  href="#">Category</a>
+                </li>
+                <li><i class='bx bx-chevron-right'></i></li>
+                <li>
+                    <a class="active" href="#">Create</a>
                 </li>
             </ul>
         </div>
 
     </div>
-    <div class="Wrap-create">
-        <button class="Btn_create">Add Category</button>
-    </div>
+  
     @if ($errors->any())
     <div class="alert alert-danger">
         <ul>

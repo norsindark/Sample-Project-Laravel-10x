@@ -7,12 +7,48 @@
 }
 
 a {
-	text-decoration: none;
+	text-decoration: none !important;
 }
 
 li {
 	list-style: none;
 }
+
+.form_create {
+    width: 600px;
+    height: 650px;
+    margin: auto;
+    background: #f8f9fd;
+    padding: 50px;
+}
+
+.form-edit {
+    width: 600px;
+    height: 700px;
+    margin: auto;
+    background: #f8f9fd;
+    padding: 50px;
+}
+
+.form-group > label {
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.form_create > button {
+    margin: 30px 0 100px 0;
+}
+
+.form-edit > button {
+    margin: 30px 0 100px 0;
+}
+
+.button-container {
+    display: flex;
+    justify-content: start;
+    align-items: center/* Để các thẻ con cách đều nhau theo chiều ngang */
+}
+
 
 :root {
 	--poppins: 'Poppins', sans-serif;
@@ -45,6 +81,7 @@ body.dark {
 body {
 	background: var(--grey);
 	overflow-x: hidden;
+    overflow: hidden;
 }
 
 
@@ -64,6 +101,7 @@ body {
 	transition: .3s ease;
 	overflow-x: hidden;
 	scrollbar-width: none;
+    overflow: hidden;
 }
 #sidebar::--webkit-scrollbar {
 	display: none;
@@ -76,6 +114,7 @@ body {
 	font-weight: 700;
 	height: 56px;
 	display: flex;
+    justify-content: center;
 	align-items: center;
 	color: var(--blue);
 	position: sticky;

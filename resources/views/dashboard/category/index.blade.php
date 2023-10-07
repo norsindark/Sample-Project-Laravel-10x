@@ -52,7 +52,8 @@
                     <tr>
                         <th>Category ID</th>
                         <th>Category Name</th>
-                        <th>Action</th>
+
+                        <th style="padding-left: 85px">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -62,13 +63,17 @@
                         <td>{{ $category->CategoryId }}</td>
                         <td>{{ $category->CategoryName }}</td>
                         <td>
-                            <a class="status completed" href="{{ route('dashboard.category.showProduct', ['CategoryId' => $category->CategoryId]) }}">Show Product</a>
-                            <a class="status process" href="{{ route('dashboard.category.edit', ['id' => $category->CategoryId]) }}">Edit</a>
-                            <form method="POST" action="{{ route('dashboard.category.destroy', ['CategoryId' => $category->CategoryId]) }}">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="status process" style="background-color: red; border: none; margin-top: 0;" onclick="return confirm('Are you sure you want to delete this category?')">Del</button>
-                            </form>
+                            <div class="button-container">
+                                <a class="status completed" href="{{ route('dashboard.category.showProduct', ['CategoryId' => $category->CategoryId]) }}">Show Product</a>
+                                <a class="status process" href="{{ route('dashboard.category.edit', ['id' => $category->CategoryId]) }}">Edit</a>
+
+                                <form method="POST" action="{{ route('dashboard.category.destroy', ['CategoryId' => $category->CategoryId]) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="status process" style="background-color: red; border: none; margin-top: 0;" onclick="return confirm('Are you sure you want to delete this category?')">Del</button>
+                                </form>
+
+                            </div>
 
                         </td>
                     </tr>

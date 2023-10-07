@@ -2,6 +2,7 @@
     <a href="#" class="brand">
         <i class='bx bxs-smile'></i>
         <span class="text">Admin</span>
+
     </a>
     <ul class="side-menu top">
         <li class="active">
@@ -79,3 +80,4 @@
         </li>
     </ul>
 </section>
+
