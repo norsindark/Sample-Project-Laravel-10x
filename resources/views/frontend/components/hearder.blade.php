@@ -39,7 +39,7 @@ Header
                             <a href="{{route('manageruser')}}"><i class="fa fa-solid fa-bars-progress"></i>QUẢN LÍ TÀI KHOẢN</a>
                         </li>
                         <li class="@if(session('user_logged_in')) topnav-show @else topnav-hide @endif">
-                            <a href=""><i class="fa fa-solid fa-right-from-bracket"></i>CHECK OUT</a>
+                            <a href=""><i class="fa fa-solid fa-right-from-bracket"></i>LOG OUT</a>
                         </li>
                     </ul>
                 </div>
