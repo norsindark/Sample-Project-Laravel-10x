@@ -11,8 +11,9 @@ class CreateOrdersTable extends Migration
         Schema::create('order', function (Blueprint $table) {
             $table->id('OrderId');
             $table->unsignedBigInteger('UserId');
-            $table->dateTime('OrderDate');
+            $table->dateTime('OrderDate');// ngày đătj hàng
             $table->decimal('TotalAmount', 10, 2); // - Tổng đơn hàng
+            $table->enum('status', ['Processing', 'Shipped', 'Completed', 'Cancelled']); //trạng thái đơn hàng
             $table->timestamps();
 
             // Khóa ngoại liên kết với bảng users
