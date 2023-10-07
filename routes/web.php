@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Admin\Dashboard\Product\ProductControllder;
 use App\Http\Controllers\Admin\Dashboard\Category\CategoryControllder;
+use App\Http\Controllers\Admin\Dashboard\Order\OrderController;
+use App\Http\Controllers\Admin\Dashboard\Warehouse\WarehouseController;
 use Illuminate\Support\Facades\Auth;
 
 // Dashboard
@@ -79,6 +81,46 @@ Route::middleware(['role:1'])->prefix('dashboard')->group(function () {
         // Xóa danh mục
         Route::delete('{ProductId}', [ProductControllder::class, 'destroy'])->name('dashboard.product.destroy');
     });
+    Route::prefix('order')->group(function () {
+
+        // Danh sách các danh mục
+        Route::get('/', [OrderController::class, 'index'])->name('dashboard.order.index');
+
+        // Hiển thị form tạo danh mục
+       /* Route::get('/create', [ProductControllder::class, 'create'])->name('dashboard.product.create');
+
+        // Lưu danh mục mới
+        Route::post('/store', [ProductControllder::class, 'store'])->name('dashboard.product.store');
+
+        // Hiển thị form chỉnh sửa danh mục
+        Route::get('/{ProductId}/edit', [ProductControllder::class, 'edit'])->name('dashboard.product.edit');
+
+        // update product
+        Route::put('/{ProductId}', [ProductControllder::class, 'update'])->name('dashboard.product.update');
+
+        // Xóa danh mục
+        Route::delete('{ProductId}', [ProductControllder::class, 'destroy'])->name('dashboard.product.destroy');*/
+    });
+    Route::prefix('Warehouse')->group(function () {
+
+        // Danh sách các danh mục
+        Route::get('/', [WarehouseController::class, 'index'])->name('dashboard.warehouse.index');
+
+        // Hiển thị form tạo danh mục
+        /* Route::get('/create', [ProductControllder::class, 'create'])->name('dashboard.product.create');
+
+         // Lưu danh mục mới
+         Route::post('/store', [ProductControllder::class, 'store'])->name('dashboard.product.store');
+
+         // Hiển thị form chỉnh sửa danh mục
+         Route::get('/{ProductId}/edit', [ProductControllder::class, 'edit'])->name('dashboard.product.edit');
+
+         // update product
+         Route::put('/{ProductId}', [ProductControllder::class, 'update'])->name('dashboard.product.update');
+
+         // Xóa danh mục
+         Route::delete('{ProductId}', [ProductControllder::class, 'destroy'])->name('dashboard.product.destroy');*/
+    });
 })->name('dashboard');
 
 
@@ -111,12 +153,12 @@ Auth::routes();
 
 // Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
 //     $request->fulfill();
- 
+
 //     return redirect('/home');
 // })->middleware(['auth', 'signed'])->name('verification.verify');
 
 // Route::post('/email/verification-notification', function (Request $request) {
 //     $request->user()->sendEmailVerificationNotification();
- 
+
 //     return back()->with('message', 'Verification link sent!');
 // })->middleware(['auth', 'throttle:6,1'])->name('verification.send');

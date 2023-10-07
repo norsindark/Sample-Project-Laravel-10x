@@ -64,8 +64,8 @@
                         <td>{{ $category->CategoryName }}</td>
                         <td>
                             <div class="button-container">
-                                <a class="status completed" href="{{ route('dashboard.category.showProduct', ['CategoryId' => $category->CategoryId]) }}">Show Product</a>
-                                <a class="status process" href="{{ route('dashboard.category.edit', ['id' => $category->CategoryId]) }}">Edit</a>
+                                <a style="margin-right: 10px" class="status completed" href="{{ route('dashboard.category.showProduct', ['CategoryId' => $category->CategoryId]) }}">Show Product</a>
+                                <a  style="margin-right: 10px" class="status process" href="{{ route('dashboard.category.edit', ['id' => $category->CategoryId]) }}">Edit</a>
 
                                 <form method="POST" action="{{ route('dashboard.category.destroy', ['CategoryId' => $category->CategoryId]) }}">
                                     @csrf

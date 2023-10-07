@@ -32,6 +32,7 @@ li {
 
 .form-group > label {
     margin-bottom: 8px;
+    margin-top: 2px;
     font-weight: 700;
 }
 
@@ -640,4 +641,20 @@ body {
     font-weight: 700;
     background: var(--create);
     cursor:pointer;
+}
+
+.Btn_update {
+    font-size: 16px;
+    padding: 6px 16px;
+    color: var(--light);
+    border-color: transparent;
+    border-radius: 20px;
+    font-weight: 700;
+    background: var(--create);
+    cursor:pointer;
+}
+
+.Create-product {
+    overflow: hidden;
+    margin: auto;
 }

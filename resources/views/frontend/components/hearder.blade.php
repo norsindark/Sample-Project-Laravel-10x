@@ -32,26 +32,35 @@ Header
                         @guest
                         @if (Route::has('login'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('LOGIN') }}</a>
+                            <a class="nav-link" href="{{ route('login') }}">
+                                <i class="fa-solid fa-user" style="margin-right: 5px;"></i>
+                                {{ __('ĐĂNG NHẬP') }}
+                            </a>
                         </li>
                         @endif
 
                         @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('REGISTER') }}</a>
+                            <a class="nav-link" href="{{ route('register') }}">
+                                <i class="fa-solid fa-user-plus" style="margin-right: 5px;"></i>
+                                {{ __('ĐĂNG KÍ') }}
+                            </a>
                         </li>
                         @endif
                         @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{route('manageruser')}}" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
+                                <i class="fa-solid fa-bars-progress"></i>
+                                {{ __('QUẢN LÍ TÀI KHOẢN') }}
+                                {{--{{ Auth::user()->name }}--}}
                             </a>
 
                         </li>
                         <li class="nav-item">
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                {{ __('LOGOUT') }}
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                {{ __('ĐĂNG XUẤT') }}
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf

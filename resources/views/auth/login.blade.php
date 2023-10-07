@@ -11,20 +11,29 @@
 
 <!--=======Page Content Area=========-->
 <main id="pageContentArea">
-    <div class="container" style="margin: 96px; ">
+    <div class="page-head text-center">
+        <div class="blog-main-slider" style="background-image: radial-gradient(circle, #7ca3dc, #1e71de);">
+            <div class="overlay"></div>
+            <div class="container">
+                <h2>ĐĂNG NHẬP</h2>
+                <p>Hiện thị các thông tin đăng nhập vào hệ thống.</p>
+            </div>
+        </div>
+    </div>
+    <div class="container ">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-6">
                 <div class="card">
-                    <div class="card-header">{{ __('Login') }}</div>
+                    {{--<div class="card-header">{{ __('ĐĂNG NHẬP') }}</div>--}}
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
 
                             <div class="row mb-3">
-                                <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                                <label for="email" class="col-md-4 col-form-label text-md-end text_lable-content ">{{ __('Vui lòng nhập Email') }}</label>
 
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                     @error('email')
@@ -36,9 +45,9 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                                <label for="password" class="col-md-4 col-form-label text-md-end text_lable-content">{{ __('Mật khẩu') }}</label>
 
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                                     @error('password')
@@ -50,27 +59,28 @@
                             </div>
 
                             <div class="row mb-3">
-                                <div class="col-md-6 offset-md-4">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="remember">
-                                            {{ __('Remember Me') }}
+                                <div class="col-md-12 offset-md-4">
+                                    <div class="form-check" style="margin-bottom: 10px;  display: flex; align-items: center" >
+                                        <input style="width: 16px; height: 16px;margin-right: 5px;" class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                        <label class="form-check-label " for="remember">
+                                            {{ __('Nhớ mật khẩu') }}
                                         </label>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="row mb-0">
-                                <div class="col-md-8 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Login') }}
+                            <div class="row mb-3">
+                                <div class="col-md-12 offset-md-4">
+                                    <button type="submit" class=" btn btn-primary">
+                                        {{ __('Đăng nhập') }}
                                     </button>
-
-                                    @if (Route::has('password.request'))
-                                    <a class="btn btn-link" style="color:black" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
+                                </div>
+                                <div class="col-md-12 offset-md-4">
+                                @if (Route::has('password.request'))
+                                    <a class="btn btn-link" style="color:black; padding: 10px 0" href="{{ route('password.request') }}">
+                                        {{ __('Quên mật khẩu ?') }}
                                     </a>
-                                    @endif
+                                @endif
                                 </div>
                             </div>
                         </form>
