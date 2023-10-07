@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Users;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -97,7 +99,41 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        // Validate và lưu tài khoản mới vào cơ sở dữ liệu
+        // Define validation rules
+        $rules = [
+            'email' => 'required|email|unique:users,Email',
+            'username' => 'required|unique:users,UserName',
+            'password' => 'required|min:6',
+            'role' => 'required',
+            'status' => 'required',
+            'name' => 'required',
+            'address' => 'required',
+        ];
+
+        // Create validation messages
+        $messages = [
+            'email.required' => 'Email is required.',
+            'email.email' => 'Invalid email format.',
+            'email.unique' => 'Email already exists.',
+            'username.required' => 'Username is required.',
+            'username.unique' => 'Username already exists.',
+            'password.required' => 'Password is required.',
+            'password.min' => 'Password must be at least 6 characters long.',
+            'role.required' => 'Role is required.',
+            'status.required' => 'Status is required.',
+            'name.required' => 'Name is required.',
+            'address.required' => 'Address is required.',
+        ];
+
+        // Validate the request data
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        // Check if validation fails
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        // If validation passes, create and save the new user
         $user = new Users();
         $user->Email = $request->input('email');
         $user->UserName = $request->input('username');
@@ -108,8 +144,8 @@ class UserController extends Controller
         $user->Address = $request->input('address');
         $user->save();
 
-        // Điều hướng người dùng sau khi thêm tài khoản
-        return redirect()->route('dashboard.user.index')->with('success', 'New account add success.');
+        // Redirect the user after successfully adding the new account
+        return redirect()->route('dashboard.user.index')->with('success', 'New account added successfully.');
     }
 
     public function destroy($id)

@@ -40,6 +40,16 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'api' => [
+            'driver' => 'token',
+            'provider' => 'users',
+        ],
+
+        'sanctum' => [ // Thêm guard sanctum
+            'driver' => 'sanctum',
+            'provider' => 'users',
+        ],
     ],
 
     /*

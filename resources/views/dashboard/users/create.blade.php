@@ -72,8 +72,27 @@
                 <input type="textarea" name="address" id="address" class="form-control" required>
                 <div class="notification-messenger"></div>
             </div>
+                <button type="submit" class="btn btn-primary">Add User</button>
+            </form>
+           </form>
+         @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
 
-            <button type="submit" class="btn btn-primary">Add User</button>
-        </form>
+        </main>
+        <!-- MAIN -->
+    </section>
+    <!-- CONTENT -->
+</body>
+<script>
+    "{{ asset('dashboard/js/script.css') }}"
+</script>   
 @endsection
+
 

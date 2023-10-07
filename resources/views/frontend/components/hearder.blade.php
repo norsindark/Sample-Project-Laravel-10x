@@ -29,18 +29,35 @@ Header
                         <li>
                             <a href="#"><i class="fa fa-heart"></i>DANH SÁCH YÊU THÍCH</a>
                         </li>
-                        <li class="@if(session('user_logged_in')) topnav-hide @else topnav-show @endif">
-                            <a href="#qvt-userrr"><i class="fa fa-user"></i>ĐĂNG NHẬP</a>
+                        @guest
+                        @if (Route::has('login'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('LOGIN') }}</a>
                         </li>
-                        <li class="@if(session('user_logged_in')) topnav-hide @else topnav-show @endif">
-                            <a href="#"><i class="fa fa-lock"></i>ĐĂNG KÍ</a>
+                        @endif
+
+                        @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('REGISTER') }}</a>
                         </li>
-                        <li class="@if(session('user_logged_in')) topnav-show @else topnav-hide @endif">
-                            <a href="{{route('manageruser')}}"><i class="fa fa-solid fa-bars-progress"></i>QUẢN LÍ TÀI KHOẢN</a>
+                        @endif
+                        @else
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{route('manageruser')}}" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }}
+                            </a>
+
                         </li>
-                        <li class="@if(session('user_logged_in')) topnav-show @else topnav-hide @endif">
-                            <a href=""><i class="fa fa-solid fa-right-from-bracket"></i>LOG OUT</a>
+                        <li class="nav-item">
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                {{ __('LOGOUT') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
                         </li>
+                        @endguest
                     </ul>
                 </div>
             </div>
@@ -72,135 +89,92 @@ Header
                 <div class="table-responsive cart-calculations text-center">
                     <table class="table">
                         <tbody class="shadow-around">
-                        <tr class="table-body">
-                            <td>
-                                <figure>
-                                    <img
-                                        style="
+                            <tr class="table-body">
+                                <td>
+                                    <figure>
+                                        <img style="
                             height: 100px;
                             max-width: 108px;
                             margin: 0 10px;
-                          "
-                                        src="/Duanmautemplate/assets/img/product/P25900_1-thumbnail-510x510-70.jpg"
-                                        alt=""
-                                    />
-                                </figure>
-                            </td>
-                            <td>
-                                <div class="cart-wrappper text-left">
-                                    <h6>Thuốc trị sốt</h6>
-                                    <p><span>Trạng thái</span>: Còn hàng</p>
-                                    <p><span>Mã sản phẩm</span>: CwT4a</p>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="quantity-control">
-                        <span class="btn-cart btn-square btn-plus btn-qty"
-                        ><i class="fa fa-plus"></i
-                            ></span>
-                                    <input
-                                        type="text"
-                                        value="2"
-                                        data-min="1"
-                                        data-minalert="Minimum limit reached"
-                                        data-max="10"
-                                        data-maxalert="Maximum limit reached"
-                                        data-invalid="Enter valid quantity"
-                                    />
-                                    <span class="btn-cart btn-square btn-minus btn-qty"
-                                    ><i class="fa fa-minus"></i
-                                        ></span>
-                                </div>
-                            </td>
-                            <td>
-                                <span class="cart-content">Đơn giá:</span>
-                                <span class="cart-price">50.000VNĐ</span>
-                            </td>
-                            <td>
-                                <span class="cart-content">Tổng giá:</span>
-                                <span class="cart-price">100.000VNĐ</span>
-                            </td>
-                            <td>
-                                <a class="cart-action" href="#"
-                                ><i class="fa fa-trash-o"></i
-                                    ></a>
-                            </td>
-                        </tr>
-                        <tr class="table-body">
-                            <td>
-                                <figure>
-                                    <img
-                                        style="
+                          " src="/Duanmautemplate/assets/img/product/P25900_1-thumbnail-510x510-70.jpg" alt="" />
+                                    </figure>
+                                </td>
+                                <td>
+                                    <div class="cart-wrappper text-left">
+                                        <h6>Thuốc trị sốt</h6>
+                                        <p><span>Trạng thái</span>: Còn hàng</p>
+                                        <p><span>Mã sản phẩm</span>: CwT4a</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="quantity-control">
+                                        <span class="btn-cart btn-square btn-plus btn-qty"><i class="fa fa-plus"></i></span>
+                                        <input type="text" value="2" data-min="1" data-minalert="Minimum limit reached" data-max="10" data-maxalert="Maximum limit reached" data-invalid="Enter valid quantity" />
+                                        <span class="btn-cart btn-square btn-minus btn-qty"><i class="fa fa-minus"></i></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="cart-content">Đơn giá:</span>
+                                    <span class="cart-price">50.000VNĐ</span>
+                                </td>
+                                <td>
+                                    <span class="cart-content">Tổng giá:</span>
+                                    <span class="cart-price">100.000VNĐ</span>
+                                </td>
+                                <td>
+                                    <a class="cart-action" href="#"><i class="fa fa-trash-o"></i></a>
+                                </td>
+                            </tr>
+                            <tr class="table-body">
+                                <td>
+                                    <figure>
+                                        <img style="
                             height: 100px;
                             max-width: 108px;
                             margin: 0 10px;
-                          "
-                                        src="/Duanmautemplate/assets/img/product/P25900_1-thumbnail-510x510-70.jpg"
-                                        alt=""
-                                    />
-                                </figure>
-                            </td>
-                            <td>
-                                <div class="cart-wrappper text-left">
-                                    <h6>Thuốc trị sốt</h6>
-                                    <p><span>Trạng thái</span>: Còn hàng</p>
-                                    <p><span>Mã sản phẩm</span>: CwT4a</p>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="quantity-control">
-                        <span class="btn-cart btn-square btn-plus btn-qty"
-                        ><i class="fa fa-plus"></i
-                            ></span>
-                                    <input
-                                        type="text"
-                                        value="2"
-                                        data-min="1"
-                                        data-minalert="Minimum limit reached"
-                                        data-max="5"
-                                        data-maxalert="Maximum limit reached"
-                                        data-invalid="Enter valid quantity"
-                                    />
-                                    <span class="btn-cart btn-square btn-minus btn-qty"
-                                    ><i class="fa fa-minus"></i
-                                        ></span>
-                                </div>
-                            </td>
-                            <td>
-                                <span class="cart-content">Đơn giá:</span>
-                                <span class="cart-price">50.000VNĐ</span>
-                            </td>
-                            <td>
-                                <span class="cart-content">Tổng giá:</span>
-                                <span class="cart-price">100.000VNĐ</span>
-                            </td>
-                            <td>
-                                <a class="cart-action" href="#"
-                                ><i class="fa fa-trash-o"></i
-                                    ></a>
-                            </td>
-                        </tr>
-                        <tr class="table-body style">
-                            <td></td>
-                            <td class="fix_td">
-                                <a href="cart1.html" class="btn-cart btn-rectangle"
-                                >Giỏ hàng</a
-                                >
-                                <a
-                                    href="checkout1.html"
-                                    style="margin-left: 15px"
-                                    class="btn-cart btn-rectangle"
-                                >Thanh toán</a
-                                >
-                            </td>
-                            <td></td>
-                            <td></td>
-                            <td class="style">
-                                <div>TỔNG CỘNG:</div>
-                                <span class="colpink">200.000VNĐ</span>
-                            </td>
-                            <td></td>
-                        </tr>
+                          " src="/Duanmautemplate/assets/img/product/P25900_1-thumbnail-510x510-70.jpg" alt="" />
+                                    </figure>
+                                </td>
+                                <td>
+                                    <div class="cart-wrappper text-left">
+                                        <h6>Thuốc trị sốt</h6>
+                                        <p><span>Trạng thái</span>: Còn hàng</p>
+                                        <p><span>Mã sản phẩm</span>: CwT4a</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="quantity-control">
+                                        <span class="btn-cart btn-square btn-plus btn-qty"><i class="fa fa-plus"></i></span>
+                                        <input type="text" value="2" data-min="1" data-minalert="Minimum limit reached" data-max="5" data-maxalert="Maximum limit reached" data-invalid="Enter valid quantity" />
+                                        <span class="btn-cart btn-square btn-minus btn-qty"><i class="fa fa-minus"></i></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="cart-content">Đơn giá:</span>
+                                    <span class="cart-price">50.000VNĐ</span>
+                                </td>
+                                <td>
+                                    <span class="cart-content">Tổng giá:</span>
+                                    <span class="cart-price">100.000VNĐ</span>
+                                </td>
+                                <td>
+                                    <a class="cart-action" href="#"><i class="fa fa-trash-o"></i></a>
+                                </td>
+                            </tr>
+                            <tr class="table-body style">
+                                <td></td>
+                                <td class="fix_td">
+                                    <a href="cart1.html" class="btn-cart btn-rectangle">Giỏ hàng</a>
+                                    <a href="checkout1.html" style="margin-left: 15px" class="btn-cart btn-rectangle">Thanh toán</a>
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td class="style">
+                                    <div>TỔNG CỘNG:</div>
+                                    <span class="colpink">200.000VNĐ</span>
+                                </td>
+                                <td></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
