@@ -65,7 +65,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
+                        <!-- <tr>
                             <td>
                                 <img src="img/people.png">
                                 <p>John Doe</p>
@@ -104,7 +104,7 @@
                             </td>
                             <td>01-10-2021</td>
                             <td><span class="status completed">Completed</span></td>
-                        </tr>
+                        </tr> -->
                         </tbody>
                     </table>
                 </div>
@@ -115,7 +115,7 @@
                         <i class='bx bx-filter' ></i>
                     </div>
                     <ul class="todo-list">
-                        <li class="completed">
+                        <!-- <li class="completed">
                             <p>Produc Code : <a href="#">A duc dz</a></p>
                             <i class='bx bxs-timer'>Expiration Date: 16/10/2023 (Còn 10 ngày)</i>
                         </li>
@@ -134,7 +134,7 @@
                         <li class="completed">
                             <p>Produc Code : <a href="#">A duc dz</a></p>
                             <i class='bx bxs-timer'>Expiration Date: 16/10/2023 (Còn 10 ngày)</i>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>

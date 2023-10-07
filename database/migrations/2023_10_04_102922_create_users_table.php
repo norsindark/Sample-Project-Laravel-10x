@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->string('id')->primary(); //  ID tự tăng
+            $table->id(); //  ID tự tăng
             $table->string('username')->unique(); //  UserName với giá trị duy nhất
             $table->string('password'); //  Password
             $table->string('email')->unique(); //  Email với giá trị duy nhất
