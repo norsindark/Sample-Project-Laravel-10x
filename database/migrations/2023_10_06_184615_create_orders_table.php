@@ -4,24 +4,24 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateOrdersTable extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
-            $table->id();
+        Schema::create('order', function (Blueprint $table) {
+            $table->id('OrderId');
+            $table->unsignedBigInteger('UserId');
+            $table->dateTime('OrderDate');
+            $table->decimal('TotalAmount', 10, 2); // - Tổng đơn hàng
             $table->timestamps();
+
+            // Khóa ngoại liên kết với bảng users
+            $table->foreign('UserId')->references('id')->on('users');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('orders');
     }
-};
+}
