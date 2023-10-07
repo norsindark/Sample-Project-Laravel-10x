@@ -10,8 +10,8 @@ use App\Http\Controllers\Admin\Dashboard\Product\ProductControllder;
 use App\Http\Controllers\Admin\Dashboard\Category\CategoryControllder;
 
 // Dashboard
-
-Route::prefix('dashboard')->group(function () {
+//, 'verified'
+Route::middleware(['auth::sanctum'])->prefix('dashboard')->group(function () {
 
     Route::get('/home', [DashboardController::class, 'index'])->name('dashboard.index');
 
@@ -70,28 +70,32 @@ Route::prefix('dashboard')->group(function () {
         Route::post('/store', [ProductControllder::class, 'store'])->name('dashboard.product.store');
 
         // Hiển thị form chỉnh sửa danh mục
-        Route::get('/{id}/edit', [ProductControllder::class, 'edit'])->name('dashboard.product.edit');
+        Route::get('/{ProductId}/edit', [ProductControllder::class, 'edit'])->name('dashboard.product.edit');
 
-        // Cập nhật danh mục
-        Route::put('/{id}', [ProductControllder::class, 'update'])->name('dashboard.catproductegory.update');
+        // update product
+        Route::put('/{ProductId}', [ProductControllder::class, 'update'])->name('dashboard.product.update');
 
         // Xóa danh mục
         Route::delete('{ProductId}', [ProductControllder::class, 'destroy'])->name('dashboard.product.destroy');
     });
-});
+})->name('dashboard');
 
 
 // Client
 
 Route::prefix('/')->group(function () {
     Route::prefix('/')->group(function () {
-        Route::post('/login', [LoginController::class, 'login'])->name('login');
+
+        Route::middleware(['auth'])->group(function () {
+            Route::match(['get', 'post'], '/login', [LoginController::class, 'login'])->name('login');
+        });
+
+        Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
         Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
 
-        Route::match(['get', 'post'], '/afterLogin', [afterLoginController::class, 'afterLogin'])
-            // ->middleware('checkrole:2')
-            ->name('afterLogin');
+        // Route::match(['get', 'post'], '/afterLogin', [afterLoginController::class, 'afterLogin']);
 
         Route::get('/home', 'App\Http\Controllers\User\HomeController@index')->name('home');
         Route::get('/tin-tuc', 'App\Http\Controllers\User\BlogController@index')->name('tin-tuc');
@@ -101,9 +105,9 @@ Route::prefix('/')->group(function () {
         Route::get('/thanh-toan', 'App\Http\Controllers\User\CheckoutController@index')->name('thanh-toan');
     });
     // Quản lí tài khoản
-     Route::prefix('/afterlogin') ->group(function () {
+    Route::prefix('/afterlogin')->group(function (){
         Route::get('quan-li-tai-khoan', 'App\Http\Controllers\User\ManagerUser\ManagerUserController@index')->name('manageruser');
         Route::get('don-hang-cua-ban', 'App\Http\Controllers\User\ManagerUser\ManagerOderController@index')->name('manageroder');
         Route::get('quan-li-so-dia-chi', 'App\Http\Controllers\User\ManagerUser\ManagerAddressController@index')->name('manageraddress');
-    });
+    })->name('afterLogin') ;
 });

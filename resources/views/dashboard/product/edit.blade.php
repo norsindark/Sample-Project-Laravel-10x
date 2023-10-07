@@ -1,57 +1,109 @@
 @extends('dashboard.layouts.master')
 
 @section('title')
-    <title>Edit Category</title>
+<title>Edit Category</title>
 @endsection
 
 @section('content')
-    <!-- MAIN -->
-    <main>
-        <div class="head-title">
-            <div class="left">
-                <h1>Edit Product</h1>
-                <ul class="breadcrumb">
-                    <li>
-                        <a href="#">Dashboard</a>
-                    </li>
-                    <li><i class='bx bx-chevron-right'></i></li>
-                    <li>
-                        <a class="active" href="#">User</a>
-                    </li>
-                </ul>
-            </div>
+<!-- MAIN -->
+<main>
+    <div class="head-title">
+        <div class="left">
+            <h1>Edit Product</h1>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li><i class='bx bx-chevron-right'></i></li>
+                <li>
+                    <a class="active" href="#">User</a>
+                </li>
+            </ul>
         </div>
+    </div>
 
-        <!-- <div class="Wrap-create">
+    <!-- <div class="Wrap-create">
             <button class="Btn_create">Add Category</button>
         </div> -->
 
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
 
-        <div class="table-data">
-            <div class="Edit-category">
-                <h3>Edit Category</h3>
-                <form method="POST" action="{{ route('dashboard.category.update', ['id' => $category->CategoryId]) }}">
-                    @csrf
-                    @method('PUT')
-                    <div class="form-group">
-                        <label for="category_name">Category Name</label>
-                        <input type="text" id="category_name" name="CategoryName" value="{{ $category->CategoryName }}" required>
+    <div class="table-data">
+        <div class="Edit-product">
+            <h3>Edit Product</h3>
+            <form method="POST" action="{{ route('dashboard.product.update', ['ProductId' => $product->ProductId]) }}" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+                <div class="form-group">
+                    <label for="ProductId">Product ID</label>
+                    <input type="text" id="ProductId" name="Id_Product" value="{{$product->Id_Product}}" required>
+                </div>
+                <div class="form-group">
+                    <label for="ProductName">Product Name</label>
+                    <input type="text" id="ProductName" name="ProductName" value="{{$product->ProductName}}" required>
+                </div>
+                <div class="form-group">
+                    <label for="Description">Description</label>
+                    <input type="text" id="Description" name="Description" value="{{$product->Description}}" required>
+                </div>
+                <div class="form-group">
+                    <label for="Price">Price</label>
+                    <input type="number" id="Price" name="Price" step="0.01" value="{{$product->Price}}" required>
+                </div>
+                <div class="form-group">
+                    <label for="Sale">Sale</label>
+                    <input type="number" id="Sale" name="Sale" step="0.01" value="{{$product->Sale}}" required>
+                </div>
+                <div class="form-group">
+                    <label for="Image">Image</label>
+                    <img src="{{ asset($product->Image) }}" alt="{{ $product->ProductName }} Image" width="300">
+                    <input type="file" id="Image" name="Image" accept="image/*">
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Quantity</label>
+                    <input type="number" id="quantity" name="quantity" value="{{$product->quantity}}" required>
+                </div>
+                <div class="form-group">
+                    <label for="expire">Expire</label>
+                    <input type="datetime-local" id="expire" name="expire" value="{{$product->expire}}" required>
+                </div>
+                <div class="form-group">
+                    <label for="Status">Status</label>
+                    <select id="Status" name="Status" value="{{$product->Status}}" required>
+                        <option value="1">Available</option>
+                        <option value="2">Out of stock</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Category">Categories</label>
+                    @foreach ($categories as $category)
+                    <div class="category-checkbox">
+                        <input type="checkbox" id="category_{{ $category->CategoryId }}" name="categories[]" value="{{ $category->CategoryId }}">
+                        <label for="category_{{ $category->CategoryId }}">{{ $category->CategoryName }}</label>
                     </div>
-                    <button type="submit" class="Btn_update">Update Product</button>
-                </form>
-
-                <!-- Button to delete category -->
-            </div>
+                    @endforeach
+                </div>
+                <!-- <div class="form-group">
+                    <label for="categories">Danh mục sản phẩm</label>
+                    <select class="form-control" id="categories" name="categories[]" multiple>
+                        @foreach ($categories as $category)
+                        <option value="{{ $category->CategoryId }}" {{ in_array($category->CategoryId, $product->categories->pluck('CategoryId')->toArray()) ? 'selected' : '' }}>
+                            {{ $category->CategoryName }}
+                        </option>
+                        @endforeach
+                    </select>
+                </div> -->
+                <button type="submit" class="Btn_create">Update Product</button>
+            </form>
         </div>
-    </main>
-    <!-- MAIN -->
+</main>
+<!-- MAIN -->
 @endsection

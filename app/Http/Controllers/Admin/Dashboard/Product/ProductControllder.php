@@ -85,4 +85,20 @@ class ProductControllder extends Controller
         // Chuyển hướng hoặc trả về trang danh sách product sau khi xóa
         return redirect()->route('dashboard.product.index')->with('success', 'product deleted successfully.');
     }
+
+
+    //show form edit
+    public function edit($ProductId)
+    {
+        $categories = Categories::all();
+        $product = Products::findOrFail($ProductId);
+
+        // $product = Products::with('categories')->get();
+        return view('dashboard.product.edit',  compact('product', 'categories'));
+    }
+
+    public function update( Request $request, $ProductId)
+    {
+        
+    }
 }

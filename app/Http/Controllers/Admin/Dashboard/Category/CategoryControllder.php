@@ -56,7 +56,7 @@ class CategoryControllder extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(int $id)
     {
         $category = Categories::findOrFail($id);
         return view('dashboard.category.edit', compact('category'));

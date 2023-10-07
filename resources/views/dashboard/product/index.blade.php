@@ -81,6 +81,8 @@
                         </td>
                         <td>{{ $product->created_at }}</td>
                         <td>
+                            <a class="status process" href="{{route('dashboard.product.edit', ['ProductId' => $product->ProductId])}}">Edit</a>
+
                             <form method="POST" action="{{ route('dashboard.product.destroy', ['ProductId' => $product->ProductId]) }}">
                                 @csrf
                                 @method('DELETE')
