@@ -34,7 +34,7 @@
         <div class="quickviewTabs">
             <div id="qvt-user" class="qv-panel">
                 <a href="#" class="closeQPanel"><i class="fa fa-close"></i></a>
-                @if ($errors->any())
+                <!-- @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
                         @foreach ($errors->all() as $error)
@@ -42,10 +42,10 @@
                         @endforeach
                     </ul>
                 </div>
-                @endif
+                @endif -->
 
                 <!-- Form đăng nhập -->
-                <div class="form-container" id="login-form">
+                <!-- <div class="form-container" id="login-form">
                     <form method="post" action="{{ route('login') }}" id="login">
                         @csrf
                         <p class="text-center">
@@ -56,16 +56,16 @@
                         <a href="#" class="lost">Lost your password?</a><br /><br />
                         <input type="submit" name="submit" value="Đăng Nhập" class="btn-blue btn" />
                     </form>
-                </div>
+                </div> -->
 
                 <!-- Liên kết "Đăng ký" -->
-                <div class="input_signup">
+                <!-- <div class="input_signup">
                     <span style="color: floralwhite" href="#" class="lost" id="show-signup-link">Đăng kí tại đây?</span><br /><br />
                     <button class="btn-blue btn" id="show-signup-button">Đăng kí</button>
-                </div>
+                </div> -->
 
                 <!-- Form đăng ký (ẩn ban đầu) -->
-                <div class="form-container" id="signup-form" style="display: none;">
+                <!-- <div class="form-container" id="signup-form" style="display: none;">
                     <form method="post" action="{{ route('register') }}" id="signup">
                         @csrf
                         <p class="text-center">
@@ -78,13 +78,13 @@
                         <input type="password" name="confirmpassword" placeholder="Nhập lại Password" id="signup-confirmpassword" />
                         <input type="submit" name="submit" value="Đăng kí" class="btn-blue btn" />
                     </form>
-                </div>
+                </div> -->
 
                 <!-- Liên kết "Đăng nhập" (ẩn ban đầu) -->
-                <div class="input_login form-hide">
+                <!-- <div class="input_login form-hide">
                     <span style="color: floralwhite" href="#" class="lost" id="show-login-link">Đăng nhập tại đây?</span><br /><br />
                     <button class="btn-blue btn" id="show-login-button">Đăng nhập</button>
-                </div>
+                </div> -->
 
             </div>
 

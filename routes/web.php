@@ -3,15 +3,16 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\Dashboard\Users\UserController;
-use App\Http\Controllers\User\RegisterController;
-use App\Http\Controllers\User\LoginController;
-use App\Http\Controllers\User\afterLoginController;
+use App\Http\Controllers\User\HomeController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Admin\Dashboard\Product\ProductControllder;
 use App\Http\Controllers\Admin\Dashboard\Category\CategoryControllder;
+use Illuminate\Support\Facades\Auth;
 
 // Dashboard
 //, 'verified'
-Route::middleware(['auth::sanctum'])->prefix('dashboard')->group(function () {
+Route::middleware(['role:1'])->prefix('dashboard')->group(function () {
 
     Route::get('/home', [DashboardController::class, 'index'])->name('dashboard.index');
 
@@ -85,19 +86,8 @@ Route::middleware(['auth::sanctum'])->prefix('dashboard')->group(function () {
 
 Route::prefix('/')->group(function () {
     Route::prefix('/')->group(function () {
-
-        Route::middleware(['auth'])->group(function () {
-            Route::match(['get', 'post'], '/login', [LoginController::class, 'login'])->name('login');
-        });
-
-        Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-
-        Route::post('/register', [RegisterController::class, 'register'])->name('register');
-
-
-        // Route::match(['get', 'post'], '/afterLogin', [afterLoginController::class, 'afterLogin']);
-
-        Route::get('/home', 'App\Http\Controllers\User\HomeController@index')->name('home');
+        Route::get('/home', [HomeController::class, 'checkRoleUser'])->name('checkRole');
+        Route::get('/trang-chu', [HomeController::class, 'home'])->name('home');
         Route::get('/tin-tuc', 'App\Http\Controllers\User\BlogController@index')->name('tin-tuc');
         Route::get('/san-pham', 'App\Http\Controllers\User\ProductController@index')->name('san-pham');
         Route::get('/danh-muc', 'App\Http\Controllers\User\CategoryController@index')->name('danh-muc');
@@ -105,9 +95,28 @@ Route::prefix('/')->group(function () {
         Route::get('/thanh-toan', 'App\Http\Controllers\User\CheckoutController@index')->name('thanh-toan');
     });
     // Quản lí tài khoản
-    Route::prefix('/afterlogin')->group(function (){
+    Route::prefix('/afterlogin')->group(function () {
         Route::get('quan-li-tai-khoan', 'App\Http\Controllers\User\ManagerUser\ManagerUserController@index')->name('manageruser');
         Route::get('don-hang-cua-ban', 'App\Http\Controllers\User\ManagerUser\ManagerOderController@index')->name('manageroder');
         Route::get('quan-li-so-dia-chi', 'App\Http\Controllers\User\ManagerUser\ManagerAddressController@index')->name('manageraddress');
-    })->name('afterLogin') ;
+    })->name('afterLogin');
 });
+
+Auth::routes();
+
+
+// Route::get('/email/verify', function () {
+//     return view('auth.verify-email');
+// })->middleware('auth')->name('verification.notice');
+
+// Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+//     $request->fulfill();
+ 
+//     return redirect('/home');
+// })->middleware(['auth', 'signed'])->name('verification.verify');
+
+// Route::post('/email/verification-notification', function (Request $request) {
+//     $request->user()->sendEmailVerificationNotification();
+ 
+//     return back()->with('message', 'Verification link sent!');
+// })->middleware(['auth', 'throttle:6,1'])->name('verification.send');

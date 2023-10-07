@@ -17,20 +17,6 @@ class DashboardController extends Controller
 
     public function index()
     {
-      /*  // Lấy danh sách người dùng từ cơ sở dữ liệu
-        $users = Users::all();
-        // $users = DB::select('SELECT * FROM users');
-
-        if (!empty($users)) {
-            return view('dashboard.users.index', compact('users'));
-        } else {
-            $nocation = 'empty users';
-            return view('dashboard.users.index', compact('nocation'));
-        }*/
-
-        //dd($users);
-        // Trả về trang hiển thị danh sách người dùng
-        //compact('users')
         return view('dashboard.home.home');
     }
 }

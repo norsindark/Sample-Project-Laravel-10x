@@ -29,23 +29,35 @@ Header
                         <li>
                             <a href="#"><i class="fa fa-heart"></i>DANH SÁCH YÊU THÍCH</a>
                         </li>
-                        <li class="@if(session('user_logged_in')) topnav-hide @else topnav-show @endif">
-                            <a href="#qvt-userrr"><i class="fa fa-user"></i>ĐĂNG NHẬP</a>
+                        @guest
+                        @if (Route::has('login'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('LOGIN') }}</a>
                         </li>
-                        <li class="@if(session('user_logged_in')) topnav-hide @else topnav-show @endif">
-                            <a href="#"><i class="fa fa-lock"></i>ĐĂNG KÍ</a>
+                        @endif
+
+                        @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('REGISTER') }}</a>
                         </li>
-                        <li class="@if(session('user_logged_in')) topnav-show @else topnav-hide @endif">
-                            <a href="{{route('manageruser')}}"><i class="fa fa-solid fa-bars-progress"></i>QUẢN LÍ TÀI KHOẢN</a>
-                        </li>
-                        <li class="@if(session('user_logged_in')) topnav-show @else topnav-hide @endif">
-                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                <i class="fa fa-solid fa-right-from-bracket"></i>LOG OUT
+                        @endif
+                        @else
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{route('manageruser')}}" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }}
                             </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="GET" style="display: none;">
+
+                        </li>
+                        <li class="nav-item">
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                {{ __('LOGOUT') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
                         </li>
+                        @endguest
                     </ul>
                 </div>
             </div>
