@@ -1,0 +1,17 @@
+ <div class="todo">
+            <div class="head">
+                <h3>Warehouse Status</h3>
+                <i class='bx bx-plus'></i>
+                <i class='bx bx-filter'></i>
+            </div>
+            <ul class="todo-list">
+                @foreach ($warehouses as $warehouse)
+                <li>
+                    <p>Product Name: <a href="#">{{ $warehouse->products->ProductName }}</a></p>
+                    <p>Quantity: {{ $warehouse->quantity }}</p>
+                    <p>Expire: {{ $warehouse->expire }}</p>
+                    <p>Created At: {{ $warehouse->created_at }}</p>
+                </li>
+                @endforeach
+            </ul>
+        </div>

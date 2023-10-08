@@ -71,6 +71,9 @@ class ProductControllder extends Controller
             $product->categories()->attach($request->input('categories'));
         }
 
+        // Sử dụng Event::dispatch() để kích hoạt sự kiện
+        // Event::dispatch(new ProductCreated($product));
+
         return redirect()->route('dashboard.product.index')->with('success', 'Product created successfully.');
     }
 
@@ -97,8 +100,55 @@ class ProductControllder extends Controller
         return view('dashboard.product.edit',  compact('product', 'categories'));
     }
 
-    public function update( Request $request, $ProductId)
+    public function update(Request $request, $ProductId)
     {
-        
+        // Validate the form data
+        $request->validate([
+            'ProductName' => 'required',
+            'Description' => 'required',
+            'Price' => 'required|numeric',
+            'Sale' => 'required|numeric',
+            'quantity' => 'required|numeric',
+            'expire' => 'required|date',
+            'Status' => 'required',
+            'categories' => 'required|array',
+            'Image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Tối đa 2MB và chỉ cho phép các định dạng hình ảnh phù hợp
+        ]);
+
+        // tìm sp = id
+        $product = Products::findOrFail($ProductId);
+
+        // update vào fields
+        $product->ProductName = $request->input('ProductName');
+        $product->Description = $request->input('Description');
+        $product->Price = $request->input('Price');
+        $product->Sale = $request->input('Sale');
+        $product->quantity = $request->input('quantity');
+        $product->expire = $request->input('expire');
+        $product->Status = $request->input('Status');
+
+        // kiểm tra img trc khi update
+        if ($request->hasFile('Image')) {
+            //xóa ảnh cũ
+            // File::delete(public_path($product->Image));
+
+            // lưu image mới vào CSDL
+            $image = $request->file('Image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images'), $imageName);
+
+            // update hình của sp vào field
+            $product->Image = 'images/' . $imageName;
+        }
+
+        // lưu sp
+        $product->save();
+
+        // đồng bộ hóa danh mục-sp mqh nhiều-nhiều
+        $product->categories()->sync($request->input('categories'));
+
+        // chuyển về index
+        return redirect()->route('dashboard.product.index', ['ProductId' => $product->ProductId])
+            ->with('success', 'Product updated successfully');
     }
 }

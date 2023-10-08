@@ -35,9 +35,15 @@
                 <h3>List of Products</h3>
                 <i class='bx bx-search'></i>
                 <i class='bx bx-filter'></i>
+
             </div>
             <table>
                 <thead>
+                    @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                    @endif
                     <tr>
                         <th>ID</th>
                         <th>Image</th>
@@ -46,10 +52,10 @@
                         <th>Price</th>
                         <th>Description</th>
                         <th>Sale</th>
-                        <th>Quantity</th>
-                        <th>Expiration date</th>
+                        <!-- <th>Quantity</th> -->
+                        <!-- <th>Expiration date</th> -->
                         <th>Status</th>
-                        <th>Created At</th>
+                        <!-- <th>Created At</th> -->
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -72,14 +78,14 @@
                         <td>{{ $product->Price }}</td>
                         <td>{{ $product->Description }}</td>
                         <td>{{ $product->Sale }}%</td>
-                        <td style="padding-left: 6px;">{{ $product->quantity }}</td>
-                        <td>{{ $product->expire }}</td>
+                        <!-- <td style="padding-left: 6px;">{{ $product->quantity }}</td> -->
+                        <!-- <td>{{ $product->expire }}</td> -->
                         <td>
                             <span class="status {{ $product->Status == 1 ? 'completed' : 'pending' }}">
                                 {{ $product->Status == 1 ? 'Available' : 'Out of stock' }}
                             </span>
                         </td>
-                        <td>{{ $product->created_at }}</td>
+                        <!-- <td>{{ $product->created_at }}</td> -->
                         <td>
                             <a class="status process" href="{{route('dashboard.product.edit', ['ProductId' => $product->ProductId])}}">Edit</a>
 

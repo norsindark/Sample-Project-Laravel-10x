@@ -1,44 +1,4 @@
-@extends('dashboard.layouts.master')
-
-@section('title')
-<title>Edit Category</title>
-@endsection
-
-@section('content')
-<!-- MAIN -->
-<main>
-    <div class="head-title">
-        <div class="left">
-            <h1>Edit Product</h1>
-            <ul class="breadcrumb">
-                <li>
-                    <a href="#">Dashboard</a>
-                </li>
-                <li><i class='bx bx-chevron-right'></i></li>
-                <li>
-                    <a class="active" href="#">User</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- <div class="Wrap-create">
-            <button class="Btn_create">Add Category</button>
-        </div> -->
-
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
-
-    <div class="table-data">
-        <div class="Edit-product">
-            <h3>Edit Product</h3>
+<h3>Edit Product</h3>
             <form method="POST" action="{{ route('dashboard.product.update', ['ProductId' => $product->ProductId]) }}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
@@ -86,7 +46,7 @@
                     <label for="Category">Categories</label>
                     @foreach ($categories as $category)
                     <div class="category-checkbox">
-                        <input type="checkbox" id="category_{{ $category->CategoryId }}" name="categories[]" value="{{ $category->CategoryId }}" {{ in_array($category->CategoryId, $product->categories->pluck('CategoryId')->toArray()) ? 'checked' : '' }}>
+                        <input type="checkbox" id="category_{{ $category->CategoryId }}" name="categories[]" value="{{ $category->CategoryId }}">
                         <label for="category_{{ $category->CategoryId }}">{{ $category->CategoryName }}</label>
                     </div>
                     @endforeach
@@ -94,7 +54,14 @@
                 <button type="submit" class="Btn_create">Update Product</button>
             </form>
 
-        </div>
-</main>
-<!-- MAIN -->
-@endsection
+             <div class="form-group">
+                    <label for="NewCategory">New Categories</label>
+                    @foreach ($categories as $category)
+                    @if (!in_array($category->CategoryId, $product->categories->pluck('CategoryId')->toArray()))
+                    <div class="category-checkbox">
+                        <input type="checkbox" id="new_category_{{ $category->CategoryId }}" name="new_categories[]" value="{{ $category->CategoryId }}">
+                        <label for="new_category_{{ $category->CategoryId }}">{{ $category->CategoryName }}</label>
+                    </div>
+                    @endif
+                    @endforeach
+                </div>

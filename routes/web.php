@@ -103,23 +103,9 @@ Route::middleware(['role:1'])->prefix('dashboard')->group(function () {
     });
     Route::prefix('Warehouse')->group(function () {
 
-        // Danh sách các danh mục
+        // warehouse
         Route::get('/', [WarehouseController::class, 'index'])->name('dashboard.warehouse.index');
 
-        // Hiển thị form tạo danh mục
-        /* Route::get('/create', [ProductControllder::class, 'create'])->name('dashboard.product.create');
-
-         // Lưu danh mục mới
-         Route::post('/store', [ProductControllder::class, 'store'])->name('dashboard.product.store');
-
-         // Hiển thị form chỉnh sửa danh mục
-         Route::get('/{ProductId}/edit', [ProductControllder::class, 'edit'])->name('dashboard.product.edit');
-
-         // update product
-         Route::put('/{ProductId}', [ProductControllder::class, 'update'])->name('dashboard.product.update');
-
-         // Xóa danh mục
-         Route::delete('{ProductId}', [ProductControllder::class, 'destroy'])->name('dashboard.product.destroy');*/
     });
 })->name('dashboard');
 

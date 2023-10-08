@@ -16,7 +16,7 @@ class HomeController extends Controller
     public function CheckRoleUser()
     {
         if (!Auth::user()) {
-            return redirect()->back()->withInput()->withErrors(['username' => 'Thông tin đăng nhập không chính xác.']);
+            return redirect()->route('home');
         }
 
         if (Auth::user()->role == 1) {

@@ -2,78 +2,78 @@
 
 
 @section('title')
-    <title>DashboardOrder</title>
+<title>DashboardOrder</title>
 @endsection
 
 @section('content')
-    <!-- MAIN -->
-    <main>
-        <div class="head-title">
-            <div class="left">
-                <h1>Warehouse</h1>
-                <ul class="breadcrumb">
-                    <li>
-                        <a href="#">Dashboard</a>
-                    </li>
-                    <li><i class='bx bx-chevron-right'></i></li>
-                    <li>
-                        <a class="active" href="#">Warehouse</a>
-                    </li>
+<!-- MAIN -->
+<main>
+    <div class="head-title">
+        <div class="left">
+            <h1>Warehouse</h1>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li><i class='bx bx-chevron-right'></i></li>
+                <li>
+                    <a class="active" href="#">Warehouse</a>
+                </li>
 
-                </ul>
-            </div>
-
+            </ul>
         </div>
 
-        {{--  <div class="Wrap-create">
+    </div>
+
+    {{-- <div class="Wrap-create">
               <a class="status process" href="#"><button class="Btn_create">Add Product</button></i></a>
           </div>--}}
-        <div class="table-data">
-            <div class="order">
-                <div class="head">
-                    <h3>List of Cart</h3>
-                    <i class='bx bx-search'></i>
-                    <i class='bx bx-filter'></i>
-                </div>
-                <table>
-                    <thead>
+    <div class="table-data">
+        <div class="order">
+            <div class="head">
+                <h3>Warehouse</h3>
+                <i class='bx bx-search'></i>
+                <i class='bx bx-filter'></i>
+            </div>
+            <table>
+                <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>ID Products</th>
                         <th>Image</th>
                         <th>Product Name</th>
-                        <th>Categories</th>
-                        <th>Price</th>
-                        <th>Description</th>
-                        <th>Sale</th>
                         <th>Quantity</th>
-                        <th>Expiration date</th>
-                        <th>Status</th>
+                        <th>Expiration Date</th>
                         <th>Created At</th>
-                        <th>Action</th>
                     </tr>
-                    </thead>
-                    <tbody>
+                </thead>
+                <tbody>
+                    @foreach ($warehouses as $warehouse)
                     <tr>
-                        <td></td>
+                        <td>{{ $warehouse->Id_Product }}</td>
                         <td>
+                            <img src="{{ asset($warehouse->Image) }}" alt="{{ $warehouse->ProductName }} Image" width="300">
                         </td>
-                        <td></td>
+                        <td>{{ $warehouse->ProductName }}</td>
+                        <td>{{ $warehouse->quantity }}</td>
                         <td>
+                            @php
+                            $expireDate = \Carbon\Carbon::parse($warehouse->expire);
+                            $currentDate = \Carbon\Carbon::now();
+                            $daysRemaining = $expireDate->diffInDays($currentDate);
+                            echo $daysRemaining . ' days remaining';
+                            @endphp
                         </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td </td>
-                        <td></td>
-                        <td>
-                        </td>
-                        <td></td>
+                        <td>{{ $warehouse->created_at }}</td>
                     </tr>
-                    </tbody>
-                </table>
-            </div>
+                    @endforeach
+
+                </tbody>
+            </table>
+
+
         </div>
-    </main>
-    <!-- MAIN -->
+    </div>
+</main>
+<!-- MAIN -->
 
 @endsection
