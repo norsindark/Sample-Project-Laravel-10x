@@ -17,9 +17,7 @@ class CreateProductsTable extends Migration
             $table->decimal('Price', 10, 2); // Sử dụng kiểu số thập phân để lưu giá sản phẩm
             $table->decimal('Sale', 10, 1)->default(0); // Giá giảm giá (nếu có)
             $table->binary('Image'); // Hình ảnh sản phẩm 
-            $table->integer('quantity'); // Số lượng sản phẩm
             $table->dateTime('expire'); // Ngày hết hạn (hoặc sử dụng kiểu ngày thích hợp)
-            $table->integer('Status')->default(1); // Trạng thái sản phẩm (1: Còn hàng, 0: Hết hàng, hoặc tùy chỉnh)
             $table->timestamps(); // Thêm cột created_at và updated_at 
         });
     }

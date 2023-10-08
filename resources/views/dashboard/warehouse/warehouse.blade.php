@@ -35,37 +35,45 @@
                 <i class='bx bx-search'></i>
                 <i class='bx bx-filter'></i>
             </div>
+            @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+            @endif
             <table>
                 <thead>
                     <tr>
+                        <th>ID Warehouse</th>
                         <th>ID Products</th>
-                        <th>Image</th>
                         <th>Product Name</th>
                         <th>Quantity</th>
-                        <th>Expiration Date</th>
+                        <th>Status</th>
                         <th>Created At</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($warehouses as $warehouse)
                     <tr>
+                        <td>{{ $warehouse->id }}</td>
+
                         <td>{{ $warehouse->Id_Product }}</td>
-                        <td>
-                            <img src="{{ asset($warehouse->Image) }}" alt="{{ $warehouse->ProductName }} Image" width="300">
-                        </td>
-                        <td>{{ $warehouse->ProductName }}</td>
+                        <td>{{ $warehouse->products->ProductName }}</td>
                         <td>{{ $warehouse->quantity }}</td>
                         <td>
-                            @php
-                            $expireDate = \Carbon\Carbon::parse($warehouse->expire);
-                            $currentDate = \Carbon\Carbon::now();
-                            $daysRemaining = $expireDate->diffInDays($currentDate);
-                            echo $daysRemaining . ' days remaining';
-                            @endphp
+                            @if($warehouse->status == 1)
+                            In stock
+                            @elseif($warehouse->status == 2)
+                            Out of stock
+                            @endif
                         </td>
                         <td>{{ $warehouse->created_at }}</td>
+                        <td>
+                            <a class="status process" href="{{route('dashboard.warehouse.edit', ['id' => $warehouse->id])}}">Edit</a>
+                        </td>
                     </tr>
                     @endforeach
+
 
                 </tbody>
             </table>

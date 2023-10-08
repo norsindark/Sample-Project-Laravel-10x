@@ -105,6 +105,8 @@ Route::middleware(['role:1'])->prefix('dashboard')->group(function () {
 
         // warehouse
         Route::get('/', [WarehouseController::class, 'index'])->name('dashboard.warehouse.index');
+        Route::get('/{id}/edit', [WarehouseController::class, 'edit'])->name('dashboard.warehouse.edit');
+        Route::put('/{id}', [WarehouseController::class, 'update'])->name('dashboard.warehouse.update');
 
     });
 })->name('dashboard');

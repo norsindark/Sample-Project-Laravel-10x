@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Users;
 use App\Models\Products;
+use App\Models\warehouses;
 
 
 class DashboardController extends Controller
@@ -18,7 +19,7 @@ class DashboardController extends Controller
 
     public function index()
     {
-        $warehouses = Products::all();
+        $warehouses = warehouses::all();
         return view('dashboard.home.home', compact('warehouses'));
     }
 
