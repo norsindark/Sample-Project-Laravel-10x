@@ -53,8 +53,8 @@
                         <th>Description</th>
                         <th>Sale</th>
                         <!-- <th>Quantity</th> -->
-                        <!-- <th>Expiration date</th> -->
-                        <th>Status</th>
+                        <th>Expiration date</th>
+                        <!-- <th>Status</th> -->
                         <!-- <th>Created At</th> -->
                         <th>Action</th>
                     </tr>
@@ -78,13 +78,15 @@
                         <td>{{ $product->Price }}</td>
                         <td>{{ $product->Description }}</td>
                         <td>{{ $product->Sale }}%</td>
-                        <!-- <td style="padding-left: 6px;">{{ $product->quantity }}</td> -->
-                        <!-- <td>{{ $product->expire }}</td> -->
                         <td>
-                            <span class="status {{ $product->Status == 1 ? 'completed' : 'pending' }}">
-                                {{ $product->Status == 1 ? 'Available' : 'Out of stock' }}
-                            </span>
+                            @php
+                            $expireDate = \Carbon\Carbon::parse($product->expire);
+                            $currentDate = \Carbon\Carbon::now();
+                            $daysRemaining = $expireDate->diffInDays($currentDate);
+                            echo $daysRemaining . ' days remaining';
+                            @endphp
                         </td>
+
                         <!-- <td>{{ $product->created_at }}</td> -->
                         <td>
                             <a class="status process" href="{{route('dashboard.product.edit', ['ProductId' => $product->ProductId])}}">Edit</a>

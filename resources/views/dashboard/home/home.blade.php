@@ -86,16 +86,8 @@
             <ul class="todo-list">
                 @foreach ($warehouses as $warehouse)
                 <li>
-                    <p>Product Name: <a href="#">{{ $warehouse->ProductName }}</a></p>
+                    <p>Product Name: <a href="#">{{ $warehouse->products->ProductName }}</a></p>
                     <p>Quantity: {{ $warehouse->quantity }}</p>
-                    <p>Expire:
-                        @php
-                        $expireDate = \Carbon\Carbon::parse($warehouse->expire);
-                        $currentDate = \Carbon\Carbon::now();
-                        $daysRemaining = $expireDate->diffInDays($currentDate);
-                        echo $daysRemaining . ' days remaining';
-                        @endphp
-                    </p>
                     <p>Created At: {{ $warehouse->created_at }}</p>
                 </li>
                 @endforeach

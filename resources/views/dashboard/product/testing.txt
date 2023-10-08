@@ -65,3 +65,30 @@
                     @endif
                     @endforeach
                 </div>
+
+                 <!-- <div class="form-group">
+                    <label for="quantity">Quantity</label>
+                    <input type="number" id="quantity" name="quantity" value="{{$product->quantity}}" required>
+                </div> -->
+
+                <div class="form-group">
+                    <label for="Status">Status</label>
+                    <select id="Status" name="Status" value="{{$product->Status}}" required>
+                        <option value="1">Available</option>
+                        <option value="2">Out of stock</option>
+                    </select>
+                </div>
+
+                 <td>
+                            <span class="status {{ $product->Status == 1 ? 'completed' : 'pending' }}">
+                                {{ $product->Status == 1 ? 'Available' : 'Out of stock' }}
+                            </span>
+                        </td>
+
+                                        <div class="form-group">
+                    <label for="Status">Status</label>
+                    <select class="form-control" id="Status" name="Status" required>
+                        <option value="1">Available</option>
+                        <option value="2">Out of stock</option>
+                    </select>
+                </div>

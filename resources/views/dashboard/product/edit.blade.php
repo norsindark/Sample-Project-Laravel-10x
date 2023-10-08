@@ -68,19 +68,8 @@
                     <input type="file" id="Image" name="Image" accept="image/*">
                 </div>
                 <div class="form-group">
-                    <label for="quantity">Quantity</label>
-                    <input type="number" id="quantity" name="quantity" value="{{$product->quantity}}" required>
-                </div>
-                <div class="form-group">
                     <label for="expire">Expire</label>
                     <input type="datetime-local" id="expire" name="expire" value="{{$product->expire}}" required>
-                </div>
-                <div class="form-group">
-                    <label for="Status">Status</label>
-                    <select id="Status" name="Status" value="{{$product->Status}}" required>
-                        <option value="1">Available</option>
-                        <option value="2">Out of stock</option>
-                    </select>
                 </div>
                 <div class="form-group">
                     <label for="Category">Categories</label>

@@ -76,13 +76,7 @@
                     <label for="expire">Expire</label>
                     <input class="form-control" type="datetime-local" id="expire" name="expire" required>
                 </div>
-                <div class="form-group">
-                    <label for="Status">Status</label>
-                    <select class="form-control" id="Status" name="Status" required>
-                        <option value="1">Available</option>
-                        <option value="2">Out of stock</option>
-                    </select>
-                </div>
+
                 <div class="form-group">
                     <label for="Category">Categories</label>
                     @foreach ($categories as $category)
