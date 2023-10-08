@@ -16,15 +16,17 @@
                     </li>
                     <li><i class='bx bx-chevron-right'></i></li>
                     <li>
-                        <a class="active" href="#">User</a>
+                        <a  href="#">Category</a>
+                    </li>
+                    <li><i class='bx bx-chevron-right'></i></li>
+                    <li>
+                        <a class="active" href="#">edit</a>
                     </li>
                 </ul>
             </div>
         </div>
 
-        <div class="Wrap-create">
-            <button class="Btn_create">Add Category</button>
-        </div>
+
 
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -44,9 +46,9 @@
                     @method('PUT')
                     <div class="form-group">
                         <label for="category_name">Category Name</label>
-                        <input type="text" id="category_name" name="CategoryName" value="{{ $category->CategoryName }}" required>
+                        <input  style="margin-bottom: 15px" class="form-control" type="text" id="category_name" name="CategoryName" value="{{ $category->CategoryName }}" required>
                     </div>
-                    <button type="submit" class="Btn_update">Update Category</button>
+                    <button type="submit" class="Btn_update ">Update Category</button>
                 </form>
 
                 <!-- Button to delete category -->

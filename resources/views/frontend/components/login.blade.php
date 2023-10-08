@@ -1,7 +1,7 @@
 <div class="quickViewWrap xv-hide ">
     <div class="quickView">
         <ul class="quickActions clearfix">
-            <li title="Profile" class="@if(session('user_logged_in')) topnav-hide @else topnav-show @endif">
+            <li style="display: none !important;"  title="Profile" class="@if(session('user_logged_in')) topnav-hide @else topnav-show @endif">
                 <!--<span class="userAlerts-count qvCount">01</span>-->
                 <a data-wide="true" href="#qvt-user">
                     <img src="/Duanmautemplate/assets/img/basic/avatar83.png" alt="" />

@@ -36,13 +36,13 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="{{ route('dashboard.order.index') }}">
                 <i class='bx bxs-cart-download'></i>
                 <span class="text">Order</span>
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="{{ route('dashboard.warehouse.index') }}">
                 <i class='bx bxs-cylinder'></i>
                 <span class="text">Warehouse</span>
             </a>
@@ -72,7 +72,7 @@
             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                 <i class='bx bxs-log-out-circle'></i>
-                {{ __('LOGOUT') }}
+                {{ __('Logout') }}
             </a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                 @csrf

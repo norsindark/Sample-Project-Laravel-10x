@@ -66,14 +66,14 @@
                         <td><span class="status completed">Banned</span></td>
                         @endif
 
-                        <td>
+                        <td style="width: 70px">
                             <a class="status process" href="{{ route('dashboard.user.edit', ['id' => $user->id]) }}">Edit</a>
                         </td>
-                        <td>
+                        <td >
                             <form method="POST" action="{{ route('dashboard.user.destroy', ['id' => $user->id]) }}">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="status process" style="background-color: red; border: none; margin-top: 0;" onclick="return confirm('Are you sure you want to delete this user?')">Del</button>
+                                <button type="submit" class="status process" style="position: relative;top: 2px ;background-color: red; border: none; margin-top: 0;" onclick="return confirm('Are you sure you want to delete this user?')">Del</button>
                             </form>
                         </td>
                     </tr>

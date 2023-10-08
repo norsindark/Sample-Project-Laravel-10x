@@ -552,12 +552,11 @@ input[type="addressget"],
 textarea {
     width: 100%;
     border: none;
-    color: #9e9e9e;
-    height: 38px;
+    color: #3f3f3f;
+    height: 40px;
     padding: 0 15px;
     background: #fff;
     border-radius: 5px;
-    height: 45px;
     text-transform: inherit;
     border: 1px solid #dddddd;
     margin-bottom: 15px;
@@ -5396,3 +5395,45 @@ http://tobiasahlin.com/spinkit/
 .fix_top-category {
     top: 60px !important;
 }
+
+.card {
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 40px;
+}
+
+.form-check-label {
+    font-weight: normal;
+
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.justify-content-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 100px 0;
+}
+
+.text_lable-content {
+    font-size: 16px;
+    margin-bottom: 5px;
+    font-weight: 700;
+    width: 100%;
+    color: #40404d;
+}
+
+
