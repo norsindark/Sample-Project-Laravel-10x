@@ -42,7 +42,7 @@
 
     <div class="table-data">
         <div class="Create-product">
-            <form class="form_create" style="height: 830px" method="POST" action="{{ route('dashboard.product.store') }}" enctype="multipart/form-data">
+            <form class="form_create"  method="POST" action="{{ route('dashboard.product.store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="ProductId">Product ID</label>
