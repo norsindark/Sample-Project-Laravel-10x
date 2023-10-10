@@ -32,9 +32,10 @@
                     <div class="col-xs-12 col-md-6">
                         <div class="product-slider-wrap text-center shadow-around">
                             <div class="product-slide">
-                                <figure>
+                                <figure id="main-image">
                                     <img src="/Duanmautemplate/assets/img/CTproduct/product1anh1_1.jpg" alt="">
                                 </figure>
+
                             </div><!--product-slide-->
                             <div class="product-slider styleDetail">
                                 <div class="detail-slider">
@@ -63,6 +64,25 @@
                                 </div><!--product-slider-->
                             </div>
                         </div><!--column-6-->
+                        <script>
+                            // Lấy danh sách tất cả các hình ảnh trong carousel
+                            var thumbnailImages = document.querySelectorAll('.slider_controls5 figure');
+
+                            // Lặp qua từng hình ảnh và thêm sự kiện click
+                            thumbnailImages.forEach(function(thumbnailImage) {
+                                thumbnailImage.addEventListener('click', function() {
+                                    event.preventDefault();
+                                    // Lấy đường dẫn hình ảnh từ thuộc tính 'src' của hình ảnh nhỏ
+                                    var imageUrl = thumbnailImage.querySelector('img').getAttribute('src');
+
+                                    // Lấy đối tượng hình ảnh chính
+                                    var mainImage = document.getElementById('main-image');
+
+                                    // Đặt đường dẫn hình ảnh chính thành đường dẫn của hình ảnh nhỏ khi click
+                                    mainImage.querySelector('img').setAttribute('src', imageUrl);
+                                });
+                            });
+                        </script>
 
                     </div><!--column-6-->
                     <div class="col-xs-12 col-md-6">
@@ -165,8 +185,35 @@
                         </div><!--tab content-->
                         <div id="tab05" class="tab-content">
                             <h4>Đánh giá về sản phẩm</h4>
-                            <p> Không có đánh giá nào về sản phẩm
-                            </p>
+                            <div class="comment">
+                                <figure>
+                                    <img src="/Duanmautemplate/assets/img/user/user1.jpg" alt="">
+                                </figure>
+                                <div class="pad">
+                                    <h4>Van Duc</h4>
+                                    <div class="date-stamp">Tháng 10 - 2023 Lúc 2:15 Chiều</div>
+                                    <p>Tôi là một người quan tâm đến vấn đề sức khỏe và môi trường, và trong một thời gian dài, tôi đã theo dõi và tham gia vào các cuộc thảo luận về dịch sốt rết trên mạng xã hội. Dịch sốt rết không chỉ là một vấn đề y tế toàn cầu mà còn liên quan mật thiết đến môi trường và sự phát triển bền vững. </p>
+                                    <a class="reply add-reply" href="#comment-form">Hồi đáp<i class="fa fa-share"></i></a>
+                                </div>
+                            <div class="comment-form">
+                                <h2>Để lại đánh giá</h2>
+                                <form>
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-3 col-sm-3">
+                                            <input type="text" id="name1" placeholder="Tên:">
+                                        </div>
+                                        <div class="col-lg-3 col-md-3 col-sm-3">
+                                            <input type="text" id="email1" placeholder="Email:">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <textarea id="message1" placeholder="Message:"></textarea>
+                                        </div>
+                                    </div>
+                                    <input class="btn" id="submit1" type="submit" value="Giử dánh giá">
+                                </form>
+                            </div><!--reply-->
                         </div><!--tab content-->
 
                     </div>

@@ -15,6 +15,14 @@ class CategoryControllder extends Controller
         return view('dashboard.category.index', ['categories' => $categories]);
     }
 
+    // HomeController.php
+    public function home()
+    {
+        $categories = Categories::all();
+       /* $categories = Categories::orderBy('CategoryId', 'asc')->get();*/ // Sắp xếp theo trường 'CategoryId' tăng dần
+        return view('frontend.components.hearder', compact($categories));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
