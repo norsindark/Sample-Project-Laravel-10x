@@ -7,6 +7,25 @@
 
 @section('content')
 <!-- Modal -->
+<main>
+    <div class="head-title">
+        <div class="left">
+            <h1>Warehouse</h1>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li><i class='bx bx-chevron-right'></i></li>
+                <li>
+                    <a  href="#">Warehouse</a>
+                </li>
+                <li><i class='bx bx-chevron-right'></i></li>
+                <li>
+                    <a class="active" href="#">edit</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 
 <div class="table-data">
     <div class="modal-header">
@@ -20,8 +39,8 @@
             </ul>
         </div>
         @endif
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+        <button style="border-radius: 20px; width: 24px; height: 24px; margin-left: 10px; border: none; background-color: var(--bs-danger); color: #fff;" type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span sty aria-hidden="true">X</span>
         </button>
     </div>
     <div class="modal-body">
@@ -32,7 +51,7 @@
                 <label for="quantity">Quantity</label>
                 <input type="number" class="form-control" id="quantity" name="quantity" value="{{ $warehouse->quantity }}">
             </div>
-            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <button style="margin-top: 20px" type="submit" class="btn btn-primary">Save Changes</button>
         </form>
     </div>
 </div>

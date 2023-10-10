@@ -16,13 +16,28 @@ li {
 
 .form_create {
     width: 600px;
-    height: 650px;
+    height: 900px;
     margin: auto;
     background: #f8f9fd;
     padding: 50px;
 }
 
-.form-edit {
+.form_edit-product {
+    overflow: hidden;
+    width: 600px;
+    height: 850px;
+    margin: auto;
+    background: #f8f9fd;
+    padding: 50px;
+}
+
+.Edit-product {
+    margin: auto;
+}
+
+
+.form_edit {
+    overflow: hidden;
     width: 600px;
     height: 700px;
     margin: auto;
@@ -641,6 +656,7 @@ body {
     font-weight: 700;
     background: var(--create);
     cursor:pointer;
+    margin-top: 10px;
 }
 
 .Btn_update {

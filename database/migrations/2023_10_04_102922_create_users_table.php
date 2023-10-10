@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('username')->unique(); //  UserName với giá trị duy nhất
             $table->string('password'); //  Password
             $table->string('email')->unique(); //  Email với giá trị duy nhất
-            $table->string('name')->default(DB::raw('`username`')); //  Name
+            $table->string('name')->default(DB::raw(`username`)); //  Name
             $table->integer('role')->default(2); //  Role với giá trị mặc định là 2
             $table->integer('status')->default(2); //  Status với giá trị mặc định là 2
             $table->string('address')->nullable(); //  địa chỉ
@@ -27,7 +27,7 @@ return new class extends Migration
         });
     }
 
-    
+
 
     /**
      * Reverse the migrations.
