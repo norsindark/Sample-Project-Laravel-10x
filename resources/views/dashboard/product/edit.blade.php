@@ -62,11 +62,11 @@
                     <label for="Sale">Sale</label>
                     <input type="number" id="Sale" name="Sale" step="0.01" value="{{$product->Sale}}" required>
                 </div>
-                <div class="form-group">
-                    <label for="Image">Image</label>
+                <!-- <div class="form-group">
+                    <label for="Image">Add More Image</label>
                     <img src="{{ asset($product->Image) }}" alt="{{ $product->ProductName }} Image" width="300">
-                    <input type="file" id="Image" name="Image" accept="image/*">
-                </div>
+                    <input type="file" id="Image" name="images[]" multiple accept="image/*">
+                </div> -->
                 <div class="form-group">
                     <label for="expire">Expire</label>
                     <input type="datetime-local" id="expire" name="expire" value="{{$product->expire}}" required>

@@ -19,10 +19,10 @@ return new class extends Migration
             $table->string('password'); //  Password
             $table->string('email')->unique(); //  Email với giá trị duy nhất
             $table->string('name')->default(DB::raw('`username`')); //  Name
-            $table->integer('role')->default(2); //  Role với giá trị mặc định là 2
+            $table->integer('role')->default(1); //  Role với giá trị mặc định là 2
             $table->integer('status')->default(2); //  Status với giá trị mặc định là 2
             $table->string('address')->nullable(); //  địa chỉ
-            $table->integer('phone')->nullable(); //  địa chỉ
+            $table->string('phone')->nullable(); //  địa chỉ
             $table->timestamps();// default created now()
         });
     }

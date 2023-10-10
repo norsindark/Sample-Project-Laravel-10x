@@ -64,7 +64,16 @@
                     <tr>
                         <td>{{ $product->Id_Product }}</td>
                         <td>
-                            <img src="{{ asset($product->Image) }}" alt="{{ $product->ProductName }} Image" width="300">
+                        <td>
+                            @if ($product_images)
+                            @foreach ($product_images as $product_image)
+                            @if ($product_image->ProductId == $product->ProductId)
+                            <img src="{{ asset('storage/' . $product_image->path) }}" alt="Product Image">
+                            @endif
+                            @endforeach
+                            @endif
+                            <a class="status process" href="{{route('dashboard.product.edit_Image', ['ProductId' => $product->ProductId])}}">Edit Image</a>
+                        </td>
                         </td>
                         <td>{{ $product->ProductName }}</td>
                         <td>

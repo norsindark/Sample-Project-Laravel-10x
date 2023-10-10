@@ -63,23 +63,32 @@ Route::middleware(['role:1'])->prefix('dashboard')->group(function () {
 
     Route::prefix('product')->group(function () {
 
-        // Danh sách các danh mục
+        // Danh sách các products
         Route::get('/', [ProductControllder::class, 'index'])->name('dashboard.product.index');
 
-        // Hiển thị form tạo danh mục
+        // Hiển thị form tạoproducts
         Route::get('/create', [ProductControllder::class, 'create'])->name('dashboard.product.create');
 
-        // Lưu danh mục mới
+        // Lưu products mới
         Route::post('/store', [ProductControllder::class, 'store'])->name('dashboard.product.store');
 
-        // Hiển thị form chỉnh sửa danh mục
+        // Hiển thị form chỉnh sửa products
         Route::get('/{ProductId}/edit', [ProductControllder::class, 'edit'])->name('dashboard.product.edit');
 
         // update product
-        Route::put('/{ProductId}', [ProductControllder::class, 'update'])->name('dashboard.product.update');
+        Route::put('/{ProductId}/update', [ProductControllder::class, 'update'])->name('dashboard.product.update');
 
-        // Xóa danh mục
+         // Hiển thị form chỉnh sửa products image
+         Route::get('/{ProductId}/editImage', [ProductControllder::class, 'editImage'])->name('dashboard.product.edit_Image');
+
+         // update products image
+        Route::put('/{ProductId}/updateImage', [ProductControllder::class, 'updateImage'])->name('dashboard.product.update_Image');
+
+        // Xóa products
         Route::delete('{ProductId}', [ProductControllder::class, 'destroy'])->name('dashboard.product.destroy');
+
+        // Xóa product Image
+        Route::delete('{id}/del', [ProductControllder::class, 'delImage'])->name('dashboard.product.del_Image');
     });
     Route::prefix('order')->group(function () {
 
