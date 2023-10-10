@@ -7,6 +7,7 @@ use App\Models\Categories;
 use App\Models\Products;
 use Illuminate\Http\Request;
 use App\Events\ProductCreated;
+use App\Models\ProductImage;
 use App\Models\warehouses;
 
 class ProductControllder extends Controller
@@ -19,7 +20,8 @@ class ProductControllder extends Controller
         $products = Products::all();
 
         $products = Products::with('categories')->get();
-        return view('dashboard.product.index', compact('products', 'categories'));
+        $product_images = ProductImage::all();
+        return view('dashboard.product.index', compact('products', 'categories', 'product_images'));
     }
 
     public function create()
@@ -38,20 +40,18 @@ class ProductControllder extends Controller
             'Description' => 'required|string',
             'Price' => 'required|numeric|min:0',
             'Sale' => 'required|numeric|min:0|max:100',
-            'Image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // cho phép kiểm tra từng tệp hình ảnh trong mảng 'images'
             'expire' => 'required|date|after_or_equal:now',
             'quantity' => 'required|integer|min:1', // Số lượng sản phẩm
         ]);
 
         // Kiểm tra xem có hình ảnh được tải lên không
-        if (!$request->hasFile('Image')) {
-            return redirect()->back()->with('error', 'Please upload an image.')->withInput();
-        }
+
 
         // Xử lý lưu hình ảnh vào thư mục public/images
-        $image = $request->file('Image');
-        $imageName = time() . '.' . $image->getClientOriginalExtension();
-        $image->move(public_path('images'), $imageName);
+        // $image = $request->file('Image');
+        // $imageName = time() . '.' . $image->getClientOriginalExtension();
+        // $image->move(public_path('images'), $imageName);
 
         // Số lượng sản phẩm được nhập bởi người dùng
         $quantity = $request->input('quantity');
@@ -63,32 +63,19 @@ class ProductControllder extends Controller
         $product->Description = $request->input('Description');
         $product->Price = $request->input('Price');
         $product->Sale = $request->input('Sale');
-        $product->Image = 'images/' . $imageName; // Lưu đường dẫn đến hình ảnh
+        // $product->Image = 'images/' . $imageName; // Lưu đường dẫn đến hình ảnh
         $product->expire = $request->input('expire');
         $product->save();
+
+        if ($request->hasFile('images')) {
+            $product->saveImages($request->file('images'));
+        }
 
         // Kiểm tra xem danh mục có được chọn không
         if ($request->has('categories')) {
             // Gán danh mục cho sản phẩm
             $product->categories()->attach($request->input('categories'));
         }
-
-        // Kiểm tra và cập nhật số lượng trong bảng "warehouses"
-        // $warehouse = warehouses::where('Id_Product', $product->Id_Product)->first();
-
-        // if ($warehouse) {
-        //     // Nếu sản phẩm đã tồn tại trong kho, tăng số lượng
-        //     $warehouse->quantity += $quantity;
-        //     $warehouse->save();
-        // } else {
-        //     // Nếu sản phẩm chưa tồn tại, thêm một bản ghi mới
-        //     warehouses::create([
-        //         'Id_Product' => $product->Id_Product,
-        //         'quantity' => $quantity,
-        //         // Các trường khác của kho hàng nếu cần
-        //     ]);
-        // }
-
         // event created warehouse
 
         for ($i = 0; $i < $quantity; $i++) {
@@ -130,8 +117,8 @@ class ProductControllder extends Controller
             'Price' => 'required|numeric',
             'Sale' => 'required|numeric',
             'expire' => 'required|date',
-            'categories' => 'required|array',
-            'Image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Tối đa 2MB và chỉ cho phép các định dạng hình ảnh phù hợp
+            'categories' => 'array',
+            // 'Image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Tối đa 2MB và chỉ cho phép các định dạng hình ảnh phù hợp
         ]);
 
         // tìm sp = id
@@ -147,15 +134,19 @@ class ProductControllder extends Controller
         // $product->Status = $request->input('Status');
 
         // kiểm tra img trc khi update
-        if ($request->hasFile('Image')) {
+        // if ($request->hasFile('Image')) {
 
-            $image = $request->file('Image');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('images'), $imageName);
+        //     $image = $request->file('Image');
+        //     $imageName = time() . '.' . $image->getClientOriginalExtension();
+        //     $image->move(public_path('images'), $imageName);
 
-            // update hình của sp vào field
-            $product->Image = 'images/' . $imageName;
-        }
+        //     // update hình của sp vào field
+        //     $product->Image = 'images/' . $imageName;
+        // }
+
+        // if ($request->hasFile('images')) {
+        //     $product->saveImages($request->file('images'));
+        // }
 
         // lưu sp
         $product->save();
@@ -163,8 +154,49 @@ class ProductControllder extends Controller
         // đồng bộ hóa danh mục-sp mqh nhiều-nhiều
         $product->categories()->sync($request->input('categories'));
 
+
         // chuyển về index
         return redirect()->route('dashboard.product.index', ['ProductId' => $product->ProductId])
             ->with('success', 'Product updated successfully');
+    }
+
+    //show form edit image
+    public function editImage($ProductId)
+    {
+        $product_images = ProductImage::all();
+        $product = Products::findOrFail($ProductId);
+
+        return view('dashboard.product.edit_Image',  compact('product', 'product_images'));
+    }
+
+    public function updateImage(Request $request, $ProductId)
+    {
+        // Validate the form data
+        $request->validate([
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // cho phép kiểm tra từng tệp hình ảnh trong mảng 'images'
+        ]);
+
+        // tìm sp = id
+        $product = Products::findOrFail($ProductId);
+
+        if ($request->hasFile('images')) {
+            $product->saveImages($request->file('images'));
+        }
+
+        // lưu sp
+        $product->save();
+        // chuyển về index
+        return redirect()->route('dashboard.product.index', ['ProductId' => $product->ProductId])
+            ->with('success', 'Product updated successfully');
+    }
+
+    public function delImage($id)
+    {
+        // Tìm sản phẩm cần xóa
+        $productImage = ProductImage::findOrFail($id);
+        $ProductId = $productImage->ProductId;
+        $productImage->delete();
+        // Chuyển hướng hoặc trả về trang danh sách sản phẩm sau khi xóa
+        return redirect()->route('dashboard.product.edit_Image', compact('ProductId'))->with('success', 'Product images deleted successfully.');
     }
 }

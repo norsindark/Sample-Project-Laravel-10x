@@ -66,7 +66,7 @@
                 </div>
                 <div class="form-group">
                     <label for="Image">Image</label>
-                    <input class="form-control" type="file" id="Image" name="Image" accept="image/*">
+                    <input class="form-control" type="file" id="Image" multiple name="images[]" accept="image/*">
                 </div>
                 <div class="form-group">
                     <label for="quantity">Quantity</label>
