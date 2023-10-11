@@ -254,7 +254,7 @@
                                         </figcaption>
                                     </figure>
                                     <div class="xv-product-content">
-                                        <h3><a href="{{ route('product.index', ['ProductId' => $product->ProductId]) }}">{{ $product->ProductName }}</a></h3>
+                                        <h3><a href="{{ route('product.details', ['productName' => $product->ProductName , 'ProductId' => $product->ProductId]) }}">{{ $product->ProductName }}</a></h3>
                                         <ul class="color-opt">
                                             <li>{{ $product->Description }}</li>
                                         </ul>

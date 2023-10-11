@@ -38,8 +38,12 @@ class ProductControllder extends Controller
             'Id_Product' => 'required|string|unique:products,Id_Product',
             'ProductName' => 'required|string',
             'Description' => 'required|string',
+            'uses' => 'required|string',
+            'howToUse' => 'required|string',
+            'sideEffects' => 'required|string',
             'Price' => 'required|numeric|min:0',
             'Sale' => 'required|numeric|min:0|max:100',
+            // 'mainImage' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // main Image
             'images.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // cho phép kiểm tra từng tệp hình ảnh trong mảng 'images'
             'expire' => 'required|date|after_or_equal:now',
             'quantity' => 'required|integer|min:1', // Số lượng sản phẩm
@@ -48,12 +52,12 @@ class ProductControllder extends Controller
         // Kiểm tra xem có hình ảnh được tải lên không
 
 
-        // Xử lý lưu hình ảnh vào thư mục public/images
-        // $image = $request->file('Image');
-        // $imageName = time() . '.' . $image->getClientOriginalExtension();
-        // $image->move(public_path('images'), $imageName);
+        // // Xử lý lưu hình ảnh vào thư mục public/images
+        // $mainImage = $request->file('mainImage');
+        // $imageName = time() . '.' . $mainImage->getClientOriginalExtension();
+        // $mainImage->move(public_path('mainImage'), $imageName);
 
-        // Số lượng sản phẩm được nhập bởi người dùng
+        // Số lượng
         $quantity = $request->input('quantity');
 
         // Tạo sản phẩm mới và lưu vào bảng "products"
@@ -61,9 +65,12 @@ class ProductControllder extends Controller
         $product->Id_Product = $request->input('Id_Product');
         $product->ProductName = $request->input('ProductName');
         $product->Description = $request->input('Description');
+        $product->uses = $request->input('uses');
+        $product->howToUse = $request->input('howToUse');
+        $product->sideEffects = $request->input('sideEffects');
         $product->Price = $request->input('Price');
+        // $product->mainImage = 'mainImage/' . $imageName; // Lưu đường dẫn đến hình ảnh
         $product->Sale = $request->input('Sale');
-        // $product->Image = 'images/' . $imageName; // Lưu đường dẫn đến hình ảnh
         $product->expire = $request->input('expire');
         $product->save();
 
@@ -113,7 +120,10 @@ class ProductControllder extends Controller
         // Validate the form data
         $request->validate([
             'ProductName' => 'required',
-            'Description' => 'required',
+            'Description' => 'required|string',
+            'sdieEffects' => 'required|string',
+            'uses' => 'required|string',
+            'howToUse' => 'required|string',
             'Price' => 'required|numeric',
             'Sale' => 'required|numeric',
             'expire' => 'required|date',
@@ -127,21 +137,22 @@ class ProductControllder extends Controller
         // update vào fields
         $product->ProductName = $request->input('ProductName');
         $product->Description = $request->input('Description');
+        $product->uses = $request->input('uses');
+        $product->howToUse = $request->input('howToUse');
+        $product->sideEffects = $request->input('sideEffects');
         $product->Price = $request->input('Price');
         $product->Sale = $request->input('Sale');
-        // $product->quantity = $request->input('quantity');
         $product->expire = $request->input('expire');
-        // $product->Status = $request->input('Status');
 
-        // kiểm tra img trc khi update
-        // if ($request->hasFile('Image')) {
+        //  // kiểm tra img trc khi update
+        // if ($request->hasFile('mainImage')) {
 
-        //     $image = $request->file('Image');
-        //     $imageName = time() . '.' . $image->getClientOriginalExtension();
-        //     $image->move(public_path('images'), $imageName);
+        //     $mainImage = $request->file('mainImage');
+        //     $imageName = time() . '.' . $mainImage->getClientOriginalExtension();
+        //     $mainImage->move(public_path('mainImage'), $imageName);
 
         //     // update hình của sp vào field
-        //     $product->Image = 'images/' . $imageName;
+        //     $product->mainImage = 'images/' . $imageName;
         // }
 
         // if ($request->hasFile('images')) {
