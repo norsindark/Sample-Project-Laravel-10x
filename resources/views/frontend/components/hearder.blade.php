@@ -86,7 +86,7 @@ Header
                         <a href="#">TRANG HIỂN THỊ</a>
                         <ul>
                             <li><a href="{{ route('tin-tuc') }}">TIN TỨC</a></li>
-                            <li><a href="{{ route('san-pham') }}">CHI TIẾT SẢN PHẨM</a></li>
+                            <!-- <li><a href="#">CHI TIẾT SẢN PHẨM</a></li> -->
                             <li><a href="{{ route('danh-muc') }}">DANH MỤC</a></li>
                             <li><a href="{{ route('gio-hang') }}">GIỎ HÀNG</a></li>
                             <li><a href="{{ route('thanh-toan') }}">THANH TOÁN</a></li>

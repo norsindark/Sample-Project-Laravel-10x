@@ -119,11 +119,11 @@ Route::prefix('/')->group(function () {
 
         //show product details
         Route::prefix('product')->group(function () {
-            // Route::get('/', [ProductController::class, 'index'])->name('products');
-            Route::get('index/{ProductId}', [ProductController::class, 'index'])->name('product.index');
-            // Route::get('/get-Products/{ProductId}', [ProductController::class, 'getProducts'])->name('get-Products');
-        });
-        Route::get('/products', [ProductController::class, 'index'])->name('san-pham');
+
+            // thông tin sản phẩm
+            Route::get('{productName}/{ProductId}', [ProductController::class, 'productDetails'])->name('product.details');
+
+        })->name('product');
 
         //show products in categories
         Route::prefix('danh-muc')->group(function () {

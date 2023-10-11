@@ -50,12 +50,8 @@
                         <th>Product Name</th>
                         <th>Categories</th>
                         <th>Price</th>
-                        <th>Description</th>
                         <th>Sale</th>
-                        <!-- <th>Quantity</th> -->
                         <th>Expiration date</th>
-                        <!-- <th>Status</th> -->
-                        <!-- <th>Created At</th> -->
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -63,7 +59,6 @@
                     @foreach ($products as $product)
                     <tr>
                         <td>{{ $product->Id_Product }}</td>
-                        <td>
                         <td>
                             @if ($product_images)
                             @foreach ($product_images as $product_image)
@@ -80,12 +75,11 @@
                             @foreach ($product->categories as $category)
                             {{ $category->CategoryName }}
                             @if (!$loop->last)
-                            , <!-- Dấu phẩy nếu không phải danh mục cuối cùng -->
+                            ,
                             @endif
                             @endforeach
                         </td>
                         <td>{{ $product->Price }}</td>
-                        <td>{{ $product->Description }}</td>
                         <td>{{ $product->Sale }}%</td>
                         <td>
                             @php
