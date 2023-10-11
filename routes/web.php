@@ -10,6 +10,8 @@ use App\Http\Controllers\Admin\Dashboard\Product\ProductControllder;
 use App\Http\Controllers\Admin\Dashboard\Category\CategoryControllder;
 use App\Http\Controllers\Admin\Dashboard\Order\OrderController;
 use App\Http\Controllers\Admin\Dashboard\Warehouse\WarehouseController;
+use App\Http\Controllers\User\CategoryController;
+use App\Http\Controllers\User\ProductController;
 use Illuminate\Support\Facades\Auth;
 
 // Dashboard
@@ -78,10 +80,10 @@ Route::middleware(['role:1'])->prefix('dashboard')->group(function () {
         // update product
         Route::put('/{ProductId}/update', [ProductControllder::class, 'update'])->name('dashboard.product.update');
 
-         // Hiển thị form chỉnh sửa products image
-         Route::get('/{ProductId}/editImage', [ProductControllder::class, 'editImage'])->name('dashboard.product.edit_Image');
+        // Hiển thị form chỉnh sửa products image
+        Route::get('/{ProductId}/editImage', [ProductControllder::class, 'editImage'])->name('dashboard.product.edit_Image');
 
-         // update products image
+        // update products image
         Route::put('/{ProductId}/updateImage', [ProductControllder::class, 'updateImage'])->name('dashboard.product.update_Image');
 
         // Xóa products
@@ -94,21 +96,6 @@ Route::middleware(['role:1'])->prefix('dashboard')->group(function () {
 
         // Danh sách các danh mục
         Route::get('/', [OrderController::class, 'index'])->name('dashboard.order.index');
-
-        // Hiển thị form tạo danh mục
-       /* Route::get('/create', [ProductControllder::class, 'create'])->name('dashboard.product.create');
-
-        // Lưu danh mục mới
-        Route::post('/store', [ProductControllder::class, 'store'])->name('dashboard.product.store');
-
-        // Hiển thị form chỉnh sửa danh mục
-        Route::get('/{ProductId}/edit', [ProductControllder::class, 'edit'])->name('dashboard.product.edit');
-
-        // update product
-        Route::put('/{ProductId}', [ProductControllder::class, 'update'])->name('dashboard.product.update');
-
-        // Xóa danh mục
-        Route::delete('{ProductId}', [ProductControllder::class, 'destroy'])->name('dashboard.product.destroy');*/
     });
     Route::prefix('Warehouse')->group(function () {
 
@@ -116,20 +103,34 @@ Route::middleware(['role:1'])->prefix('dashboard')->group(function () {
         Route::get('/', [WarehouseController::class, 'index'])->name('dashboard.warehouse.index');
         Route::get('/{id}/edit', [WarehouseController::class, 'edit'])->name('dashboard.warehouse.edit');
         Route::put('/{id}', [WarehouseController::class, 'update'])->name('dashboard.warehouse.update');
-
     });
 })->name('dashboard');
 
 
 // Client
 
+
 Route::prefix('/')->group(function () {
     Route::prefix('/')->group(function () {
+        Route::get('/', [CategoryController::class, 'dropListCategories'])->name('drop-List-Category');
         Route::get('/home', [HomeController::class, 'checkRoleUser'])->name('checkRole');
         Route::get('/trang-chu', [HomeController::class, 'home'])->name('home');
         Route::get('/tin-tuc', 'App\Http\Controllers\User\BlogController@index')->name('tin-tuc');
-        Route::get('/san-pham', 'App\Http\Controllers\User\ProductController@index')->name('san-pham');
-        Route::get('/danh-muc', 'App\Http\Controllers\User\CategoryController@index')->name('danh-muc');
+
+        //show product details
+        Route::prefix('product')->group(function () {
+            // Route::get('/', [ProductController::class, 'index'])->name('products');
+            Route::get('index/{ProductId}', [ProductController::class, 'index'])->name('product.index');
+            // Route::get('/get-Products/{ProductId}', [ProductController::class, 'getProducts'])->name('get-Products');
+        });
+        Route::get('/products', [ProductController::class, 'index'])->name('san-pham');
+
+        //show products in categories
+        Route::prefix('danh-muc')->group(function () {
+
+            Route::get('/', [CategoryController::class, 'index'])->name('danh-muc');
+            Route::get('/get-Products/{categoryId}', [ProductController::class, 'getProducts'])->name('get-Products');
+        });
         Route::get('/gio-hang', 'App\Http\Controllers\User\CartController@index')->name('gio-hang');
         Route::get('/thanh-toan', 'App\Http\Controllers\User\CheckoutController@index')->name('thanh-toan');
     });
