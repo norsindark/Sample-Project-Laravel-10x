@@ -101,12 +101,22 @@
                             <a href="#" class="price"><span>{{ number_format($product->Price, 0, ',', ' ') }} VNĐ</span></a>
                             <ul class="cart-buttons mt-45 clearfix">
                                 <li>
+                                    @if ($errors != null)
                                     <div class="quantity-control">
                                         <span class="btn-cart btn-square btn-plus btn-qty"><i class="fa fa-plus"></i></span>
-                                        <input type="text" data-invalid="Enter valid quantity" data-maxalert="Maximum limit reached" data-max="10" data-minalert="Minimum limit reached" data-min="1" value="2">
+                                        <input type="text" data-invalid="Enter valid quantity" data-maxalert="Trong kho hàng chỉ còn {{ $quantityInWarehouse }}" data-max="{{ $quantityInWarehouse }}" data-minalert="Minimum limit reached" data-min="1" value="0">
                                         <span class="btn-cart btn-square btn-minus btn-qty"><i class="fa fa-minus"></i></span>
                                     </div>
+                                    @elseif($error == null)
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            <li>{{ $error }}</li>
+                                        </ul>
+                                    </div>
+                                    @endif
+
                                 </li>
+
                                 <li>
                                     <a href="#" class="btn-cart btn-square">
                                         <i class="fa fa-heart"></i>
@@ -133,7 +143,7 @@
                 </ul>
                 <div class="tab-panels">
                     <div id="tab01" class="tab-content active">
-                        <!-- <h4>Elevit là gì ?</h4> -->
+                        <h4>{{ $product->ProductName }} là gì ?</h4>
                         <h4>Mô tả sản phẩm</h4>
                         <p>{{ $product->Description }}</p>
                         <!-- <h4>Thành phần</h4> -->
@@ -144,11 +154,11 @@
                         </ul> -->
                     </div>
                     <div id="tab02" class="tab-content">
-                        <!-- <h4>Công dụng của Elevit ?</h4> -->
+                        <h4>Công dụng của {{ $product->ProductName }} ?</h4>
                         <p>{{ $product->uses }}</p>
                     </div>
                     <div id="tab03" class="tab-content">
-                        <!-- <h4>Cách dùng Elevit ?</h4> -->
+                        <h4>Cách dùng {{ $product->ProductName }} ?</h4>
                         <p>{{ $product->Usage }}</p>
                         <h4>Đối tượng sử dụng</h4>
                         <p>{{ $product->User }}</p>
