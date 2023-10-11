@@ -219,21 +219,7 @@ Search
                 <b class="fa fa-caret-down"></b>
                 <span>DANH MỤC SẢN PHẨM</span>
                 <select class="search-cate notranslate" id="search-dropdown-box">
-
-                    @if(!empty($categories))
-                        @foreach ($categories as $category)
-
-                            <option value="{{ $category->CategoryId }}">{{ $category->CategoryName }}</option>
-                        @endforeach
-                    @endif
-                    {{--<option value="">Danh mục sản phẩm</option>
-                    <option value="">Dinh dưỡng</option>
-                    <option value="">Vitamin & Khoáng chất</option>
-                    <option value="">Sức khoẻ tim mạch</option>
-                    <option value="">Tăng sức đề kháng, miễn dịch</option>
-                    <option value="">Hỗ trợ tiêu hóa</option>
-                    <option value="">Sinh lý - Nội tiết tố</option>
-                    <option value="">Chăm sóc da mặt</option>--}}
+                   
                 </select>
             </div>
             <input type="text" placeholder="Từ khóa tìm kiếm..." />
