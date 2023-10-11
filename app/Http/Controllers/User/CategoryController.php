@@ -18,4 +18,18 @@ class CategoryController extends Controller
 
         return view('frontend.category.category', compact('categories', 'products', 'product_images'));
     }
+
+    public function getProducts($categoryName,$categoryId)
+    {
+        if ($categoryId == 0 && $categoryName) {
+            $products = Products::all();
+        } else {
+            $products = Products::whereHas('categories', function ($query) use ($categoryId) {
+                $query->where('category_product.CategoryId', $categoryId);
+            })->get();
+        }
+        $product_images = ProductImage::all();
+        $categories = Categories::all();
+        return view('frontend.category.category', compact('products', 'categories', 'product_images'));
+    }
 }

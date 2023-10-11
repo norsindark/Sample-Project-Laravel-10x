@@ -12,18 +12,4 @@ class ProductController extends Controller
     {
         return view('frontend/product.product');
     }
-
-    public function getProducts($categoryId) {
-        if ($categoryId === 'all') {
-            $products = Products::all();
-        } else {
-            $products = Products::whereHas('categories', function ($query) use ($categoryId) {
-                $query->where('category_id', $categoryId);
-            })->get();
-        }
-    
-        return view('frontend.category.category', compact('products'));
-    }
-    
-    
 }

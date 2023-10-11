@@ -33,25 +33,28 @@
 
                         </ul>
                         <h4>DANH MỤC</h4>
+
+                        <!-- show all products  -->
                         <ul class="customeField clearfix">
                             <li>
-                                <input name="brandFilter-radio" id="pcheck6" class="required-check" type="radio" value="all">
+                                <input name="brandFilter-radio" id="pcheck6" class="required-check" type="radio" value="0">
                                 <label for="pcheck6">
-                                    Tất cả danh mục
-                                    <span>
-                                        <i></i>
-                                    </span>
+                                    <a href="{{ route('show-products', ['categoryName' => 'tat-ca' , 'categoryId' =>  0 ]) }}">
+                                        Tất cả danh mục
+                                    </a>
                                 </label>
                             </li>
                         </ul>
 
+                        <!-- filter by category  -->
                         @foreach($categories as $category)
                         <ul class="customeField clearfix">
                             <li>
-                                <input name="brandFilter-radio" id="pcheck{{ $category->CategoryId }}" class="required-check" type="radio">
+                                <input name="brandFilter-radio" id="pcheck{{ $category->CategoryId }}" class="required-check" type="radio" value="{{ $category->CategoryId }}">
                                 <label for="pcheck{{ $category->CategoryId }}">
-                                    {{ $category->CategoryName }}
-                                    <span><i></i></span>
+                                    <a href="{{ route('show-products', ['categoryName' => $category->CategoryName ,'categoryId' => $category->CategoryId]) }}">
+                                        {{ $category->CategoryName }}
+                                    </a>
                                 </label>
                             </li>
                         </ul>
@@ -225,43 +228,11 @@
                     </header>
                     <div class="xv-product-slides grid-view products" data-thumbnail="figure .xv-superimage" data-product=".xv-product-unit">
                         <div class="row">
-                            <div class="xv-product-unit">
-                                <!-- <div class="xv-product shadow-around">
-                                    <figure>
-                                        <a href="#"><img class="xv-superimage" src="/Duanmautemplate/assets/img/product/P25900_1-thumbnail-510x510-70.jpg" alt="" /></a>
-                                        <figcaption>
-                                            <ul class="style1">
-                                                <li><a data-qv-tab="#qvt-wishlist" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a data-qv-tab="#qvt-compare" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-exchange"></i></a></li>
-                                                <li><a class="btn-cart btn-square btn-blue" href="#"><i class="fa fa-expand"></i></a></li>
-                                            </ul>
-                                        </figcaption>
-                                    </figure>
-                                    <div class="xv-product-content">
-                                        <h3><a href="detail1.html">Bông tẩy trang Pharmacity Cotton Puffs (Hộp 90 miếng) - New</a></h3>
-
-                                        <ul class="color-opt">
-                                            <li>Bông tẩy trang được làm từ 100% cotton tự nhiên mang lại cảm giác mềm mại và mịn màng khi sử dụng...</li>
-                                        </ul>
-                                        <ul class="extra-links">
-                                            <li><a href="#"><i class="fa fa-heart"></i>Wishlist</a></li>
-                                            <li><a href="#"><i class="fa fa-exchange"></i>Compare</a></li>
-                                            <li><a href="#"><i class="fa fa-expand"></i>Expand</a></li>
-                                        </ul>
-                                        <div class="xv-rating stars-5"></div>
-                                        <span class="xv-price">250.000 VNĐ</span>
-                                        <a data-qv-tab="#qvt-cart" href="#" class="product-buy flytoQuickView">MUA</a>
-                                    </div>
-                                </div> -->
-                            </div>
-
-                            <!-- show products theo categories  -->
+                            <!-- show products theo category  -->
                             @foreach($products as $product)
                             <div data-pid="{{ $product->ProductId }}" data-name="{{ $product->ProductName }}" data-price="{{ $product->Price }}" class="xv-product-unit">
                                 <div class="xv-product mb-15 mt-15 shadow-around">
                                     <figure>
-
-                                        @if ($product_images)
                                         @php
                                         $firstImageDisplayed = false;
                                         @endphp
@@ -273,7 +244,7 @@
                                         @endphp
                                         @endif
                                         @endforeach
-                                        @endif
+
                                         <figcaption>
                                             <ul class="style1">
                                                 <li><a data-qv-tab="#qvt-wishlist" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-heart"></i></a></li>
@@ -299,7 +270,6 @@
                                 </div>
                             </div>
                             @endforeach
-
 
                         </div>
                     </div>
@@ -859,13 +829,13 @@
     </div><!--container-->
 
 </main><!--pageContentArea-->
-<script>
+<!-- <script>
     $(document).ready(function() {
         $('input[name="brandFilter-radio"]').on('change', function() {
-            var categoryId = $(this).attr('id').replace('pcheck', ''); // Lấy categoryId từ id của radio button
+            var categoryId = $(this).val(); // Lấy giá trị value của radio button
+
             if (categoryId === 'all') {
                 // Hiển thị tất cả sản phẩm
-
             } else {
                 // Gửi yêu cầu AJAX để lấy sản phẩm dựa trên danh mục được chọn
                 $.get('/get-Products/' + categoryId, function(data) {
@@ -875,5 +845,5 @@
             }
         });
     });
-</script>
+</script> -->
 @endsection

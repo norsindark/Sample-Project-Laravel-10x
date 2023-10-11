@@ -129,7 +129,10 @@ Route::prefix('/')->group(function () {
         Route::prefix('danh-muc')->group(function () {
 
             Route::get('/', [CategoryController::class, 'index'])->name('danh-muc');
-            Route::get('/get-Products/{categoryId}', [ProductController::class, 'getProducts'])->name('get-Products');
+            // routes/web.php
+            Route::get('{categoryName}/{categoryId}', [CategoryController::class,'getProducts'])->name('show-products');
+
+            // Route::get('/get-Products/{categoryId}', [ProductController::class, 'getProducts'])->name('get-Products');
         });
         Route::get('/gio-hang', 'App\Http\Controllers\User\CartController@index')->name('gio-hang');
         Route::get('/thanh-toan', 'App\Http\Controllers\User\CheckoutController@index')->name('thanh-toan');
