@@ -20,7 +20,7 @@ class RegisterController extends Controller
         // Sử dụng Validator để kiểm tra dữ liệu
         $validator = Validator::make($request->all(), [
             'email' => 'required|email|unique:users,Email', // Kiểm tra email không trùng lặp
-            'username' => 'required|unique:users,UserName', // Kiểm tra username không trùng lặp
+            'username' => 'required|unique|regex:/^[a-zA-Z0-9_ -]+$/:users,UserName', // Kiểm tra username 
             'password' => 'required|string|min:6', // Mật khẩu phải có ít nhất 6 ký tự
         ]);
 
