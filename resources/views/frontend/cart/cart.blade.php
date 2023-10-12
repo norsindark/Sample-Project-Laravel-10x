@@ -76,10 +76,12 @@
                                         <li><a href="#" class="btn-cart btn-square style"><i class="fa fa-repeat"></i></a></li>
                                         <li><a href="#" class="btn-cart btn-square btn-pink"><i class="fa fa-cog"></i></a></li>
                                         <li>
-                                            <form method="POST" class="btn-cart btn-square btn-blue" action="{{ route('remove-cart-item', ['id' => $item->id]) }}" onclick="return confirm('Are you sure you want to delete this category?')">
+                                            <form method="POST" action="{{ route('remove-cart-item', ['id' => $item->id]) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
                                                 @csrf
                                                 @method('DELETE')
-                                                <i class="fa fa-trash-o" ></i>
+                                                <button type="submit" class="btn-cart btn-square btn-blue">
+                                                    <i class="fa fa-trash-o"></i>
+                                                </button>
                                             </form>
                                         </li>
                                     </ul>

@@ -160,7 +160,7 @@ Header
                         <tbody class="shadow-around">
                             @foreach ($cartItems as $cartItem)
                             @foreach ($products as $product)
-                            @if($cartItem->product_id = $product->ProductId)
+                            @if($cartItem->product_id == $product->ProductId)
                             <tr class="table-body">
                                 <td>
                                     <figure>
