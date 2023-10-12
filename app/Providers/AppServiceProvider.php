@@ -20,11 +20,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Validator::extend('removeLeadingZeros', function ($attribute, $value, $parameters, $validator) {
-        //     // Loại bỏ số 0 ở đầu sử dụng biểu thức chính quy
-        //     $value = preg_replace('/^0+/', '', $value);
-
-        //     return is_numeric($value);
-        // });
+        Validator::extend('checkUserName', function ($attribute, $value, $parameters, $validator) {
+            // Sử dụng biểu thức chính quy để kiểm tra chuỗi
+            return preg_match('/^[a-zA-Z0-9_ -]+$/', $value);
+        });
     }
 }
