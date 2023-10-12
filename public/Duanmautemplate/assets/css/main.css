@@ -3052,9 +3052,10 @@ grid
 .sec-heading.style .category-wrap{
     left: 18px;
     position: absolute;
-    top: 30px;
+    top: 5px;
     padding-bottom: 15px;
 }
+
 
 .sec-heading.style .categorise .fa.style{
     padding-left: 10px;
@@ -5436,4 +5437,39 @@ http://tobiasahlin.com/spinkit/
     color: #40404d;
 }
 
+
+.category_css {
+    font-size: 14px;
+    text-decoration: none  !important;
+    text-decoration: none; /* Ẩn gạch chân trong liên kết */
+    color: inherit; /* Màu văn bản khi liên kết không được hover */
+    position: relative;
+}
+
+.category_css:hover {
+    text-decoration: none; /* Ẩn gạch chân trong liên kết */
+    color: inherit; /* Khi di chuột vào, màu văn bản giữ nguyên */
+    border-bottom: 2px solid #5fb7ea;
+}
+
+.category_css::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px; /* Độ dày của đường outline */
+    background-color: #5fb7ea; /* Màu của đường outline */
+    left: 0;
+    bottom: 0;
+    transform: scaleX(0); /* Bắt đầu với scaleX(0) để ẩn đường outline */
+    transform-origin: 0 50%; /* Chỉ định điểm bắt đầu của transform */
+    transition: transform 0.3s ease; /* Hiệu ứng chuyển đổi */
+}
+
+.category_css:hover::before {
+    transform: scaleX(1); /* Khi di chuột vào, đường outline sẽ chạy từ trái sang phải */
+}
+
+#content main .table-data .order table td{
+    width: 80px !important;
+}
 

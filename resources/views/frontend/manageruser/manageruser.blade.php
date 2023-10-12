@@ -63,6 +63,38 @@
                         <button type="button" class="btn btn-primary btn_location">Chỉnh sửa thông tin</button>
 
                     </div>
+              {{--      form chỉnh sửa thng tin cá nhân--}}
+                    <div class="table-data">
+                        <div class="Create-product">
+                            <form class="form_create"  method="POST" action="">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="ProductId">Họ và tên</label>
+                                    <input class="form-control" type="text" id="username" name="username" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ProductName">Email</label>
+                                    <input class="form-control" type="text" id="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Description">Phone</label>
+                                    <input class="form-control" type="text" id="phone" name="phone" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Description">Mật khẩu</label>
+                                    <input class="form-control" type="text" id="password" name="password" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Description">Địa chỉ</label>
+                                    <input class="form-control" type="text" id="address" name="address" required>
+                                </div>
+
+                                <button type="submit" class="Btn_create">Cập nhập thông tin</button>
+                            </form>
+
+                        </div>
+                    </div>
                 </div>
             </div><!--row-->
         </div><!--product overview-->
