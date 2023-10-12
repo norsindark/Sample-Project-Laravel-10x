@@ -71,8 +71,8 @@ class AppServiceProvider extends ServiceProvider
 
                 $view->with(['cartItems'=> $cartItems, 'product_images' => $product_images, 'products' => $products, 'totalPrice' => $totalPrice]);
             } else {
-                $cartItems = "Bạn phải đăng nhập để sử dụng chức năng này.";
-                $view->with('cartItems', $cartItems);
+                $error = "Bạn phải đăng nhập để sử dụng chức năng này.";
+                $view->with('error', $error);
             }
         });
     }
