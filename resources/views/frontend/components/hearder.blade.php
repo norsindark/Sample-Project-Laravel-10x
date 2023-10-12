@@ -155,6 +155,7 @@ Header
 
                     <!-- new cart  -->
 
+                    @auth
                     <table class="table">
                         <tbody class="shadow-around">
                             @foreach ($cartItems as $cartItem)
@@ -211,6 +212,14 @@ Header
                             </tr>
                         </tbody>
                     </table>
+                    @endauth
+                    @guest
+                    <div class="alert alert-danger">
+                        <ul>
+                            <li>{{ $error }}</li>
+                        </ul>
+                    </div>
+                    @endif
                 </div>
             </nav>
         </div>
