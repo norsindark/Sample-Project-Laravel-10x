@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\Dashboard\Order\OrderController;
 use App\Http\Controllers\Admin\Dashboard\Warehouse\WarehouseController;
 use App\Http\Controllers\User\CategoryController;
 use App\Http\Controllers\User\ProductController;
+use App\Http\Controllers\User\CartController;
 use Illuminate\Support\Facades\Auth;
 
 // Dashboard
@@ -117,12 +118,14 @@ Route::prefix('/')->group(function () {
         Route::get('/trang-chu', [HomeController::class, 'home'])->name('home');
         Route::get('/tin-tuc', 'App\Http\Controllers\User\BlogController@index')->name('tin-tuc');
 
+        //cart
+        Route::post('/add-to-cart/{ProductId}',  [CartController::class, 'addToCart'])->name('add-to-cart');
+
         //show product details
         Route::prefix('product')->group(function () {
 
             // thông tin sản phẩm
             Route::get('{productName}/{ProductId}', [ProductController::class, 'productDetails'])->name('product.details');
-
         })->name('product');
 
         //show products in categories
@@ -130,19 +133,19 @@ Route::prefix('/')->group(function () {
 
             Route::get('/', [CategoryController::class, 'index'])->name('danh-muc');
             // routes/web.php
-            Route::get('{categoryName}/{categoryId}', [CategoryController::class,'getProducts'])->name('show-products');
-
-            // Route::get('/get-Products/{categoryId}', [ProductController::class, 'getProducts'])->name('get-Products');
+            Route::get('{categoryName}/{categoryId}', [CategoryController::class, 'getProducts'])->name('show-products');
         });
         Route::get('/gio-hang', 'App\Http\Controllers\User\CartController@index')->name('gio-hang');
         Route::get('/thanh-toan', 'App\Http\Controllers\User\CheckoutController@index')->name('thanh-toan');
     });
+
+
     // Quản lí tài khoản
-    Route::prefix('/afterlogin')->group(function () {
+    Route::prefix('/')->group(function () {
         Route::get('quan-li-tai-khoan', 'App\Http\Controllers\User\ManagerUser\ManagerUserController@index')->name('manageruser');
         Route::get('don-hang-cua-ban', 'App\Http\Controllers\User\ManagerUser\ManagerOderController@index')->name('manageroder');
         Route::get('quan-li-so-dia-chi', 'App\Http\Controllers\User\ManagerUser\ManagerAddressController@index')->name('manageraddress');
-    })->name('afterLogin');
+    });
 });
 
 Auth::routes();
