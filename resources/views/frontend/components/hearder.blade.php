@@ -97,7 +97,7 @@ Header
                 </ul>
                 <a href="#" class="openCart"></a>
                 <div class="table-responsive cart-calculations text-center">
-                    <table class="table">
+                    <!-- <table class="table">
                         <tbody class="shadow-around">
                             <tr class="table-body">
                                 <td>
@@ -148,6 +148,66 @@ Header
                                     <span class="colpink">200.000VNĐ</span>
                                 </td>
                                 <td></td>
+                            </tr>
+                        </tbody>
+                    </table> -->
+
+
+                    <!-- new cart  -->
+
+                    <table class="table">
+                        <tbody class="shadow-around">
+                            @foreach ($cartItems as $cartItem)
+                            @foreach ($products as $product)
+                            @if($cartItem->product_id = $product->ProductId)
+                            <tr class="table-body">
+                                <td>
+                                    <figure>
+                                        @php
+                                        $firstImageDisplayed = false;
+                                        @endphp
+                                        @foreach ($product_images as $product_image)
+                                        @if ($product_image->ProductId == $product->ProductId && !$firstImageDisplayed)
+                                        <a href="#"><img src="{{ asset('storage/' . $product_image->path) }}" alt="Product Image" width="50px"></a>
+                                        @php
+                                        $firstImageDisplayed = true;
+                                        @endphp
+                                        @endif
+                                        @endforeach
+                                    </figure>
+                                </td>
+                                <td>
+                                    <div class="cart-wrappper text-left">
+                                        <h6>{{ $product->ProductName }}</h6>
+                                        <p><span>Mã sản phẩm</span>: {{ $product->Id_Product }}</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <input type="text" value="{{ $cartItem->quantity }}" readonly />
+                                </td>
+                                <td>
+                                    <span class="cart-content">Đơn giá:</span>
+                                    <span class="cart-price">{{ number_format($product->Price) }}VNĐ</span>
+                                </td>
+                                <td>
+                                    <span class="cart-content">Tổng giá:</span>
+                                    <span class="cart-price">{{ number_format($product->Price * $cartItem->quantity) }}VNĐ</span>
+                                </td>
+                                <!-- <td>
+                                    <a class="cart-action" href="#"><i class="fa fa-trash-o"></i></a>
+                                </td> -->
+                            </tr>
+                            @endif
+                            @endforeach
+                            @endforeach
+                            <tr class="table-body style">
+                                <td colspan="6" class="fix_td">
+                                    <a href="{{ route('gio-hang') }}" class="btn-cart btn-rectangle">Giỏ hàng</a>
+                                    <a href="checkout1.html" style="margin-left: 15px" class="btn-cart btn-rectangle">Thanh toán</a>
+                                </td>
+                                <td colspan="6">
+                                    <div>TỔNG CỘNG: <span class="colpink">{{ number_format($totalPrice) }}VNĐ</span></div>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
