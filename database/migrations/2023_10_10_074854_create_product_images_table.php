@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('ProductId');
             $table->string('path'); // Đường dẫn hình ảnh
-            $table->foreign('ProductId')->references('ProductId')->on('products');
+            $table->foreign('ProductId')->references('ProductId')->on('products')->onDelete('cascade');
             $table->timestamps();
         });
     }

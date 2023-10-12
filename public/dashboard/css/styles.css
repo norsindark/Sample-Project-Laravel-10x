@@ -673,4 +673,5 @@ body {
 .Create-product {
     overflow: hidden;
     margin: auto;
+	min-height: 1300px;
 }
