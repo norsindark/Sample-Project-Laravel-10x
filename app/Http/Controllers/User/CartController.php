@@ -22,7 +22,7 @@ class CartController extends Controller
 
         // check user
         if (!auth()->check()) {
-            return redirect()->with('error', 'Bạn phải đăng nhập để sử dụng chức năng này.');
+            return redirect()->route('login')->with('error', 'Bạn phải đăng nhập để sử dụng chức năng giỏ hàng.');
         }
 
         $userId = auth()->id();
