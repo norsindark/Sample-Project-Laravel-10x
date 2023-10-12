@@ -73,9 +73,9 @@ class CartController extends Controller
         $quantity = $request->input('quantity');
 
         // validate dât
-        // $request->validate([
-        //     'quantity' => 'required|integer|min:1',
-        // ]);
+        $request->validate([
+            'quantity' => 'required|integer|min:1',
+        ]);
 
         // upđate or Create
         if ($cartItem) {

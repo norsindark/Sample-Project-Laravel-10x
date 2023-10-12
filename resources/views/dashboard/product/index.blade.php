@@ -57,9 +57,9 @@
                 </thead>
                 <tbody>
                     @foreach ($products as $product)
-                    <tr>
+                    <tr style="font-size: 13px" class="two_hight">
                         <td>{{ $product->Id_Product }}</td>
-                        <td>
+                        <td style="width: 200px !important;">
                             @if ($product_images)
                             @foreach ($product_images as $product_image)
                             @if ($product_image->ProductId == $product->ProductId)
@@ -70,8 +70,8 @@
                             <a class="status process" href="{{route('dashboard.product.edit_Image', ['ProductId' => $product->ProductId])}}">Edit Image</a>
                         </td>
                         </td>
-                        <td>{{ $product->ProductName }}</td>
-                        <td>
+                        <td style="width: 200px !important;">{{ $product->ProductName }}</td>
+                        <td style="width: 200px !important;">
                             @foreach ($product->categories as $category)
                             {{ $category->CategoryName }}
                             @if (!$loop->last)
@@ -79,7 +79,7 @@
                             @endif
                             @endforeach
                         </td>
-                        <td>{{ $product->Price }}</td>
+                        <td>{{ $product->Price }}VNĐ</td>
                         <td>{{ $product->Sale }}%</td>
                         <td>
                             @php

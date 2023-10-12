@@ -26,7 +26,7 @@
         <div class="product-overview pt-50 pb-50">
             <div class="row">
                 <div class="col-xs-12 col-sm-3 hidden-xs">
-                    <aside class="sidebar">
+                    <aside class="sidebar" style="border-right: 1px solid #ccc">
                         <ul class="breadcrumb">
                             <li><a href="#"><i class="fa fa-home"></i>Trang chủ</a></li>
                             <li><a href="#">Danh mục sản phẩm</a></li>
@@ -39,7 +39,7 @@
                             <li>
                                 <input name="brandFilter-radio" id="pcheck6" class="required-check" type="radio" value="0">
                                 <label for="pcheck6">
-                                    <a href="{{ route('show-products', ['categoryName' => 'tat-ca' , 'categoryId' =>  0 ]) }}">
+                                    <a class="category_css" href="{{ route('show-products', ['categoryName' => 'tat-ca' , 'categoryId' =>  0 ]) }}">
                                         Tất cả danh mục
                                     </a>
                                 </label>
@@ -52,7 +52,7 @@
                             <li>
                                 <input name="brandFilter-radio" id="pcheck{{ $category->CategoryId }}" class="required-check" type="radio" value="{{ $category->CategoryId }}">
                                 <label for="pcheck{{ $category->CategoryId }}">
-                                    <a href="{{ route('show-products', ['categoryName' => $category->CategoryName ,'categoryId' => $category->CategoryId]) }}">
+                                    <a class="category_css" href="{{ route('show-products', ['categoryName' => $category->CategoryName ,'categoryId' => $category->CategoryId]) }}">
                                         {{ $category->CategoryName }}
                                     </a>
                                 </label>
@@ -238,7 +238,7 @@
                                         @endphp
                                         @foreach ($product_images as $product_image)
                                         @if ($product_image->ProductId == $product->ProductId && !$firstImageDisplayed)
-                                        <a href="#"><img src="{{ asset('storage/' . $product_image->path) }}" alt="Product Image"></a>
+                                        <a  href="#"><img style="width: 180px;" src="{{ asset('storage/' . $product_image->path) }}" alt="Product Image"></a>
                                         @php
                                         $firstImageDisplayed = true;
                                         @endphp
@@ -254,10 +254,10 @@
                                         </figcaption>
                                     </figure>
                                     <div class="xv-product-content">
-                                        <h3><a href="{{ route('product.details', ['productName' => $product->ProductName , 'ProductId' => $product->ProductId]) }}">{{ $product->ProductName }}</a></h3>
-                                        <ul class="color-opt">
-                                            <li>{{ $product->Description }}</li>
-                                        </ul>
+                                        <h3 style="line-height: 20px; font-weight: 600"><a href="{{ route('product.details', ['productName' => $product->ProductName , 'ProductId' => $product->ProductId]) }}">{{ $product->ProductName }}</a></h3>
+
+                                            <p style=" height: 3em;white-space: nowrap;text-overflow: ellipsis; overflow: hidden;">{{ $product->Description }}</p>
+
                                         <ul class="extra-links">
                                             <li><a href="#"><i class="fa fa-heart"></i>Wishlist</a></li>
                                             <li><a href="#"><i class="fa fa-exchange"></i>Compare</a></li>
@@ -265,6 +265,7 @@
                                         </ul>
                                         <div class="xv-rating stars-5"></div>
                                         <span class="xv-price">{{ $product->Price }} VNĐ</span>
+                                     {{--   <del class="">giá giiảm VNĐ</del>--}}
                                         <a data-qv-tab="#qvt-cart" href="#" class="product-buy flytoQuickView">MUA</a>
                                     </div>
                                 </div>

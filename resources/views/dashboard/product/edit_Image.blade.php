@@ -62,13 +62,21 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>
+                            <td style="    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;">
                                 @foreach ($product_images as $product_image)
                                 @if ($product_image->ProductId == $product->ProductId)
                                 <form method="POST" action="{{ route('dashboard.product.del_Image', ['id' => $product_image->id] )}}">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="status process" style="background-color: red; border: none; margin-top: 12px;" onclick="return confirm('Are you sure you want to delete this image?')">Del</button>
+                                    <button type="submit" class="status process" style="    background-color: red;
+    border: none;
+    border-radius: 20px;
+    padding: 5px;
+    color: #fff;
+    margin-top: 12px;" onclick="return confirm('Are you sure you want to delete this image?')">Del</button>
                                 </form>
                                 @endif
                                 @endforeach
