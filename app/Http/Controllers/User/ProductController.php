@@ -13,7 +13,11 @@ class ProductController extends Controller
 
     public function productDetails($productsName, $ProductId)
     {
-        $product = Products::findOrFail($ProductId);
+        $product = Products::findOrFail($ProductId);   
+
+        // $ProductId =  $product->ProductId;
+
+        // dd($productId);
         $product_images = ProductImage::all();
 
         $warehouses = $product->warehouses;
