@@ -118,8 +118,7 @@ Route::prefix('/')->group(function () {
         Route::get('/trang-chu', [HomeController::class, 'home'])->name('home');
         Route::get('/tin-tuc', 'App\Http\Controllers\User\BlogController@index')->name('tin-tuc');
 
-        //cart
-        Route::post('/add-to-cart/{ProductId}',  [CartController::class, 'addToCart'])->name('add-to-cart');
+
 
         //show product details
         Route::prefix('product')->group(function () {
@@ -135,7 +134,17 @@ Route::prefix('/')->group(function () {
             // routes/web.php
             Route::get('{categoryName}/{categoryId}', [CategoryController::class, 'getProducts'])->name('show-products');
         });
-        Route::get('/gio-hang', 'App\Http\Controllers\User\CartController@index')->name('gio-hang');
+
+        //cart
+        Route::get('/gio-hang', [CartController::class, 'index'])->name('gio-hang');
+        Route::delete('remove-cart-item/{id}',  [CartController::class, 'removeCartItem'])->name('remove-cart-item');
+
+        Route::prefix('cart')->group(function () {
+            Route::post('/add-to-cart/{ProductId}',  [CartController::class, 'addToCart'])->name('add-to-cart');
+            // Route::delete('{id}', [CartController::class, 'removeCartItem'])->name('remove-cart-item');
+        })->name();
+
+
         Route::get('/thanh-toan', 'App\Http\Controllers\User\CheckoutController@index')->name('thanh-toan');
     });
 

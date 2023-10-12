@@ -20,12 +20,12 @@ class CartController extends Controller
 
         $products = Products::all();
 
+        $userId = auth()->id();
         // check user
         if (!auth()->check()) {
             return redirect()->route('login')->with('error', 'Bạn phải đăng nhập để sử dụng chức năng giỏ hàng.');
         }
 
-        $userId = auth()->id();
 
         // check cart of user
         $cart = Cart::where('user_id', $userId)->first();
@@ -35,17 +35,15 @@ class CartController extends Controller
             $cart = Cart::create(['user_id' => $userId]);
         }
 
-       $cartItems = $cart->items;
-
-        // dd($cartItems);
+        $cartItems = $cart->items;
 
         // total price
         $totalPrice = 0;
         foreach ($cartItems as $cartItem) {
-            $totalPrice = $cartItem->quantity*$cartItem->price;
+            $totalPrice = $cartItem->quantity * $cartItem->price;
         }
 
-        return view('frontend.cart.cart', compact('cartItems','products', 'totalPrice', 'product_images'));
+        return view('frontend.cart.cart', compact('cartItems', 'products', 'totalPrice', 'product_images'));
     }
 
 
@@ -58,19 +56,18 @@ class CartController extends Controller
             return back()->with('error', 'Bạn phải đăng nhập để sử dụng chức năng này.');
         }
 
-        //check product
-        $product = Products::find($ProductId);
-        if (!$product) {
-            return back()->with('error', 'Sản phẩm không tồn tại.');
-        }
-
         //check cart
         $cart = Cart::where('user_id', $userId)->first();
         if (!$cart) {
             $cart = Cart::create(['user_id' => $userId]);
         }
 
-        //Get CartItem
+        //check product
+        $product = Products::find($ProductId);
+        if (!$product) {
+            return back()->with('error', 'Sản phẩm không tồn tại.');
+        }
+        //Get CartItem 
         $cartItem = CartItem::where('cart_id', $cart->id)->where('product_id', $ProductId)->first();
 
         $quantity = $request->input('quantity');
@@ -95,5 +92,13 @@ class CartController extends Controller
         }
 
         return back()->with('success', 'Sản phẩm đã được thêm vào giỏ hàng.');
+    }
+
+    public function removeCartItem($id)
+    {
+        $cartItem = cartItem::findOrFail($id);
+
+        $cartItem->delete();
+        return redirect()->route('frontend.cart.cart')->with('success', 'Category deleted successfully.');
     }
 }
