@@ -96,9 +96,11 @@ class CartController extends Controller
 
     public function removeCartItem($id)
     {
+
+        
         $cartItem = cartItem::findOrFail($id);
 
         $cartItem->delete();
-        return redirect()->route('frontend.cart.cart')->with('success', 'Category deleted successfully.');
+        return redirect()->route('gio-hang')->with('success', 'Category deleted successfully.');
     }
 }
