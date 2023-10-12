@@ -116,7 +116,7 @@
                                 <ul class="cart-buttons mt-45 clearfix">
                                     <li>
                                         @if ($errors != null)
-                                        <input type="text" class="form-control" id="quantity" name="quantity">
+                                        <input type="text" class="form-control" id="quantity" name="quantity" value="1">
                                         @elseif($error == null)
                                         <div class="alert alert-danger">
                                             <ul>
