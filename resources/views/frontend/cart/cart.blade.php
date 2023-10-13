@@ -35,8 +35,8 @@
                             <tr class="table-head">
                                 <th>HÌNH ẢNH</th>
                                 <th>MÔ TẢ</th>
-                                <th>SỐ LƯỢNG</th>
-                                <th>ĐƠN GIÁ</th>
+                             {{--   <th>SỐ LƯỢNG</th>--}}
+                              {{--  <th>ĐƠN GIÁ</th>--}}
                                 <th>GIÁ TIỀN</th>
                                 <th>HOẠT ĐỘNG</th>
                             </tr>
@@ -68,18 +68,17 @@
                                         <p><span>Mã sản phẩm</span>: {{ $product['Id_Product'] }}</p>
                                     </div>
                                 </td>
-                                <td>
+                               {{-- <td>
                                     <div class="quantity-control">
                                         <span class="btn-cart btn-square btn-plus btn-qty"><i class="fa fa-plus"></i></span>
                                         <input type="text" value="{{ $item->quantity }}" data-min="1" data-minalert="Minimum limit reached" data-max="5" data-maxalert="Maximum limit reached" data-invalid="Enter valid quantity">
                                         <span class="btn-cart btn-square btn-minus btn-qty"><i class="fa fa-minus"></i></span>
                                     </div>
-                                </td>
+                                </td>--}}
                                 <td><span class="cart-price fixsizecart">{{ $item->price }} VNĐ</span></td>
                                 <td>
                                     <ul class="cart-action">
-                                        <li><a href="#" class="btn-cart btn-square style"><i class="fa fa-repeat"></i></a></li>
-                                        <li><a href="#" class="btn-cart btn-square btn-pink"><i class="fa fa-cog"></i></a></li>
+
                                         <li>
                                             <form method="POST" action="{{ route('remove-cart-item', ['id' => $item->id]) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
                                                 @csrf

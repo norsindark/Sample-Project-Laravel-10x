@@ -675,3 +675,7 @@ body {
     margin: auto;
 	min-height: 1300px;
 }
+
+.status {
+    display: inline-block;
+}

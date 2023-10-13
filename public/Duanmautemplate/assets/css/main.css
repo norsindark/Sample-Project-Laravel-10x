@@ -3319,7 +3319,7 @@ detail page
 
 .product-slider-wrap{
     background: #fff;
-    padding-top: 110px;
+    padding-top: 60px;
 }
 .product-slider-wrap .left-angle{
     position: absolute;
@@ -3391,8 +3391,8 @@ detail page
 }
 .review{
     position: absolute;
-    top: 50px;
-    left: 143px;
+    top: 86px;
+    left: 157px;
 }
 .review > li{
     display: inline-block;
@@ -5258,7 +5258,7 @@ http://tobiasahlin.com/spinkit/
 .wrap_informaiton {
     background-color: #ecf0f3;
     max-width: 100%;
-    height: 600px;
+    height: 650px;
 }
 
 .avatar_block {
@@ -5472,4 +5472,37 @@ http://tobiasahlin.com/spinkit/
 #content main .table-data .order table td{
     width: 80px !important;
 }
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-group > label {
+    margin-bottom: 8px;
+    margin-top: 2px;
+    font-weight: 700;
+}
+
+.form-control-width50 {
+    width: 50% !important;
+}
+/*thông báo lỗi*/
+
+.alert  > ul > li {
+    list-style: none;
+    font-size: 13px;
+    border-bottom: 1px #ccc;
+
+}
+
+.alert  {
+    position: relative;
+    top: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 
