@@ -14,6 +14,7 @@ use App\Http\Controllers\User\CategoryController;
 use App\Http\Controllers\User\ProductController;
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\CheckoutController;
+use App\Http\Controllers\User\ManagerUser\ManagerUserController;
 // use App\Http\Controllers\User\OrderController;
 use Illuminate\Support\Facades\Auth;
 
@@ -137,35 +138,41 @@ Route::prefix('/')->group(function () {
             Route::get('{categoryName}/{categoryId}', [CategoryController::class, 'getProducts'])->name('show-products');
         });
 
-        //cart
-        Route::get('/gio-hang', [CartController::class, 'index'])->name('gio-hang');
-        Route::delete('remove-cart-item/{id}',  [CartController::class, 'removeCartItem'])->name('remove-cart-item');
 
-        Route::prefix('cart')->group(function () {
-            Route::post('/add-to-cart/{ProductId}',  [CartController::class, 'addToCart'])->name('add-to-cart');
-            // Route::delete('{id}', [CartController::class, 'removeCartItem'])->name('remove-cart-item');
-        })->name();
+        Route::prefix('/')->middleware(['auth'])->group(function () {
+            //cart
+            Route::get('/gio-hang', [CartController::class, 'index'])->name('gio-hang');
+            Route::delete('remove-cart-item/{id}',  [CartController::class, 'removeCartItem'])->name('remove-cart-item');
 
-        // order
-        Route::post('/create-order', [OrderController::class, 'createOrder'])->name('create.order');
+            Route::prefix('cart')->group(function () {
+                Route::post('/add-to-cart/{ProductId}',  [CartController::class, 'addToCart'])->name('add-to-cart');
+                // Route::delete('{id}', [CartController::class, 'removeCartItem'])->name('remove-cart-item');
+            })->name();
 
+            // order
+            Route::post('/create-order', [OrderController::class, 'createOrder'])->name('create.order');
 
-        // payment
-        Route::get('/thanh-toan', [CheckoutController::class, 'index'])->name('thanh-toan');
-        // Route::post('/thanh-toan', [CheckoutController::class, 'processPayment'])->name('process.payment');
+            // payment
+            Route::get('/thanh-toan', [CheckoutController::class, 'index'])->name('thanh-toan');
+            // Route::post('/thanh-toan', [CheckoutController::class, 'processPayment'])->name('process.payment');
 
-        // checkout
-        Route::post('/checkout', [CheckoutController::class, 'processCheckout'])->name('process-checkout');
-
-
+            // checkout
+            Route::post('/checkout', [CheckoutController::class, 'processCheckout'])->name('process-checkout');
+        });
     });
 
 
     // Quản lí tài khoản
-    Route::prefix('/')->group(function () {
+    Route::prefix('/')->middleware(['auth'])->group(function () {
         Route::get('quan-li-tai-khoan', 'App\Http\Controllers\User\ManagerUser\ManagerUserController@index')->name('manageruser');
         Route::get('don-hang-cua-ban', 'App\Http\Controllers\User\ManagerUser\ManagerOderController@index')->name('manageroder');
         Route::get('quan-li-so-dia-chi', 'App\Http\Controllers\User\ManagerUser\ManagerAddressController@index')->name('manageraddress');
+
+        //update profile
+
+        Route::get('/profile/edit', [ManagerUserController::class, 'edit'])->name('edit-profile');
+
+        Route::post('/profile/update', [ManagerUserController::class, 'update'])->name('update-profile');
     });
 });
 

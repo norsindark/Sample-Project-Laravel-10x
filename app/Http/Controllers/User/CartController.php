@@ -40,7 +40,7 @@ class CartController extends Controller
         // total price
         $totalPrice = 0;
         foreach ($cartItems as $cartItem) {
-            $totalPrice = $cartItem->quantity * $cartItem->price;
+            $totalPrice += $cartItem->quantity * $cartItem->price;
         }
 
         return view('frontend.cart.cart', compact('cartItems', 'products', 'totalPrice', 'product_images'));
