@@ -20,6 +20,11 @@
     <!--========================================
         cart content
         ===========================================-->
+    @if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+    @endif
 
     <div class="container">
         <div class="xv-cart pt-60">
@@ -139,8 +144,17 @@
                             </tr>
                             <tr class="Continue-Shopping">
                                 <th> <a href="#">Tiếp tục mua hàng</a></th>
-                                <td><a href="#" class="btn btn-send btn-pink">THANH TOÁN</a></td>
+                                <td>
+                                    <form method="post" action="{{ route('create.order') }}">
+                                        @csrf
+                                        <input type="hidden" name="cartItems" value="{{ json_encode($cartItems) }}">
+                                        <input type="hidden" name="totalPrice" value="{{ $totalPrice }}">
+                                        <button type="submit" class="btn btn-send btn-pink">Thanh toán</button>
+                                    </form>
+                                    <!-- <a href="#" >THANH TOÁN</a> -->
+                                </td>
                             </tr>
+
                         </table>
                     </div>
                 </div>

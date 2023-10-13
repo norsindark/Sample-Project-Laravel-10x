@@ -13,6 +13,8 @@ use App\Http\Controllers\Admin\Dashboard\Warehouse\WarehouseController;
 use App\Http\Controllers\User\CategoryController;
 use App\Http\Controllers\User\ProductController;
 use App\Http\Controllers\User\CartController;
+use App\Http\Controllers\User\CheckoutController;
+// use App\Http\Controllers\User\OrderController;
 use Illuminate\Support\Facades\Auth;
 
 // Dashboard
@@ -144,8 +146,18 @@ Route::prefix('/')->group(function () {
             // Route::delete('{id}', [CartController::class, 'removeCartItem'])->name('remove-cart-item');
         })->name();
 
+        // order
+        Route::post('/create-order', [OrderController::class, 'createOrder'])->name('create.order');
 
-        Route::get('/thanh-toan', 'App\Http\Controllers\User\CheckoutController@index')->name('thanh-toan');
+
+        // payment
+        Route::get('/thanh-toan', [CheckoutController::class, 'index'])->name('thanh-toan');
+        // Route::post('/thanh-toan', [CheckoutController::class, 'processPayment'])->name('process.payment');
+
+        // checkout
+        Route::post('/checkout', [CheckoutController::class, 'processCheckout'])->name('process-checkout');
+
+
     });
 
 

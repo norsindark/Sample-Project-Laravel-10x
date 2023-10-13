@@ -97,64 +97,6 @@ Header
                 </ul>
                 <a href="#" class="openCart"></a>
                 <div class="table-responsive cart-calculations text-center">
-                    <!-- <table class="table">
-                        <tbody class="shadow-around">
-                            <tr class="table-body">
-                                <td>
-                                    <figure>
-                                        <img style="
-                            height: 100px;
-                            max-width: 108px;
-                            margin: 0 10px;
-                          " src="/Duanmautemplate/assets/img/product/P25900_1-thumbnail-510x510-70.jpg" alt="" />
-                                    </figure>
-                                </td>
-                                <td>
-                                    <div class="cart-wrappper text-left">
-                                        <h6>Thuốc trị sốt</h6>
-                                        <p><span>Trạng thái</span>: Còn hàng</p>
-                                        <p><span>Mã sản phẩm</span>: CwT4a</p>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="quantity-control">
-                                        <span class="btn-cart btn-square btn-plus btn-qty"><i class="fa fa-plus"></i></span>
-                                        <input type="text" value="2" data-min="1" data-minalert="Minimum limit reached" data-max="5" data-maxalert="Maximum limit reached" data-invalid="Enter valid quantity" />
-                                        <span class="btn-cart btn-square btn-minus btn-qty"><i class="fa fa-minus"></i></span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <span class="cart-content">Đơn giá:</span>
-                                    <span class="cart-price">50.000VNĐ</span>
-                                </td>
-                                <td>
-                                    <span class="cart-content">Tổng giá:</span>
-                                    <span class="cart-price">100.000VNĐ</span>
-                                </td>
-                                <td>
-                                    <a class="cart-action" href="#"><i class="fa fa-trash-o"></i></a>
-                                </td>
-                            </tr>
-                            <tr class="table-body style">
-                                <td></td>
-                                <td class="fix_td">
-                                    <a href="{{ route('gio-hang')}}" class="btn-cart btn-rectangle">Giỏ hàng</a>
-                                    <a href="checkout1.html" style="margin-left: 15px" class="btn-cart btn-rectangle">Thanh toán</a>
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td class="style">
-                                    <div>TỔNG CỘNG:</div>
-                                    <span class="colpink">200.000VNĐ</span>
-                                </td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table> -->
-
-
-                    <!-- new cart  -->
-
                     @auth
                     <table class="table">
                         <tbody class="shadow-around">
