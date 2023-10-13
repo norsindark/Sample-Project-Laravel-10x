@@ -22,15 +22,16 @@ class OrderController extends Controller
         $totalPrice = $request->input('totalPrice');
         // dd($totalPrice);
 
-        // if (auth()->user()->name === null || auth()->user()->address === null || auth()->user()->phone === null) {
-        //     return back()->with('error', 'Vui lòng cập nhật đầy đủ thông tin cá nhân để tiếp tục đặt hàng');
-        // }
+        if (auth()->user()->name === null || auth()->user()->address === null || auth()->user()->phone === null) {
+            return back()->with('error', 'Vui lòng cập nhật đầy đủ thông tin cá nhân để tiếp tục đặt hàng');
+        }
 
         $order = new Orders();
         $order->total_price = $totalPrice;
-        // $order->recipient = auth()->user()->name;
-        // $order->address = auth()->user()->address;
-        // $order->phone = auth()->user()->phone;
+        // dd(auth()->user()->name);
+        $order->recipient = auth()->user()->name;
+        $order->address = auth()->user()->address;
+        $order->phone = auth()->user()->phone;
         $order->user_id = auth()->user()->id;
         $order->save();
 

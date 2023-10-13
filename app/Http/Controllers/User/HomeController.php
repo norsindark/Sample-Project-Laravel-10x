@@ -78,7 +78,7 @@ class HomeController extends Controller
         // total price
         $totalPrice = 0;
         foreach ($cartItems as $cartItem) {
-            $totalPrice = $cartItem->quantity * $cartItem->price;
+            $totalPrice += $cartItem->quantity * $cartItem->price;
         }
 
         return $totalPrice;
