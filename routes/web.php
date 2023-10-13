@@ -15,6 +15,7 @@ use App\Http\Controllers\User\ProductController;
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\ManagerUser\ManagerUserController;
+use App\Http\Controllers\User\ManagerUser\ManagerOderController;
 // use App\Http\Controllers\User\OrderController;
 use Illuminate\Support\Facades\Auth;
 
@@ -108,6 +109,9 @@ Route::middleware(['role:1'])->prefix('dashboard')->group(function () {
         Route::get('/{id}/edit', [WarehouseController::class, 'edit'])->name('dashboard.warehouse.edit');
         Route::put('/{id}', [WarehouseController::class, 'update'])->name('dashboard.warehouse.update');
     });
+
+    Route::patch('/update-order-status/{orderId}', [OrderController::class, 'updateOrderStatus'])
+        ->name('update-order-status');
 })->name('dashboard');
 
 
@@ -173,6 +177,10 @@ Route::prefix('/')->group(function () {
         Route::get('/profile/edit', [ManagerUserController::class, 'edit'])->name('edit-profile');
 
         Route::post('/profile/update', [ManagerUserController::class, 'update'])->name('update-profile');
+
+        //remove order
+        Route::patch('/remove-order/{orderId}', [ManagerOderController::class, 'removeOrder'])
+            ->name('remove-order');
     });
 });
 
