@@ -16,18 +16,21 @@ class CheckRole
 
     public function handle($request, Closure $next, $role)
     {
-        if ($request->user() && $request->user()->role == $role) {
-            return $next($request);
-        }
 
-        if ($role == 1) {
-            return redirect('/dashboard/home');
-        } elseif ($role == 2) {
-            return redirect('/nhathuoc/afterLogin');
-        }
+        
 
-        if ($role == 3) {
-            return abort(403, 'Unauthorized');
-        }
+        // if ($request->user() && $request->user()->role == $role) {
+        //     return $next($request);
+        // }
+
+        // if ($role == 1) {
+        //     return redirect('/dashboard/home');
+        // } elseif ($role == 2) {
+        //     return redirect('/nhathuoc/afterLogin');
+        // }
+
+        // if ($role == 3) {
+        //     return abort(403, 'Unauthorized');
+        // }
     }
 }

@@ -1,4 +1,8 @@
-@extends('layouts.app')
+@extends('frontend/layouts.master')
+
+@section('title')
+<title>Verify Email</title>
+@endsection
 
 @section('content')
 <div class="container">

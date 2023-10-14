@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Categories;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Cart;
 use App\Models\Products;
 use App\Models\cartItem;
@@ -21,14 +22,17 @@ class HomeController extends Controller
 
     public function CheckRoleUser()
     {
-        if (!Auth::user()) {
-            return redirect()->route('home');
+        // if (Auth::user()->role == 3) {
+        //     $this->guard()->logout();
+        //     return redirect()->with('error', 'Vui lòng xác thực email để đăng nhập!');
+        // }
+        if (Auth::user()->email_verified_at == null) {
+            Auth::logout();
+            return redirect()->back()->with('error', 'Vui lòng xác thực email để đăng nhập!');
         }
-
         if (Auth::user()->role == 1) {
             return redirect()->route('dashboard.index');
         }
-
         if (Auth::user()->role == 2) {
             return redirect()->route('home');
         }
