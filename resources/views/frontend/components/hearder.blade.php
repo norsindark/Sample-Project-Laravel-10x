@@ -201,11 +201,14 @@ Search
                     @endif
                 </select>
             </div>
-            <input type="text" placeholder="Từ khóa tìm kiếm..." />
-            <button type="submit"><i class="fa fa-search"></i></button>
+
         </form>
-        <!--search-form-->
     </div>
+    <form action="{{ route('search') }}" method="GET">
+        @csrf
+        <input type="text" name="search" placeholder="Từ khóa tìm kiếm..." />
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
     <!--container-->
 </div>
 <!--social-search-->

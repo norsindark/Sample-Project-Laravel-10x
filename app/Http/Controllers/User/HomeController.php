@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Categories;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Cart;
+use Illuminate\Http\Request;
+
 use App\Models\Products;
 use App\Models\cartItem;
 use App\Models\ProductImage;
@@ -100,5 +102,19 @@ class HomeController extends Controller
 
         return $quantityInWarehouse;
 
+    }
+
+    // public function searchProducts(Request $request)
+    // {
+    //     $search = $request->input('search');
+    //     $searchProducts = Products::where('ProductName', 'like', "%$search%")->get();
+    //     return $searchProducts;
+    // }
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        $sProducts = Products::where('ProductName', 'like', "%$search%")->get();
+        return view('frontend.product.search', compact('sProducts', 'search'));
     }
 }

@@ -10,6 +10,8 @@ use App\Models\cartItem;
 use App\Http\Controllers\User\HomeController;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -31,32 +33,14 @@ class AppServiceProvider extends ServiceProvider
             return preg_match('/^[a-zA-Z0-9_ -]+$/', $value);
         });
 
-        // // Share all data
-        // $products = Products::all();
-        // $categories = Categories::all();
-
-        // View::composer('*', function ($view) use ($products, $categories) {
-        //     $view->with(['products' => $products, 'categories' => $categories]);
-        // });
-
-        // // Share Cart data
-        // if (auth()->check()) {
-        //     View::composer('*', function ($view) {
-        //         $controller = app(HomeController::class);
-        //         $cartItems = $controller->getCartData();
-        //         $view->with($cartItems);
-        //     });
-        // }
-        // else if(!auth()->check()){
-        //     View::composer('*', function ($view) {
-        //         $cartItems = "Bạn phải đăng nhập để sử dụng chức năng này.";
-        //         $view->with($cartItems);
-        //     });
-        // }
-
         View::composer('*', function ($view) {
             $products = Products::all();
             $categories = Categories::all();
+            $controller = app(HomeController::class);
+
+            $request = app(Request::class);
+
+            // $searchProducts = $controller->searchProducts($request);, 'searchProducts' => $searchProducts
 
             $view->with(['products' => $products, 'categories' => $categories]);
 
