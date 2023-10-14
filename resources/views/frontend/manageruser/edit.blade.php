@@ -30,11 +30,7 @@
         {{ session('error') }}
     </div>
     @endif
-    @if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-    @endif
+
 
 
     <div class="container">
@@ -59,6 +55,11 @@
                                 </ul>
                             </div>
                         @endif
+                            @if(session('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
                         <div class="container">
 
                             <form class="form_create" style="padding: 40px" method="POST" action="{{ route('update-profile') }}">
