@@ -5,7 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\Models\Users;
+use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -38,7 +38,7 @@ class RegisterController extends Controller
         }
 
         // Lưu tài khoản mới vào cơ sở dữ liệu
-        $user = new Users();
+        $user = new User();
         $user->Email = $request->input('email');
         $user->UserName = $request->input('username');
         $user->Password = Hash::make($request->input('password'));

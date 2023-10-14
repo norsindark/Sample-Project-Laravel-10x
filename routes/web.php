@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Auth;
 
 // Dashboard
 //, 'verified'
-Route::middleware(['role:1'])->prefix('dashboard')->group(function () {
+Route::middleware(['role:1', 'verified'])->prefix('dashboard')->group(function () {
 
     Route::get('/home', [DashboardController::class, 'index'])->name('dashboard.index');
 
@@ -121,8 +121,8 @@ Route::middleware(['role:1'])->prefix('dashboard')->group(function () {
 Route::prefix('/')->group(function () {
     Route::prefix('/')->group(function () {
         Route::get('/', [CategoryController::class, 'dropListCategories'])->name('drop-List-Category');
-        Route::get('/home', [HomeController::class, 'checkRoleUser'])->name('checkRole');
-        Route::get('/trang-chu', [HomeController::class, 'home'])->name('home');
+        // Route::get('/home', [HomeController::class, 'checkRoleUser'])->name('checkRole');
+        Route::get('/home', [HomeController::class, 'home'])->name('home');
         Route::get('/tin-tuc', 'App\Http\Controllers\User\BlogController@index')->name('tin-tuc');
 
 
@@ -184,15 +184,16 @@ Route::prefix('/')->group(function () {
     });
 });
 
-Auth::routes();
+Auth::routes([
+    'verify' => true
+]);
 
 
 Route::get('/email/verify', function () {
-
- return view('auth.verify-email');
+    return view('auth.verify');
 })->middleware('auth')->name('verification.notice');
 
- Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
 
     return redirect('/home');
@@ -203,4 +204,3 @@ Route::post('/email/verification-notification', function (Request $request) {
 
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
-

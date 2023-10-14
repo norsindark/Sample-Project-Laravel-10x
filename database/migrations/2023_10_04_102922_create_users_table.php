@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('username')->unique(); 
             $table->string('password'); 
             $table->string('email')->unique(); 
-            $table->string('verify_email')->unique()->nullable(); 
+            $table->datetime('email_verified_at')->nullable(); 
             $table->string('name')->default(DB::raw('`username`')); 
             $table->integer('role')->default(1); 
             $table->integer('status')->default(2); 

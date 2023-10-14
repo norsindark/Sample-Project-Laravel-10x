@@ -19,20 +19,20 @@ class HomeController extends Controller
         return view('frontend.home.home', compact('categories'));
     }
 
-    public function CheckRoleUser()
-    {
-        if (!Auth::user()) {
-            return redirect()->route('home');
-        }
+    // public function CheckRoleUser()
+    // {
+    //     if (!Auth::user()) {
+    //         return redirect()->route('home');
+    //     }
 
-        if (Auth::user()->role == 1) {
-            return redirect()->route('dashboard.index');
-        }
+    //     if (Auth::user()->role == 1) {
+    //         return redirect()->route('dashboard.index');
+    //     }
 
-        if (Auth::user()->role == 2) {
-            return redirect()->route('home');
-        }
-    }
+    //     if (Auth::user()->role == 2) {
+    //         return redirect()->route('home');
+    //     }
+    // }
 
     public function getCartData()
     {
