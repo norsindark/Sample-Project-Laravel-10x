@@ -116,7 +116,7 @@ Route::middleware(['role:1', 'verified'])->prefix('dashboard')->group(function (
 
 
 // Client
-
+Route::get('/search', [HomeController::class, 'search'])->name('search');
 
 Route::prefix('/')->group(function () {
     Route::prefix('/')->group(function () {
@@ -124,7 +124,6 @@ Route::prefix('/')->group(function () {
         Route::get('/home', [HomeController::class, 'checkRoleUser'])->name('checkRole');
         Route::get('/trang-chu', [HomeController::class, 'home'])->name('home');
         Route::get('/tin-tuc', 'App\Http\Controllers\User\BlogController@index')->name('tin-tuc');
-
 
 
         //show product details

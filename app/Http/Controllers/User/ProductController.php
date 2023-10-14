@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Models\Products;
 use App\Models\Categories;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Models\warehouses;
 use App\Models\ProductImage;
 
@@ -13,7 +14,7 @@ class ProductController extends Controller
 
     public function productDetails($productsName, $ProductId)
     {
-        $product = Products::findOrFail($ProductId);   
+        $product = Products::findOrFail($ProductId);
 
         // $ProductId =  $product->ProductId;
 
@@ -32,10 +33,11 @@ class ProductController extends Controller
 
         if ($quantityInWarehouse <= 0) {
             $error = "Sản phẩm đã hết hàng!";
-            return view('frontend.product.product', compact('product', 'product_images', 'quantityInWarehouse','error'));
+            return view('frontend.product.product', compact('product', 'product_images', 'quantityInWarehouse', 'error'));
         }
 
-        return view('frontend.product.product', compact('product', 'product_images', 'quantityInWarehouse','error'));
+        return view('frontend.product.product', compact('product', 'product_images', 'quantityInWarehouse', 'error'));
     }
-    
+
+   
 }
