@@ -6,11 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\orders;
+use App\Models\Cart;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 //implements MustVerifyEmail
 
-class User extends Authenticatable 
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -38,6 +40,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',     // Tên người dùng
         'email',    // Email người dùng
+        'verify_email',
         'password', // Mật khẩu người dùng
         'username', // Tên người dùng (nếu có)
         'role',  // Quyền hạn người dùng (nếu có)
@@ -69,7 +72,7 @@ class User extends Authenticatable
 
     public function orders()
     {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(orders::class);
     }
 
     public function carts()

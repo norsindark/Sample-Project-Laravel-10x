@@ -6,7 +6,7 @@
     </ul>
     <div class="wrap_user">
         <div class="icon_user"></div>
-        <span class="name_user">abcxyz</span>
+        <span class="name_user">{{auth()->user()->name}}</span>
     </div>
     <ul class="customeField clearfix">
         <ul class="customeField clearfix">

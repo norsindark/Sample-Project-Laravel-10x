@@ -12,8 +12,26 @@ class OrderController extends Controller
 {
     public function index()
     {
-        return view('dashboard.order.order');
+        $orders = orders::all();
+        return view('dashboard.order.order', compact('orders'));
     }
+
+    public function updateOrderStatus(Request $request, $orderId)
+    {
+
+        $request->validate([
+            'status' => 'required|in:1,2,3,4,5', 
+        ]);
+
+        $order = orders::findOrFail($orderId);
+        $order->status = $request->input('status');
+        $order->save();
+
+        return redirect()->route('dashboard.order.index')->with('success', 'Trạng thái đơn hàng đã được cập nhật.');
+    }
+
+    
+
 
     public function createOrder(Request $request)
     {
@@ -22,15 +40,16 @@ class OrderController extends Controller
         $totalPrice = $request->input('totalPrice');
         // dd($totalPrice);
 
-        // if (auth()->user()->name === null || auth()->user()->address === null || auth()->user()->phone === null) {
-        //     return back()->with('error', 'Vui lòng cập nhật đầy đủ thông tin cá nhân để tiếp tục đặt hàng');
-        // }
+        if (auth()->user()->name === null || auth()->user()->address === null || auth()->user()->phone === null) {
+            return back()->with('error', 'Vui lòng cập nhật đầy đủ thông tin cá nhân để tiếp tục đặt hàng');
+        }
 
         $order = new Orders();
         $order->total_price = $totalPrice;
-        // $order->recipient = auth()->user()->name;
-        // $order->address = auth()->user()->address;
-        // $order->phone = auth()->user()->phone;
+        // dd(auth()->user()->name);
+        $order->recipient = auth()->user()->name;
+        $order->address = auth()->user()->address;
+        $order->phone = auth()->user()->phone;
         $order->user_id = auth()->user()->id;
         $order->save();
 
@@ -49,4 +68,6 @@ class OrderController extends Controller
 
         return redirect()->route('thanh-toan')->with('success', 'Đã đặt hàng thành công!');
     }
+
+
 }
