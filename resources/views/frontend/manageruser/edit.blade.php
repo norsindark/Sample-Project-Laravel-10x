@@ -22,35 +22,30 @@
     <!--========================================
         grid and list view
         ===========================================-->
+                   
+                    <header class="sec-heading style text-center fix_secheading">
+                        <div class="category-wrap" style="top: 2px">
+                            <span class="categorise wrap_text-center" style="font-size: 20px; font-weight: 700;">Thông tin cá nhân</span>
+                        </div>
+                    </header>
+                    <div class="wrap_informaiton" style="width: 75%;     margin: 32px 0 0;">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                            @if(session('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
+                        <div class="container">
 
-    @if(session('error'))
-    <div class="alert alert-danger">
-        {{ session('error') }}
-    </div>
-    @endif
-    @if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-    @endif
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
-    <div class="container">
-        <div class="product-overview pt-50 pb-50 fix_pading">
-            <div class="row">
-                <div class="col-xs-12 col-sm-3 hidden-xs">
-                    @include('frontend.manageruser.components.sidebar')
-                </div>
-                <div class="col-xs-12 col-sm-9">
-                    <div class="container">
-                        <form class="form_create" method="POST" action="{{ route('update-profile') }}" style="margin-top: 60px;">
+                            <form class="form_create" method="POST" action="{{ route('update-profile') }}" style="margin-top: 60px;">
                             @csrf
                             <div class="form-group">
                                 <label for="username">Họ và tên</label>
@@ -74,7 +69,9 @@
                             </div>
                             <button type="submit" class="btn btn-primary btn_location" style="margin-bottom: 120px;">Cập nhập thông tin</button>
                         </form>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>

@@ -27,6 +27,7 @@
     <link rel="stylesheet" type="text/css" href="/Duanmautemplate/assets/css/owl.carousel.css" />
     <link rel="stylesheet" type="text/css" href="/Duanmautemplate/assets/css/flags.css" />
     <link rel="stylesheet" href="/Duanmautemplate/assets/css/main.css" />
+
     @yield('css')
 </head>
 <body>
