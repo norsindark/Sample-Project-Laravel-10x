@@ -50,19 +50,19 @@
                 </div>
                 <div class="col-xs-12 col-sm-9">
                     <div class="container">
-                        <form class="form_create" method="POST" action="{{ route('update-profile') }}">
+                        <form class="form_create" method="POST" action="{{ route('update-profile') }}" style="margin-top: 60px;">
                             @csrf
                             <div class="form-group">
                                 <label for="username">Họ và tên</label>
-                                <input class="form-control" type="text" id="name" name="name" value="{{ $user->name }}" >
+                                <input class="form-control" type="text" id="name" name="name" >
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input class="form-control" type="text" id="email" name="email" value="{{ $user->email }}" >
+                                <input class="form-control" type="text" id="email" name="email"  >
                             </div>
                             <div class="form-group">
                                 <label for="phone">Phone</label>
-                                <input class="form-control" type="tel" id="phone" name="phone" value="{{ $user->phone }}" >
+                                <input class="form-control" type="tel" id="phone" name="phone"  >
                             </div>
                             <div class="form-group">
                                 <label for="password">Mật khẩu</label>
@@ -70,7 +70,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="address">Địa chỉ</label>
-                                <input class="form-control" type="text" id="address" name="address" value="{{ $user->address }}" >
+                                <input class="form-control" type="text" id="address" name="address"  >
                             </div>
                             <button type="submit" class="btn btn-primary btn_location" style="margin-bottom: 120px;">Cập nhập thông tin</button>
                         </form>

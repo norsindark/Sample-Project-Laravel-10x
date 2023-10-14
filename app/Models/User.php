@@ -12,7 +12,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 //implements MustVerifyEmail
 
-class User extends Authenticatable 
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -40,6 +40,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',     // Tên người dùng
         'email',    // Email người dùng
+        'verify_email',
         'password', // Mật khẩu người dùng
         'username', // Tên người dùng (nếu có)
         'role',  // Quyền hạn người dùng (nếu có)

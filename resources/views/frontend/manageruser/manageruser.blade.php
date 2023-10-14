@@ -60,9 +60,12 @@
                                     <span class="text_item-info">{{Auth::user()->phone}}</span>
                                 </div>
                                 <div class="item-info">
-                                    <span class="text_item-info">Ngày sinh</span>
-                                    <span class="text_item-info"><a style="text-decoration: none" href="#">Thêm thông tin</a></span>
+                                    <span class="text_item-info">Địa chỉ</span>
+                                    <span class="text_item-info">{{Auth::user()->address}}</span>
                                 </div>
+                                <!-- <div class="item-info">
+                                    <span class="text_item-info">Ngày sinh</span>
+                                </div> -->
                             </div>
                         </div>
                         <a href="{{ route('edit-profile')}}">
