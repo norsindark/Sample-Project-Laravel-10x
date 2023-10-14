@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use App\Models\Users;
+use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
@@ -21,7 +21,7 @@ class UserController extends Controller
     public function index()
     {
         // Lấy danh sách người dùng từ cơ sở dữ liệu
-        $users = Users::all();
+        $users = User::all();
 
         if (!empty($users)) {
             return view('dashboard.users.index', compact('users'));
@@ -40,7 +40,7 @@ class UserController extends Controller
     public function edit($id)
     {
         // Lấy thông tin người dùng theo ID
-        $user = Users::findOrFail($id);
+        $user = User::findOrFail($id);
 
         // Trả về view chỉnh sửa với dữ liệu người dùng
         return view('dashboard.users.edit', compact('user'));
@@ -66,7 +66,7 @@ class UserController extends Controller
         $request->validate($rules);
 
         // Lấy thông tin người dùng theo ID
-        $user = Users::findOrFail($id);
+        $user = User::findOrFail($id);
 
         // Cập nhật thông tin người dùng
         $data = [
@@ -116,7 +116,7 @@ class UserController extends Controller
             'email.email' => 'Invalid email format.',
             'email.unique' => 'Email already exists.',
             'username.required' => 'Username is required.',
-            'username.unique' => 'Username already exists.',
+            'username.unique' => 'Username already exists.',    
             'password.required' => 'Password is required.',
             'password.min' => 'Password must be at least 6 characters long.',
             'role.required' => 'Role is required.',
@@ -134,7 +134,7 @@ class UserController extends Controller
         }
 
         // If validation passes, create and save the new user
-        $user = new Users();
+        $user = new User();
         $user->Email = $request->input('email');
         $user->UserName = $request->input('username');
         $user->Password = Hash::make($request->input('password'));
@@ -151,7 +151,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         // Lấy người dùng cần xóa từ cơ sở dữ liệu
-        $user = Users::find($id);
+        $user = User::find($id);
 
         // Kiểm tra xem người dùng tồn tại
         if (!$user) {

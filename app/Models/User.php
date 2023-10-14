@@ -40,6 +40,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $fillable = [
         'name',     // Tên người dùng
         'email',    // Email người dùng
+        'verify_email',
         'password', // Mật khẩu người dùng
         'username', // Tên người dùng (nếu có)
         'role',  // Quyền hạn người dùng (nếu có)

@@ -14,16 +14,17 @@ return new class extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id(); //  ID tự tăng
-            $table->string('username')->unique(); //  UserName với giá trị duy nhất
-            $table->string('password'); //  Password
-            $table->string('email')->unique(); //  Email với giá trị duy nhất
-            $table->string('name')->default(DB::raw('`username`')); //  Name
-            $table->integer('role')->default(1); //  Role với giá trị mặc định là 2
-            $table->integer('status')->default(2); //  Status với giá trị mặc định là 2
-            $table->string('address')->nullable(); //  địa chỉ
-            $table->string('phone')->nullable(); //  địa chỉ
-            $table->timestamps();// default created now()
+            $table->id(); 
+            $table->string('username')->unique(); 
+            $table->string('password'); 
+            $table->string('email')->unique(); 
+            $table->string('verify_email')->unique()->nullable(); 
+            $table->string('name')->default(DB::raw('`username`')); 
+            $table->integer('role')->default(1); 
+            $table->integer('status')->default(2); 
+            $table->string('address')->nullable(); 
+            $table->string('phone')->nullable(); 
+            $table->timestamps();
         });
     }
 
