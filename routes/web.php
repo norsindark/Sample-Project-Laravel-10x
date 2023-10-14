@@ -121,8 +121,8 @@ Route::middleware(['role:1', 'verified'])->prefix('dashboard')->group(function (
 Route::prefix('/')->group(function () {
     Route::prefix('/')->group(function () {
         Route::get('/', [CategoryController::class, 'dropListCategories'])->name('drop-List-Category');
-        // Route::get('/home', [HomeController::class, 'checkRoleUser'])->name('checkRole');
-        Route::get('/home', [HomeController::class, 'home'])->name('home');
+        Route::get('/home', [HomeController::class, 'checkRoleUser'])->name('checkRole');
+        Route::get('/trang-chu', [HomeController::class, 'home'])->name('home');
         Route::get('/tin-tuc', 'App\Http\Controllers\User\BlogController@index')->name('tin-tuc');
 
 

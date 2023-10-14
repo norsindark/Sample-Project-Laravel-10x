@@ -34,6 +34,11 @@
         {{ session('success') }}
     </div>
     @endif
+    @if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+    @endif
     <div class="container ">
         <div class="row justify-content-center">
             <div class="col-md-6">
@@ -97,8 +102,15 @@
                                 </a>
                                 @endif
                             </div>
+
                         </div>
                     </form>
+                    <!-- <form method="POST" action="{{ route('verification.send') }}">
+                        @csrf
+                        <button type="submit" class="btn btn-link" style="color: black; padding: 10px 0">
+                            {{ __('Resend verify mail') }}
+                        </button>
+                    </form> -->
                 </div>
             </div>
         </div>
