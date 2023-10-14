@@ -35,8 +35,8 @@
                             <tr class="table-head">
                                 <th>HÌNH ẢNH</th>
                                 <th>MÔ TẢ</th>
-                             {{--   <th>SỐ LƯỢNG</th>--}}
-                              {{--  <th>ĐƠN GIÁ</th>--}}
+                                <th>SỐ LƯỢNG</th>
+                                {{-- <th>ĐƠN GIÁ</th>--}}
                                 <th>GIÁ TIỀN</th>
                                 <th>HOẠT ĐỘNG</th>
                             </tr>
@@ -68,97 +68,101 @@
                                         <p><span>Mã sản phẩm</span>: {{ $product['Id_Product'] }}</p>
                                     </div>
                                 </td>
-                               {{-- <td>
+
+                                <td>
+                                    <h4> {{ $item['quantity'] }}</h4>
+                                </td>
+                                {{-- <td>
                                     <div class="quantity-control">
                                         <span class="btn-cart btn-square btn-plus btn-qty"><i class="fa fa-plus"></i></span>
                                         <input type="text" value="{{ $item->quantity }}" data-min="1" data-minalert="Minimum limit reached" data-max="5" data-maxalert="Maximum limit reached" data-invalid="Enter valid quantity">
-                                        <span class="btn-cart btn-square btn-minus btn-qty"><i class="fa fa-minus"></i></span>
-                                    </div>
-                                </td>--}}
-                                <td><span class="cart-price fixsizecart">{{ $item->price }} VNĐ</span></td>
-                                <td>
-                                    <ul class="cart-action">
-
-                                        <li>
-                                            <form method="POST" action="{{ route('remove-cart-item', ['id' => $item->id]) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn-cart btn-square btn-blue">
-                                                    <i class="fa fa-trash-o"></i>
-                                                </button>
-                                            </form>
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            @endif
-                            @endforeach
-                            @endforeach
-                        </tbody>
-                    </table>
+                                <span class="btn-cart btn-square btn-minus btn-qty"><i class="fa fa-minus"></i></span>
                 </div>
+                </td>--}}
+                <td><span class="cart-price fixsizecart">{{ $item->price }} VNĐ</span></td>
+                <td>
+                    <ul class="cart-action">
+
+                        <li>
+                            <form method="POST" action="{{ route('remove-cart-item', ['id' => $item->id]) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn-cart btn-square btn-blue">
+                                    <i class="fa fa-trash-o"></i>
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                </td>
+                </tr>
+                @endif
+                @endforeach
+                @endforeach
+                </tbody>
+                </table>
             </div>
-            <div class="xv-accordian pt-15 pb-55">
-                <div class="row">
-                    <div class="col-xs-12 col-md-6 col-md-offset-1">
+        </div>
+        <div class="xv-accordian pt-15 pb-55">
+            <div class="row">
+                <div class="col-xs-12 col-md-6 col-md-offset-1">
 
 
-                        <div class="accordian-wrapper style">
-                            <a href="#" class="accordian-trigger">
-                                <i class="fa fa-caret-right"></i>
-                                Áp dụng mã giảm giá
-                            </a>
-                            <div class="accordian-pane">
-                                <div class="accordian-form text-left">
+                    <div class="accordian-wrapper style">
+                        <a href="#" class="accordian-trigger">
+                            <i class="fa fa-caret-right"></i>
+                            Áp dụng mã giảm giá
+                        </a>
+                        <div class="accordian-pane">
+                            <div class="accordian-form text-left">
 
-                                    <div class="accordian-form-wrap">
-                                        <label>Mã giảm giá của bạn</label>
-                                        <input type="text">
-                                    </div>
-                                    <div class="accordian-form-button">
-                                        <button class="btn btn-accordian btn-blue">Áp dụng</button>
-                                    </div>
+                                <div class="accordian-form-wrap">
+                                    <label>Mã giảm giá của bạn</label>
+                                    <input type="text">
+                                </div>
+                                <div class="accordian-form-button">
+                                    <button class="btn btn-accordian btn-blue">Áp dụng</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-md-4">
-                        <table class="table">
-                            <tr class="Sub-Total">
-                                <th>TỔNG GIÁ</th>
-                                <td>{{$totalPrice}} VNĐ</td>
-                            </tr>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <table class="table">
+                        <tr class="Sub-Total">
+                            <th>TỔNG GIÁ</th>
+                            <td>{{$totalPrice}} VNĐ</td>
+                        </tr>
 
-                            <tr class="Promotion-Discount">
-                                <th>KHUYẾN MÃI</th>
-                                <td>0 VNĐ</td>
-                            </tr>
-                            <tr class="VAT">
-                                <th>VAT</th>
-                                <td>0 VNĐ</td>
-                            </tr>
-                            <tr class="Total">
-                                <th>TỔNG TIỀN</th>
-                                <td>{{$totalPrice}} VNĐ</td>
-                            </tr>
-                            <tr class="Continue-Shopping">
-                                <th> <a href="#">Tiếp tục mua hàng</a></th>
-                                <td>
-                                    <form method="post" action="{{ route('create.order') }}">
-                                        @csrf
-                                        <input type="hidden" name="cartItems" value="{{ json_encode($cartItems) }}">
-                                        <input type="hidden" name="totalPrice" value="{{ $totalPrice }}">
-                                        <button type="submit" class="btn btn-send btn-pink">Thanh toán</button>
-                                    </form>
-                                    <!-- <a href="#" >THANH TOÁN</a> -->
-                                </td>
-                            </tr>
+                        <tr class="Promotion-Discount">
+                            <th>KHUYẾN MÃI</th>
+                            <td>0 VNĐ</td>
+                        </tr>
+                        <tr class="VAT">
+                            <th>VAT</th>
+                            <td>0 VNĐ</td>
+                        </tr>
+                        <tr class="Total">
+                            <th>TỔNG TIỀN</th>
+                            <td>{{$totalPrice}} VNĐ</td>
+                        </tr>
+                        <tr class="Continue-Shopping">
+                            <th> <a href="#">Tiếp tục mua hàng</a></th>
+                            <td>
+                                <form method="post" action="{{ route('create.order') }}">
+                                    @csrf
+                                    <input type="hidden" name="cartItems" value="{{ json_encode($cartItems) }}">
+                                    <input type="hidden" name="totalPrice" value="{{ $totalPrice }}">
+                                    <button type="submit" class="btn btn-send btn-pink">Thanh toán</button>
+                                </form>
+                                <!-- <a href="#" >THANH TOÁN</a> -->
+                            </td>
+                        </tr>
 
-                        </table>
-                    </div>
+                    </table>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </main>
 

@@ -22,10 +22,6 @@ class HomeController extends Controller
 
     public function CheckRoleUser()
     {
-        // if (Auth::user()->role == 3) {
-        //     $this->guard()->logout();
-        //     return redirect()->with('error', 'Vui lòng xác thực email để đăng nhập!');
-        // }
         if (Auth::user()->email_verified_at == null) {
             Auth::logout();
             return redirect()->back()->with('error', 'Vui lòng xác thực email để đăng nhập!');
@@ -86,5 +82,23 @@ class HomeController extends Controller
         }
 
         return $totalPrice;
+    }
+
+    public function getQuantityWarehouse()
+    {
+        $product = Products::all();   
+
+        // $product_images = ProductImage::all();
+
+        $warehouses = $product->warehouses;
+
+        $quantityInWarehouse = 0;
+
+        foreach ($warehouses as $warehouse) {
+            $quantityInWarehouse += $warehouse->quantity;
+        }
+
+        return $quantityInWarehouse;
+
     }
 }

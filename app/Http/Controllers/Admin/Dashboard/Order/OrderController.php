@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\orders;
 use App\Models\order_details;
 use Illuminate\Support\Facades\DB;
+use App\Models\Products;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -20,7 +21,7 @@ class OrderController extends Controller
     {
 
         $request->validate([
-            'status' => 'required|in:1,2,3,4,5', 
+            'status' => 'required|in:1,2,3,4,5',
         ]);
 
         $order = orders::findOrFail($orderId);
@@ -30,7 +31,7 @@ class OrderController extends Controller
         return redirect()->route('dashboard.order.index')->with('success', 'Trạng thái đơn hàng đã được cập nhật.');
     }
 
-    
+
 
 
     public function createOrder(Request $request)
@@ -61,6 +62,27 @@ class OrderController extends Controller
             $orderDetail->quantity = $cartItem['quantity'];
             $orderDetail->price = $cartItem['price'];
             $orderDetail->save();
+
+            // Cập nhật số lượng trong kho sau khi đã thêm vào đơn hàng
+            $product = Products::find($cartItem['product_id']);
+            $warehouses = $product->warehouses;
+
+            $quantityInWarehouse = 0;
+
+            foreach ($warehouses as $warehouse) {
+                $quantityInWarehouse += $warehouse->quantity;
+            }
+
+            // Trừ đi số lượng đã bán trong kho
+            $quantityToReduce = min($quantityInWarehouse, $cartItem['quantity']);
+            foreach ($warehouses as $warehouse) {
+                $quantityToReduce = min($warehouse->quantity, $cartItem['quantity']);
+                $warehouse->decrement('quantity', $quantityToReduce);
+                $cartItem['quantity'] -= $quantityToReduce;
+                if ($cartItem['quantity'] <= 0) {
+                    break;
+                }
+            }
         }
 
         $cartItemIds = array_column($cartItems, 'id');
@@ -68,6 +90,4 @@ class OrderController extends Controller
 
         return redirect()->route('thanh-toan')->with('success', 'Đã đặt hàng thành công!');
     }
-
-
 }

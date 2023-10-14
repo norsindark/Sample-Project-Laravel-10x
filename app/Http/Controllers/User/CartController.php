@@ -47,57 +47,116 @@ class CartController extends Controller
     }
 
 
-    public function addToCart(Request $request, $ProductId)
-    {
+    // public function addToCart(Request $request, $ProductId)
+    // {
 
-        // check User
+    //     // check User
+    //     $userId = auth()->id();
+    //     if (!$userId) {
+    //         return back()->with('error', 'Bạn phải đăng nhập để sử dụng chức năng này.');
+    //     }
+
+    //     //check cart
+    //     $cart = Cart::where('user_id', $userId)->first();
+    //     if (!$cart) {
+    //         $cart = Cart::create(['user_id' => $userId]);
+    //     }
+
+    //     //check product
+    //     $product = Products::find($ProductId);
+    //     if (!$product) {
+    //         return back()->with('error', 'Sản phẩm không tồn tại.');
+    //     }
+    //     //Get CartItem 
+    //     $cartItem = CartItem::where('cart_id', $cart->id)->where('product_id', $ProductId)->first();
+
+    //     $quantity = $request->input('quantity');
+
+    //     // validate dât
+    //     $request->validate([
+    //         'quantity' => 'required|integer|min:1',
+    //     ]);
+
+    //     // upđate or Create
+    //     if ($cartItem) {
+    //         $cartItem->update([
+    //             'quantity' => $cartItem->quantity + $quantity,
+    //         ]);
+    //     } else {
+    //         CartItem::create([
+    //             'cart_id' => $cart->id,
+    //             'product_id' => $ProductId,
+    //             'quantity' => $quantity,
+    //             'price' => $product->Price,
+    //         ]);
+    //     }
+
+    //     return back()->with('success', 'Sản phẩm đã được thêm vào giỏ hàng.');
+    // }
+
+    public function addToCart(Request $request, $productId)
+    {
         $userId = auth()->id();
         if (!$userId) {
             return back()->with('error', 'Bạn phải đăng nhập để sử dụng chức năng này.');
         }
 
-        //check cart
         $cart = Cart::where('user_id', $userId)->first();
         if (!$cart) {
             $cart = Cart::create(['user_id' => $userId]);
         }
 
-        //check product
-        $product = Products::find($ProductId);
+        $product = Products::find($productId);
         if (!$product) {
             return back()->with('error', 'Sản phẩm không tồn tại.');
         }
-        //Get CartItem 
-        $cartItem = CartItem::where('cart_id', $cart->id)->where('product_id', $ProductId)->first();
+
+        $cartItem = CartItem::where('cart_id', $cart->id)->where('product_id', $productId)->first();
 
         $quantity = $request->input('quantity');
 
-        // validate dât
+
+        $quantityInWarehouse = 0;
+
+        foreach ($product->warehouses as $warehouse) {
+            $quantityInWarehouse += $warehouse->quantity;
+        }
+
+        if ($quantityInWarehouse <= 0) {
+            return back()->with('error', "Sản phẩm đã hết hàng!");
+        }
+
         $request->validate([
             'quantity' => 'required|integer|min:1',
         ]);
 
-        // upđate or Create
         if ($cartItem) {
-            $cartItem->update([
-                'quantity' => $cartItem->quantity + $quantity,
-            ]);
+            $newQuantity = $cartItem->quantity + $quantity;
+            if ($newQuantity <= $quantityInWarehouse) {
+                $cartItem->update(['quantity' => $newQuantity]);
+            } else {
+                return back()->with('error', 'Không đủ sản phẩm trong kho.');
+            }
         } else {
-            CartItem::create([
-                'cart_id' => $cart->id,
-                'product_id' => $ProductId,
-                'quantity' => $quantity,
-                'price' => $product->Price,
-            ]);
+            if ($quantity <= $quantityInWarehouse) {
+                CartItem::create([
+                    'cart_id' => $cart->id,
+                    'product_id' => $productId,
+                    'quantity' => $quantity,
+                    'price' => $product->Price,
+                ]);
+            } else {
+                return back()->with('error', 'Không đủ sản phẩm trong kho.');
+            }
         }
 
         return back()->with('success', 'Sản phẩm đã được thêm vào giỏ hàng.');
     }
 
+
     public function removeCartItem($id)
     {
 
-        
         $cartItem = cartItem::findOrFail($id);
 
         $cartItem->delete();

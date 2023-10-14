@@ -61,9 +61,9 @@
                         <td>{{ $warehouse->products->ProductName }}</td>
                         <td>{{ $warehouse->quantity }}</td>
                         <td>
-                            @if($warehouse->status == 1)
+                            @if($warehouse->quantity >= 1)
                             In stock
-                            @elseif($warehouse->status == 2)
+                            @elseif($warehouse->quantity <= 0)
                             Out of stock
                             @endif
                         </td>
@@ -73,8 +73,6 @@
                         </td>
                     </tr>
                     @endforeach
-
-
                 </tbody>
             </table>
 
