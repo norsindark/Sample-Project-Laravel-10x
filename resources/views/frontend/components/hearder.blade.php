@@ -189,7 +189,7 @@ Search
             <!--ul-->
         </div>
         <!--social-->
-        <form class="search-form">
+        <div class="search-form">
             <div class="custome-select">
                 <b class="fa fa-caret-down"></b>
                 <span>DANH MỤC SẢN PHẨM</span>
@@ -201,14 +201,14 @@ Search
                     @endif
                 </select>
             </div>
-
-        </form>
+            <form action="{{ route('search') }}" method="GET">
+                @csrf
+                <input type="text" name="search" placeholder="Từ khóa tìm kiếm..." />
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
     </div>
-    <form action="{{ route('search') }}" method="GET">
-        @csrf
-        <input type="text" name="search" placeholder="Từ khóa tìm kiếm..." />
-        <button type="submit"><i class="fa fa-search"></i></button>
-    </form>
+
     <!--container-->
 </div>
 <!--social-search-->

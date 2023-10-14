@@ -53,7 +53,7 @@
                                         @endphp
                                         @foreach ($product_images as $product_image)
                                         @if ($product_image->ProductId == $product->ProductId && !$firstImageDisplayed)
-                                        <a href="#"><img src="{{ asset('storage/' . $product_image->path) }}" alt="Product Image"></a>
+                                        <a href="#"><img style="width: 105px;" src="{{ asset('storage/' . $product_image->path) }}" alt="Product Image"></a>
                                         @php
                                         $firstImageDisplayed = true;
                                         @endphp

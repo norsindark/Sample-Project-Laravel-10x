@@ -22,13 +22,9 @@
     <!--========================================
         grid and list view
         ===========================================-->
-                   
-                    <header class="sec-heading style text-center fix_secheading">
-                        <div class="category-wrap" style="top: 2px">
-                            <span class="categorise wrap_text-center" style="font-size: 20px; font-weight: 700;">Thông tin cá nhân</span>
-                        </div>
-                    </header>
-                    <div class="wrap_informaiton" style="width: 75%;     margin: 32px 0 0;">
+
+
+                    <div class="wrap_informaiton" style="">
                         @if ($errors->any())
                             <div class="alert alert-danger">
                                 <ul>
@@ -43,7 +39,7 @@
                                     {{ session('success') }}
                                 </div>
                             @endif
-                        <div class="container">
+                        <div class="container" style="width: 600px; background-color: #ecf0f3; padding: 0 20px">
 
                             <form class="form_create" method="POST" action="{{ route('update-profile') }}" style="margin-top: 60px;">
                             @csrf
@@ -67,7 +63,7 @@
                                 <label for="address">Địa chỉ</label>
                                 <input class="form-control" type="text" id="address" name="address"  >
                             </div>
-                            <button type="submit" class="btn btn-primary btn_location" style="margin-bottom: 120px;">Cập nhập thông tin</button>
+                            <button type="submit" class="btn btn-primary btn_location" style="margin-bottom: 130px; top: 60px ">Cập nhập thông tin</button>
                         </form>
                         </div>
                     </div>
