@@ -37,4 +37,5 @@ class ProductController extends Controller
 
         return view('frontend.product.product', compact('product', 'product_images', 'quantityInWarehouse','error'));
     }
+    
 }
