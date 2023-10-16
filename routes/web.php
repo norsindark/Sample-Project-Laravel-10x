@@ -142,7 +142,7 @@ Route::prefix('/')->group(function () {
         });
 
 
-        Route::prefix('/')->middleware(['auth'])->group(function () {
+        Route::prefix('/')->middleware(['auth', 'verified'])->group(function () {
             //cart
             Route::get('/gio-hang', [CartController::class, 'index'])->name('gio-hang');
             Route::delete('remove-cart-item/{id}',  [CartController::class, 'removeCartItem'])->name('remove-cart-item');
@@ -166,7 +166,7 @@ Route::prefix('/')->group(function () {
 
 
     // Quản lí tài khoản
-    Route::prefix('/')->middleware(['auth'])->group(function () {
+    Route::prefix('/')->middleware(['auth', 'verified'])->group(function () {
         Route::get('quan-li-tai-khoan', 'App\Http\Controllers\User\ManagerUser\ManagerUserController@index')->name('manageruser');
         Route::get('don-hang-cua-ban', 'App\Http\Controllers\User\ManagerUser\ManagerOderController@index')->name('manageroder');
         Route::get('quan-li-so-dia-chi', 'App\Http\Controllers\User\ManagerUser\ManagerAddressController@index')->name('manageraddress');
