@@ -28,8 +28,8 @@ class Handler extends ExceptionHandler
             //
         });
     }
-    public function render($request, Throwable $exception)
-    {
-        return response()->view('errors.404', [], 404);
-    }
+    // public function render($request, Throwable $exception)
+    // {
+    //     return response()->view('errors.404', [], 404);
+    // }
 }
