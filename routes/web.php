@@ -125,6 +125,11 @@ Route::prefix('/')->group(function () {
         Route::get('/trang-chu', [HomeController::class, 'home'])->name('home');
         Route::get('/tin-tuc', 'App\Http\Controllers\User\BlogController@index')->name('tin-tuc');
 
+        // Route::get('/products', 'ProductController@index')->name('products.index');
+        // Route::get('/products/sort/{sort}', 'ProductController@index')->name('products.sort');
+        // Route::get('/products/category/{categoryName}/{categoryId}', 'ProductController@getProducts')->name('products.category');
+
+
 
         //show product details
         Route::prefix('product')->group(function () {

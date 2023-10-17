@@ -23,6 +23,9 @@ class EventServiceProvider extends ServiceProvider
         ProductCreated::class => [
             UpdateWarehouse::class,
         ],
+        RefreshEvent::class => [
+            RefreshEventListener::class,
+        ],
     ];
 
     /**

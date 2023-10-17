@@ -44,43 +44,43 @@
                 @method('PUT')
                 <div class="form-group">
                     <label for="ProductId">Product ID</label>
-                    <input class="form-control" type="text" id="ProductId" name="Id_Product" value="{{$product->Id_Product}}" required>
+                    <input class="form-control" type="text" id="ProductId" name="Id_Product" value="{{$product->Id_Product}}" >
                 </div>
                 <div class="form-group">
                     <label for="ProductName">Product Name</label>
-                    <input class="form-control" type="text" id="ProductName" name="ProductName" value="{{$product->ProductName}}" required>
+                    <input class="form-control" type="text" id="ProductName" name="ProductName" value="{{$product->ProductName}}" >
                 </div>
                 <div class="form-group">
                     <label for="Description">Description</label>
-                    <input class="form-control" type="text" id="Description" name="Description" value="{{$product->Description}}" required>
+                    <input class="form-control" type="text" id="Description" name="Description" value="{{$product->Description}}" >
                 </div>
 
                 <div class="form-group">
                     <label for="Description">Uses</label>
-                    <input class="form-control" type="text" id="uses" name="uses" required>
+                    <input class="form-control" type="text" id="uses" name="uses" >
                 </div>
 
                 <div class="form-group">
                     <label for="Description">How To Use</label>
-                    <input class="form-control" type="text" id="howToUse" name="howToUse" required>
+                    <input class="form-control" type="text" id="howToUse" name="howToUse" >
                 </div>
 
                 <div class="form-group">
                     <label for="Description">Side Effects</label>
-                    <input class="form-control" type="text" id="sideEffects" name="sideEffects" required>
+                    <input class="form-control" type="text" id="sideEffects" name="sideEffects" >
                 </div>
 
                 <div class="form-group">
                     <label for="Price">Price</label>
-                    <input class="form-control" type="number" id="Price" name="Price" step="0.01" value="{{$product->Price}}" required>
+                    <input class="form-control" type="number" id="Price" name="Price" step="0.01" value="{{$product->Price}}" >
                 </div>
                 <div class="form-group">
                     <label for="Sale">Sale</label>
-                    <input class="form-control" type="number" id="Sale" name="Sale" step="0.01" value="{{$product->Sale}}" required>
+                    <input class="form-control" type="number" id="Sale" name="Sale" step="0.01" value="{{$product->Sale}}" >
                 </div>
                 <div class="form-group">
                     <label for="expire">Expire</label>
-                    <input class="form-control" type="datetime-local" id="expire" name="expire" value="{{$product->expire}}" required>
+                    <input class="form-control" type="datetime-local" id="expire" name="expire" value="{{$product->expire}}" >
                 </div>
                 <div class="form-group">
                     <label for="Category">Categories</label>
