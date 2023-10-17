@@ -41,6 +41,7 @@ class CategoryController extends Controller
         $query = Products::query();
         $categories = Categories::all();
         $product_images = ProductImage::all();
+        $Sproducts = null;
 
         if ($request->has('sort')) {
             if ($request->input('sort') == 'low_to_high') {
@@ -50,9 +51,9 @@ class CategoryController extends Controller
             }
         }
 
-        $products = $query->paginate(9);
+        $productss = $query->paginate(1);
 
-        return view('frontend.category.category', compact('categories', 'products', 'product_images'));
+        return view('frontend.category.category', compact('categories','Sproducts', 'productss', 'product_images'));
     }
 
     public function getProducts($categoryName, $categoryId)
@@ -60,6 +61,7 @@ class CategoryController extends Controller
         $categories = Categories::find($categoryId);
         $product_images = ProductImage::all();
         $query = Products::query();
+        $Sproducts = null;
 
         if ($categoryId != 0) {
             $query->whereHas('categories', function ($query) use ($categoryId) {
@@ -67,7 +69,7 @@ class CategoryController extends Controller
             });
         }
 
-        $Sproducts = $query->get();
+        $Sproducts = $query->paginate(9);
 
         return view('frontend.category.category', compact('categories', 'Sproducts', 'product_images'));
     }
