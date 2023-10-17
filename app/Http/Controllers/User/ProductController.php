@@ -15,7 +15,9 @@ class ProductController extends Controller
     public function productDetails($productsName, $ProductId)
     {
         $product = Products::findOrFail($ProductId);
-
+        // $discountedPrice = null;
+        // $discountPercentage = $product->Sale / 100;
+        // $discountedPrice = $product->Price - ($product->Price * $discountPercentage);
         // $ProductId =  $product->ProductId;
 
         // dd($productId);
@@ -35,9 +37,6 @@ class ProductController extends Controller
             $error = "Sản phẩm đã hết hàng!";
             return view('frontend.product.product', compact('product', 'product_images', 'quantityInWarehouse', 'error'));
         }
-
         return view('frontend.product.product', compact('product', 'product_images', 'quantityInWarehouse', 'error'));
     }
-
-   
 }

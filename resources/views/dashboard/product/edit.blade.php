@@ -57,17 +57,22 @@
 
                 <div class="form-group">
                     <label for="Description">Uses</label>
+
                     <input class="form-control" type="text" id="uses" name="uses"  value="{{$product->Description}}">
+
                 </div>
 
                 <div class="form-group">
                     <label for="Description">How To Use</label>
+
                     <input class="form-control" type="text" id="howToUse" name="howToUse"  value="{{$product->Description}}">
+
                 </div>
 
                 <div class="form-group">
                     <label for="Description">Side Effects</label>
                     <input class="form-control" type="text" id="sideEffects" name="sideEffects"  value="{{$product->Description}}">
+
                 </div>
 
                 <div class="form-group">

@@ -68,6 +68,18 @@ class HomeController extends Controller
         return $products;
     }
 
+    public function updateProductCount()
+    {
+        $categories = Categories::all();
+
+        foreach ($categories as $category) {
+            $productCount = $category->products->count();
+            $category->update(['product_count' => $productCount]);
+        }
+
+        return $categories;
+    }
+
     public function getTotalPrice()
     {
 
@@ -77,18 +89,33 @@ class HomeController extends Controller
 
         $cartItems = $cart->items;
 
+        $vat = 10;
+
         // total price
+
         $totalPrice = 0;
+
         foreach ($cartItems as $cartItem) {
-            $totalPrice += $cartItem->quantity * $cartItem->price;
+            $product = $cartItem->product;
+            $discountedPrice = $product->Price;
+
+            if ($product->Sale > 0) {
+                $discountedPrice = $product->Price - ($product->Sale / 100) * $product->Price;
+            }
+
+            $totalPrice += $cartItem->quantity * $discountedPrice;
         }
 
-        return $totalPrice;
+        $tax = ($vat / 100) * $totalPrice;
+
+        $totalPriceWithTax = $totalPrice + $tax;
+
+        return $totalPriceWithTax;
     }
 
     public function getQuantityWarehouse()
     {
-        $product = Products::all();   
+        $product = Products::all();
 
         // $product_images = ProductImage::all();
 
@@ -101,15 +128,8 @@ class HomeController extends Controller
         }
 
         return $quantityInWarehouse;
-
     }
 
-    // public function searchProducts(Request $request)
-    // {
-    //     $search = $request->input('search');
-    //     $searchProducts = Products::where('ProductName', 'like', "%$search%")->get();
-    //     return $searchProducts;
-    // }
 
     public function search(Request $request)
     {
@@ -117,4 +137,28 @@ class HomeController extends Controller
         $sProducts = Products::where('ProductName', 'like', "%$search%")->get();
         return view('frontend.product.search', compact('sProducts', 'search'));
     }
+
+    public function getProductNew()
+    {
+        $products = Products::orderBy('created_at', 'desc')->get();
+
+        return $products;
+    }
+
+
+    public function getSale()
+    {
+        $bestSale = Products::orderBy('Sale', 'desc')->get();
+
+        return $bestSale;
+    }
+
+    // public function getCategoryProduct()
+    // {
+    //     $category = Categories::all();
+    //     // $products = Products::all();
+
+    //     $getCategoryProduct = $category->products()->getTable();
+    //     return $getCategoryProduct;
+    // }
 }
