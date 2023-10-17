@@ -20,7 +20,7 @@ return new class extends Migration
             $table->timestamps();
     
             $table->foreign('cart_id')->references('id')->on('carts')->onDelete('cascade');
-            $table->foreign('product_id')->references('ProductId')->on('products');
+            $table->foreign('product_id')->references('ProductId')->on('products')->onDelete('cascade');
         });
     }
 
