@@ -36,8 +36,9 @@
                                 <th>HÌNH ẢNH</th>
                                 <th>MÔ TẢ</th>
                                 <th>SỐ LƯỢNG</th>
-                                {{-- <th>ĐƠN GIÁ</th>--}}
-                                <th>GIÁ TIỀN</th>
+                                <th>ĐƠN GIÁ</th>
+                                <th>SALE</th>
+                                <th>TỔNG GIÁ</th>
                                 <th>HOẠT ĐỘNG</th>
                             </tr>
                         </thead>
@@ -79,7 +80,9 @@
                                 <span class="btn-cart btn-square btn-minus btn-qty"><i class="fa fa-minus"></i></span>
                 </div>
                 </td>--}}
-                <td><span class="cart-price fixsizecart">{{ $item->price }} VNĐ</span></td>
+                <td><span class="cart-price fixsizecart">{{ ($product->Price)}} VNĐ</span></td>
+                <td><span class="cart-price fixsizecart">{{ ($product->Sale)}} %</span></td>
+                <td><span class="cart-price fixsizecart">{{($item->quantity)*($item->price - $product->Sale/100*$item->price) }} VNĐ</span></td>
                 <td>
                     <ul class="cart-action">
 
@@ -107,7 +110,7 @@
                 <div class="col-xs-12 col-md-6 col-md-offset-1">
 
 
-                    <div class="accordian-wrapper style">
+                    <!-- <div class="accordian-wrapper style">
                         <a href="#" class="accordian-trigger">
                             <i class="fa fa-caret-right"></i>
                             Áp dụng mã giảm giá
@@ -124,22 +127,22 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="col-xs-12 col-md-4">
                     <table class="table">
                         <tr class="Sub-Total">
                             <th>TỔNG GIÁ</th>
-                            <td>{{$totalPrice}} VNĐ</td>
+                            <td>{{$totalPriceFirst}} VNĐ</td>
                         </tr>
 
                         <tr class="Promotion-Discount">
                             <th>KHUYẾN MÃI</th>
-                            <td>0 VNĐ</td>
+                            <td>{{$priceSale}} VNĐ</td>
                         </tr>
                         <tr class="VAT">
                             <th>VAT</th>
-                            <td>0 VNĐ</td>
+                            <td>10%</td>
                         </tr>
                         <tr class="Total">
                             <th>TỔNG TIỀN</th>
@@ -157,7 +160,6 @@
                                 <!-- <a href="#" >THANH TOÁN</a> -->
                             </td>
                         </tr>
-
                     </table>
                 </div>
             </div>

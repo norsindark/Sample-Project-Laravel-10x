@@ -9,6 +9,7 @@ use App\Models\cartItem;
 use App\Models\ProductImage;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
+use Termwind\Components\Dd;
 
 class CartController extends Controller
 {
@@ -39,11 +40,34 @@ class CartController extends Controller
 
         // total price
         $totalPrice = 0;
+
+        $totalPriceFirst = 0;
+
+        $priceSale = 0;
+
+
         foreach ($cartItems as $cartItem) {
-            $totalPrice += $cartItem->quantity * $cartItem->price;
+            $product = $cartItem->product;
+            $discountedPrice = $product->Price;
+
+            if ($product->Sale > 0) {
+                $discountedPrice = $product->Price - ($product->Sale / 100) * $product->Price;
+            }
+
+            $totalPrice += $cartItem->quantity * $discountedPrice;
+
+            $priceSale += ($product->Price * $cartItem->quantity) - $totalPrice;
+
+            $totalPriceFirst += $product->Price * $cartItem->quantity;
         }
 
-        return view('frontend.cart.cart', compact('cartItems', 'products', 'totalPrice', 'product_images'));
+        // $totalPrice = 0;
+        // foreach ($cartItems as $cartItem) {
+        //     $totalPrice += $cartItem->quantity * $cartItem->price;
+        //     // $totalPrice += $cartItem->quantity * (($cartItem->$product->Sale / 100) * $cartItem->$cartItem->price );
+        // }
+
+        return view('frontend.cart.cart', compact('cartItems', 'products', 'totalPrice', 'product_images' , 'totalPriceFirst', 'priceSale'));
     }
 
 
