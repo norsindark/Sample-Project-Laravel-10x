@@ -89,13 +89,28 @@ class HomeController extends Controller
 
         $cartItems = $cart->items;
 
+        $vat = 10;
+
         // total price
+
         $totalPrice = 0;
+
         foreach ($cartItems as $cartItem) {
-            $totalPrice += $cartItem->quantity * $cartItem->price;
+            $product = $cartItem->product;
+            $discountedPrice = $product->Price;
+
+            if ($product->Sale > 0) {
+                $discountedPrice = $product->Price - ($product->Sale / 100) * $product->Price;
+            }
+
+            $totalPrice += $cartItem->quantity * $discountedPrice;
         }
 
-        return $totalPrice;
+        $tax = ($vat / 100) * $totalPrice;
+
+        $totalPriceWithTax = $totalPrice + $tax;
+
+        return $totalPriceWithTax;
     }
 
     public function getQuantityWarehouse()
