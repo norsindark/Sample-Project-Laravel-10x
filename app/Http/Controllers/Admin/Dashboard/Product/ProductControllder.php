@@ -121,7 +121,7 @@ class ProductControllder extends Controller
         $request->validate([
             'ProductName' => 'required',
             'Description' => 'required|string',
-            'sdieEffects' => 'required|string',
+            'sideEffects' => 'required|string',
             'uses' => 'required|string',
             'howToUse' => 'required|string',
             'Price' => 'required|numeric',
