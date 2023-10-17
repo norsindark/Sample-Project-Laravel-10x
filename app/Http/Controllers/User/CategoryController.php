@@ -51,7 +51,7 @@ class CategoryController extends Controller
             }
         }
 
-        $productss = $query->paginate(1);
+        $productss = $query->paginate(9);
 
         return view('frontend.category.category', compact('categories','Sproducts', 'productss', 'product_images'));
     }
