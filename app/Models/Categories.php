@@ -24,6 +24,7 @@ class Categories extends Model
     // trường có thể thêm dữ liệu
     protected $fillable = [
         'CategoryName', //tên categoriy
+        'icon_class',
     ];
 
     // bảng trung gian

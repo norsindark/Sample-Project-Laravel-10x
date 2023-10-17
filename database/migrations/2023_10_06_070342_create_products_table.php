@@ -13,10 +13,10 @@ class CreateProductsTable extends Migration
             $table->id('ProductId'); // Sử dụng kiểu số nguyên tự tăng làm khóa chính
             $table->string('Id_Product')->unique(); // Mã sản phẩm và đảm bảo tính duy nhất
             $table->string('ProductName');
-            $table->string('Description');
-            $table->string('uses');
-            $table->string('howToUse');
-            $table->string('sideEffects');
+            $table->text('Description');
+            $table->text('uses');
+            $table->text('howToUse');
+            $table->text('sideEffects');
             $table->decimal('Price', 10, 2); // Sử dụng kiểu số thập phân để lưu giá sản phẩm
             $table->decimal('Sale', 10, 1)->default(0); // Giá giảm giá (nếu có)
             // $table->binary('mainImage'); // Hình ảnh sản phẩm 

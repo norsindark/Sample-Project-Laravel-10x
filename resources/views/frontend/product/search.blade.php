@@ -120,7 +120,7 @@
                                         </ul>
                                         <div class="xv-rating stars-5"></div>
                                         <span class="xv-price">{{ $product->Price }} VNĐ</span>
-                                        {{-- <del class="">giá giiảm VNĐ</del>--}}
+                                        <del class="">giá giiảm VNĐ</del>
                                         <a data-qv-tab="#qvt-cart" href="#" class="product-buy flytoQuickView">MUA</a>
                                     </div>
                                 </div>

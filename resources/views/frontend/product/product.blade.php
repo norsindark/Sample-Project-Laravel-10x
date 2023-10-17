@@ -74,11 +74,13 @@
                             <div class="detail-slider">
                                 <div class="owl-carousel slider_controls5" data-dots="false" data-prev="fa fa-angle-left" data-next="fa fa-angle-right" data-margin="20" data-slides="4" data-slides-md="3" data-slides-sm="1" data-loop="false" data-nav="true">
                                     @foreach($product_images as $image)
+                                    @if($image->ProductId == $product->ProductId)
                                     <figure class="border-around">
                                         <a href="#">
                                             <img src="{{ asset('storage/' . $image->path) }}" alt="Product Image">
                                         </a>
                                     </figure>
+                                    @endif
                                     @endforeach
                                 </div>
                             </div>
@@ -107,14 +109,22 @@
                 <div class="col-xs-12 col-md-6">
                     <div class="single-product-overview">
                         <h2>{{ $product->ProductName }}</h2>
-                        <div class="xv-rating stars-5"></div>
+                        <!-- <div class="xv-rating stars-5"></div>
                         <ul class="review">
                             <li>15 Đánh giá</li>
                             <li><a href="#">Tạo một đánh giá</a></li>
-                        </ul>
+                        </ul> -->
                         <p class="no-mar">{{ $product->Description }}</p>
                         <div class="cart-options">
+                            <!-- <a href="#" class="price"><span>{{ number_format($product->Price, 0, ',', ' ') }} VNĐ</span></a> -->
+                            @if ($product->Sale >= 1)
+                            <a href="#" class="price"><span>{{ ($product->Price - ($product->Sale/100*$product->Price)) }} VNĐ</span></a>
+                            <!-- <span class="price">{{ ($product->Price - ($product->Sale/100*$product->Price))  }} VNĐ</span> -->
+                            <del class="">{{ $product->Price }} VNĐ</del>
+                            @else
                             <a href="#" class="price"><span>{{ number_format($product->Price, 0, ',', ' ') }} VNĐ</span></a>
+                            <!-- <span class="price">{{ $product->Price }} VNĐ</span> -->
+                            @endif
                             <form action="{{ route('add-to-cart', ['ProductId' => $product->ProductId]) }}" method="POST" id="addToCartForm">
                                 @csrf
                                 <ul class="cart-buttons mt-45 clearfix">
@@ -124,59 +134,52 @@
                                                 <ul>
                                                     <li>Hết hàng</li>
                                                 </ul>
+                                                @else
+                                                <input id="quantity" name="quantity" type="number" data-invalid="Enter valid quantity" data-maxalert="Trong kho hàng chỉ còn {{ $quantityInWarehouse }}" data-max="{{ $quantityInWarehouse }}" data-minalert="Minimum limit reached" data-min="1" value="1">
+                                                @endif
                                         </div>
-                                        @else
-                                        <input id="quantity" name="quantity" type="number" data-invalid="Enter valid quantity" data-maxalert="Trong kho hàng chỉ còn {{ $quantityInWarehouse }}" data-max="{{ $quantityInWarehouse }}" data-minalert="Minimum limit reached" data-min="1" value="1">
-                                        @endif
+                                    </li>
+                                </ul>
+                                <button type="button" class="btn btn-continue" id="addToCartButton">THÊM VÀO GIỎ HÀNG</button>
+                            </form>
                         </div>
+                    </div>
 
-                        </li>
+                    <!-- <div class="col-xs-12 col-md-6">
+                    <div class="single-product-overview">
+                        <h2>{{ $product->ProductName }}</h2>
+                        <div class="xv-rating stars-5"></div>
+                        <ul class="review">
+                            <li>15 Đánh giá</li>
+                            <li><a href="#">Tạo một đánh giá</a></li>
                         </ul>
-                        <button type="button" class="btn btn-continue" id="addToCartButton">THÊM VÀO GIỎ HÀNG</button>
-                        </form>
+                        <p class="no-mar">{{ $product->Description }}</p>
+                        <div class="cart-options">
+                            <a href="#" class="price"><span>{{ number_format($product->Price, 0, ',', ' ') }} VNĐ</span></a>
 
-
-                        <!-- <form action="{{ route('add-to-cart', ['ProductId' => $product->ProductId]) }}" method="POST">
+                            <form action="{{ route('add-to-cart', ['ProductId' => $product->ProductId]) }}" method="POST" id="addToCartForm">
                                 @csrf
                                 <ul class="cart-buttons mt-45 clearfix">
                                     <li>
-                                        @if ($errors != null) -->
-                        <!-- <div class="quantity-control">
-                                            <span class="btn-cart btn-square btn-plus btn-qty"><i class="fa fa-plus"></i></span>
-                                            <input id="quantity" name="quantity" type="number" data-invalid="Enter valid quantity" data-maxalert="Trong kho hàng chỉ còn {{ $quantityInWarehouse }}" data-max="{{ $quantityInWarehouse }}" data-minalert="Minimum limit reached" data-min="1" value="1">
-                                            <span class="btn-cart btn-square btn-minus btn-qty"><i class="fa fa-minus"></i></span>
-                                        </div> -->
-                        <!-- <div class="quantity-control">
-                                            <span class="btn-cart btn-square btn-plus btn-qty"><i class="fa fa-plus"></i></span>
-                                            <input type="number" id="quantity" name="quantity"  min="1" value="1">
-                                            <span class="btn-cart btn-square btn-minus btn-qty"><i class="fa fa-minus"></i></span>
-                                        </div> -->
-                        <!-- <input type="number" class="form-control" id="qtity" name="qtity" value="1">
-                                        @elseif($error == null)
-                                        <div class="alert alert-danger">
-                                            <ul>
-                                                <li>{{ $error }}</li>
-                                            </ul>
+                                        <div class="quantity-control">
+                                            @if($quantityInWarehouse <= 0) <div class="alert alert-danger">
+                                                <ul>
+                                                    <li>Hết hàng</li>
+                                                </ul>
+                                                @else
+                                                <input id="quantity" name="quantity" type="number" data-invalid="Enter valid quantity" data-maxalert="Trong kho hàng chỉ còn {{ $quantityInWarehouse }}" data-max="{{ $quantityInWarehouse }}" data-minalert="Minimum limit reached" data-min="1" value="1">
+                                                @endif
                                         </div>
-                                        @endif
-                                    </li> -->
-                        <!-- <li>
-                                        <a href="#" class="btn-cart btn-square">
-                                            <i class="fa fa-heart"></i>
-                                        </a>
                                     </li>
-                                    <li>
-                                        <a href="#" class="btn-cart btn-square">
-                                            <i class="fa fa-exchange"></i>
-                                        </a>
-                                    </li> -->
-                        <!-- </ul>
-
-                                <a href="{{ route('add-to-cart', ['ProductId' => $product->ProductId]) }}" class="btn btn-continue">THÊM VÀO GIỎ HÀNG</a>
-                            </form> -->
-
+                                </ul>
+                                <button type="button" class="btn btn-continue" id="addToCartButton">THÊM VÀO GIỎ HÀNG</button>
+                            </form>
+                        </div>
                     </div>
+                </div> -->
+
                 </div>
+
             </div>
         </div>
         <div class="tabs-pane mt-60">
@@ -463,3 +466,42 @@
 
 
 @endsection
+
+<!-- <form action="{{ route('add-to-cart', ['ProductId' => $product->ProductId]) }}" method="POST">
+                                @csrf
+                                <ul class="cart-buttons mt-45 clearfix">
+                                    <li>
+                                        @if ($errors != null) -->
+<!-- <div class="quantity-control">
+                                            <span class="btn-cart btn-square btn-plus btn-qty"><i class="fa fa-plus"></i></span>
+                                            <input id="quantity" name="quantity" type="number" data-invalid="Enter valid quantity" data-maxalert="Trong kho hàng chỉ còn {{ $quantityInWarehouse }}" data-max="{{ $quantityInWarehouse }}" data-minalert="Minimum limit reached" data-min="1" value="1">
+                                            <span class="btn-cart btn-square btn-minus btn-qty"><i class="fa fa-minus"></i></span>
+                                        </div> -->
+<!-- <div class="quantity-control">
+                                            <span class="btn-cart btn-square btn-plus btn-qty"><i class="fa fa-plus"></i></span>
+                                            <input type="number" id="quantity" name="quantity"  min="1" value="1">
+                                            <span class="btn-cart btn-square btn-minus btn-qty"><i class="fa fa-minus"></i></span>
+                                        </div> -->
+<!-- <input type="number" class="form-control" id="qtity" name="qtity" value="1">
+                                        @elseif($error == null)
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                <li>{{ $error }}</li>
+                                            </ul>
+                                        </div>
+                                        @endif
+                                    </li> -->
+<!-- <li>
+                                        <a href="#" class="btn-cart btn-square">
+                                            <i class="fa fa-heart"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="btn-cart btn-square">
+                                            <i class="fa fa-exchange"></i>
+                                        </a>
+                                    </li> -->
+<!-- </ul>
+
+                                <a href="{{ route('add-to-cart', ['ProductId' => $product->ProductId]) }}" class="btn btn-continue">THÊM VÀO GIỎ HÀNG</a>
+                            </form> -->

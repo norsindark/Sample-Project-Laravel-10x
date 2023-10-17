@@ -1,0 +1,561 @@
+<div class="xv-product-slides mt-25 mb-25">
+                <div class="owl-carousel slider_controls1 products" data-thumbnail="figure .xv-superimage" data-product=".xv-product" data-dots="false" data-prev="fa fa-angle-left" data-next="fa fa-angle-right" data-slides="4" data-slides-md="2" data-slides-sm="1" data-margin="24" data-loop="true" data-nav="true">
+                    <div data-pid="xyz200" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-product style shadow-around">
+                        <figure>
+                            <a href="#"><img class="xv-superimage" src="/Duanmautemplate/assets/img/product/new2.jpg" alt="" /></a>
+                            <figcaption>
+                                <ul>
+                                    <li>
+                                        <a data-qv-tab="#qvt-wishlist" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-heart"></i></a>
+                                    </li>
+                                    <li>
+                                        <a data-qv-tab="#qvt-compare" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-exchange"></i></a>
+                                    </li>
+                                    <li>
+                                        <a class="btn-cart btn-square btn-blue" href="#"><i class="fa fa-expand"></i></a>
+                                    </li>
+                                </ul>
+                            </figcaption>
+                        </figure>
+                        <!--figure-->
+                        <div class="xv-product-content">
+                            <h3>
+                                <a href="detail1.html">Hỗ trợ xương khớp SUNLIFE CalDeSun Osteo Liquid (Chai 200ml)</a>
+                            </h3>
+                            <div class="color-opt">
+                                <p>1ml có chứa Canxi (canxi carbonat) 50mg, Magi...</p>
+                            </div>
+
+                            <span class="xv-price">220.000 VNĐ</span>
+                            <a data-qv-tab="#qvt-cart" href="#" class="product-buy flytoQuickView">MUA</a>
+                        </div>
+                    </div>
+                    <!--xv-product-->
+
+                    <div data-pid="xyz200" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-product style shadow-around">
+                        <figure>
+                            <a href="#"><img class="xv-superimage" src="/Duanmautemplate/assets/img/product/new2.jpg" alt="" /></a>
+                            <figcaption>
+                                <ul>
+                                    <li>
+                                        <a data-qv-tab="#qvt-wishlist" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-heart"></i></a>
+                                    </li>
+                                    <li>
+                                        <a data-qv-tab="#qvt-compare" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-exchange"></i></a>
+                                    </li>
+                                    <li>
+                                        <a class="btn-cart btn-square btn-blue" href="#"><i class="fa fa-expand"></i></a>
+                                    </li>
+                                </ul>
+                            </figcaption>
+                        </figure>
+                        <!--figure-->
+                        <div class="xv-product-content">
+                            <h3>
+                                <a href="detail1.html">Hỗ trợ xương khớp SUNLIFE CalDeSun Osteo Liquid (Chai 200ml)</a>
+                            </h3>
+                            <div class="color-opt">
+                                <p>1ml có chứa Canxi (canxi carbonat) 50mg, Magi...</p>
+                            </div>
+
+                            <span class="xv-price">220.000 VNĐ</span>
+                            <a data-qv-tab="#qvt-cart" href="#" class="product-buy flytoQuickView">MUA</a>
+                        </div>
+                    </div>
+                    <!--xv-product-->
+
+                    <div data-pid="xyz200" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-product style shadow-around">
+                        <figure>
+                            <a href="#"><img class="xv-superimage" src="/Duanmautemplate/assets/img/product/new2.jpg" alt="" /></a>
+                            <figcaption>
+                                <ul>
+                                    <li>
+                                        <a data-qv-tab="#qvt-wishlist" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-heart"></i></a>
+                                    </li>
+                                    <li>
+                                        <a data-qv-tab="#qvt-compare" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-exchange"></i></a>
+                                    </li>
+                                    <li>
+                                        <a class="btn-cart btn-square btn-blue" href="#"><i class="fa fa-expand"></i></a>
+                                    </li>
+                                </ul>
+                            </figcaption>
+                        </figure>
+                        <!--figure-->
+                        <div class="xv-product-content">
+                            <h3>
+                                <a href="detail1.html">Hỗ trợ xương khớp SUNLIFE CalDeSun Osteo Liquid (Chai 200ml)</a>
+                            </h3>
+                            <div class="color-opt">
+                                <p>1ml có chứa Canxi (canxi carbonat) 50mg, Magi...</p>
+                            </div>
+
+                            <span class="xv-price">220.000 VNĐ</span>
+                            <a data-qv-tab="#qvt-cart" href="#" class="product-buy flytoQuickView">MUA</a>
+                        </div>
+                    </div>
+                    <!--xv-product-->
+
+                    <div data-pid="xyz200" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-product style shadow-around">
+                        <figure>
+                            <a href="#"><img class="xv-superimage" src="/Duanmautemplate/assets/img/product/new2.jpg" alt="" /></a>
+                            <figcaption>
+                                <ul>
+                                    <li>
+                                        <a data-qv-tab="#qvt-wishlist" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-heart"></i></a>
+                                    </li>
+                                    <li>
+                                        <a data-qv-tab="#qvt-compare" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-exchange"></i></a>
+                                    </li>
+                                    <li>
+                                        <a class="btn-cart btn-square btn-blue" href="#"><i class="fa fa-expand"></i></a>
+                                    </li>
+                                </ul>
+                            </figcaption>
+                        </figure>
+                        <!--figure-->
+                        <div class="xv-product-content">
+                            <h3>
+                                <a href="detail1.html">Hỗ trợ xương khớp SUNLIFE CalDeSun Osteo Liquid (Chai 200ml)</a>
+                            </h3>
+                            <div class="color-opt">
+                                <p>1ml có chứa Canxi (canxi carbonat) 50mg, Magi...</p>
+                            </div>
+
+                            <span class="xv-price">220.000 VNĐ</span>
+                            <a data-qv-tab="#qvt-cart" href="#" class="product-buy flytoQuickView">MUA</a>
+                        </div>
+                    </div>
+                    <!--xv-product-->
+
+                    <div data-pid="xyz200" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-product style shadow-around">
+                        <figure>
+                            <a href="#"><img class="xv-superimage" src="/Duanmautemplate/assets/img/product/new2.jpg" alt="" /></a>
+                            <figcaption>
+                                <ul>
+                                    <li>
+                                        <a data-qv-tab="#qvt-wishlist" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-heart"></i></a>
+                                    </li>
+                                    <li>
+                                        <a data-qv-tab="#qvt-compare" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-exchange"></i></a>
+                                    </li>
+                                    <li>
+                                        <a class="btn-cart btn-square btn-blue" href="#"><i class="fa fa-expand"></i></a>
+                                    </li>
+                                </ul>
+                            </figcaption>
+                        </figure>
+                        <!--figure-->
+                        <div class="xv-product-content">
+                            <h3>
+                                <a href="detail1.html">Hỗ trợ xương khớp SUNLIFE CalDeSun Osteo Liquid (Chai 200ml)</a>
+                            </h3>
+                            <div class="color-opt">
+                                <p>1ml có chứa Canxi (canxi carbonat) 50mg, Magi...</p>
+                            </div>
+
+                            <span class="xv-price">220.000 VNĐ</span>
+                            <a data-qv-tab="#qvt-cart" href="#" class="product-buy flytoQuickView">MUA</a>
+                        </div>
+                    </div>
+                    <!--xv-product-->
+
+                    <div data-pid="xyz200" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-product style shadow-around">
+                        <figure>
+                            <a href="#"><img class="xv-superimage" src="/Duanmautemplate/assets/img/product/new2.jpg" alt="" /></a>
+                            <figcaption>
+                                <ul>
+                                    <li>
+                                        <a data-qv-tab="#qvt-wishlist" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-heart"></i></a>
+                                    </li>
+                                    <li>
+                                        <a data-qv-tab="#qvt-compare" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-exchange"></i></a>
+                                    </li>
+                                    <li>
+                                        <a class="btn-cart btn-square btn-blue" href="#"><i class="fa fa-expand"></i></a>
+                                    </li>
+                                </ul>
+                            </figcaption>
+                        </figure>
+                        <!--figure-->
+                        <div class="xv-product-content">
+                            <h3>
+                                <a href="detail1.html">Hỗ trợ xương khớp SUNLIFE CalDeSun Osteo Liquid (Chai 200ml)</a>
+                            </h3>
+                            <div class="color-opt">
+                                <p>1ml có chứa Canxi (canxi carbonat) 50mg, Magi...</p>
+                            </div>
+
+                            <span class="xv-price">220.000 VNĐ</span>
+                            <a data-qv-tab="#qvt-cart" href="#" class="product-buy flytoQuickView">MUA</a>
+                        </div>
+                    </div>
+                    <!--xv-product-->
+
+                    <div data-pid="xyz200" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-product style shadow-around">
+                        <figure>
+                            <a href="#"><img class="xv-superimage" src="/Duanmautemplate/assets/img/product/new2.jpg" alt="" /></a>
+                            <figcaption>
+                                <ul>
+                                    <li>
+                                        <a data-qv-tab="#qvt-wishlist" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-heart"></i></a>
+                                    </li>
+                                    <li>
+                                        <a data-qv-tab="#qvt-compare" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-exchange"></i></a>
+                                    </li>
+                                    <li>
+                                        <a class="btn-cart btn-square btn-blue" href="#"><i class="fa fa-expand"></i></a>
+                                    </li>
+                                </ul>
+                            </figcaption>
+                        </figure>
+                        <!--figure-->
+                        <div class="xv-product-content">
+                            <h3>
+                                <a href="detail1.html">Hỗ trợ xương khớp SUNLIFE CalDeSun Osteo Liquid (Chai 200ml)</a>
+                            </h3>
+                            <div class="color-opt">
+                                <p>1ml có chứa Canxi (canxi carbonat) 50mg, Magi...</p>
+                            </div>
+
+                            <span class="xv-price">220.000 VNĐ</span>
+                            <a data-qv-tab="#qvt-cart" href="#" class="product-buy flytoQuickView">MUA</a>
+                        </div>
+                    </div>
+                    <!--xv-product-->
+
+                    <div data-pid="xyz200" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-product style shadow-around">
+                        <figure>
+                            <a href="#"><img class="xv-superimage" src="/Duanmautemplate/assets/img/product/new2.jpg" alt="" /></a>
+                            <figcaption>
+                                <ul>
+                                    <li>
+                                        <a data-qv-tab="#qvt-wishlist" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-heart"></i></a>
+                                    </li>
+                                    <li>
+                                        <a data-qv-tab="#qvt-compare" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-exchange"></i></a>
+                                    </li>
+                                    <li>
+                                        <a class="btn-cart btn-square btn-blue" href="#"><i class="fa fa-expand"></i></a>
+                                    </li>
+                                </ul>
+                            </figcaption>
+                        </figure>
+                        <!--figure-->
+                        <div class="xv-product-content">
+                            <h3>
+                                <a href="detail1.html">Hỗ trợ xương khớp SUNLIFE CalDeSun Osteo Liquid (Chai 200ml)</a>
+                            </h3>
+                            <div class="color-opt">
+                                <p>1ml có chứa Canxi (canxi carbonat) 50mg, Magi...</p>
+                            </div>
+
+                            <span class="xv-price">220.000 VNĐ</span>
+                            <a data-qv-tab="#qvt-cart" href="#" class="product-buy flytoQuickView">MUA</a>
+                        </div>
+                    </div>
+                    <!--xv-product-->
+                </div>
+                <!--owl carousel-->
+            </div>
+
+            <div class="container">
+        <div class="xv-blog pt-25">
+            <header class="sec-heading text-center">
+                <div class="category-wrap style">
+                </div>
+                <h2><span>TIN TỨC</span></h2>
+                <span>Tháng 10 - 2023</span>
+            </header>
+            <!--header-->
+            <div class="articleWrap mt-30 mb-30">
+                <div class="owl-carousel slider_controls1" data-dots="false" data-prev="fa fa-angle-left" data-next="fa fa-angle-right" data-margin="24" data-slides="3" data-slides-md="2" data-slides-sm="1" data-loop="true" data-nav="true">
+                    <article class="xv-article">
+                        <figure>
+                            <a href="#"><img src="/Duanmautemplate/assets/img/blog/blog1.jpg" alt="" /></a>
+                        </figure>
+                        <!--fig-->
+
+                        <div class="xv-art-content style2 shadow-around">
+                            <header class="pb-20">
+                                <a href="#">
+                                    <h5>
+                                        Sốt xuất huyết Dengue
+                                    </h5>
+                                </a><!--Anchor-->
+                                <span>
+                                    <i class="fa fa-calendar-o"></i>
+                                    <time datetime="2015-05-04">03/10/2023</time>
+
+                                    <i class="fa fa-heart-o"> 25</i>
+
+                                    <i class="fa fa-comment-o"> 48</i>
+                                </span>
+                            </header>
+                            <!--header-->
+
+                            <p class="pt-10">
+                                Sốt xuất huyết Dengue là một bệnh truyền nhiễm do muỗi Aedes truyền từ người sang người, thường xảy ra ở các khu vực...
+                            </p>
+                        </div>
+                        <!--article content-->
+                    </article>
+                    <!--article-->
+
+                    <article class="xv-article">
+                        <figure>
+                            <a href="#"><img src="/Duanmautemplate/assets/img/blog/blog1.jpg" alt="" /></a>
+                        </figure>
+                        <!--fig-->
+
+                        <div class="xv-art-content style2 shadow-around">
+                            <header class="pb-20">
+                                <a href="#">
+                                    <h5>
+                                        Sốt xuất huyết Dengue
+                                    </h5>
+                                </a><!--Anchor-->
+                                <span>
+                                    <i class="fa fa-calendar-o"></i>
+                                    <time datetime="2015-05-04">03/10/2023</time>
+
+                                    <i class="fa fa-heart-o"> 25</i>
+
+                                    <i class="fa fa-comment-o"> 48</i>
+                                </span>
+                            </header>
+                            <!--header-->
+
+                            <p class="pt-10">
+                                Sốt xuất huyết Dengue là một bệnh truyền nhiễm do muỗi Aedes truyền từ người sang người, thường xảy ra ở các khu vực...
+                            </p>
+                        </div>
+                        <!--article content-->
+                    </article>
+                    <!--article-->
+                    <article class="xv-article">
+                        <figure>
+                            <a href="#"><img src="/Duanmautemplate/assets/img/blog/blog1.jpg" alt="" /></a>
+                        </figure>
+                        <!--fig-->
+
+                        <div class="xv-art-content style2 shadow-around">
+                            <header class="pb-20">
+                                <a href="#">
+                                    <h5>
+                                        Sốt xuất huyết Dengue
+                                    </h5>
+                                </a><!--Anchor-->
+                                <span>
+                                    <i class="fa fa-calendar-o"></i>
+                                    <time datetime="2015-05-04">03/10/2023</time>
+
+                                    <i class="fa fa-heart-o"> 25</i>
+
+                                    <i class="fa fa-comment-o"> 48</i>
+                                </span>
+                            </header>
+                            <!--header-->
+
+                            <p class="pt-10">
+                                Sốt xuất huyết Dengue là một bệnh truyền nhiễm do muỗi Aedes truyền từ người sang người, thường xảy ra ở các khu vực...
+                            </p>
+                        </div>
+                        <!--article content-->
+                    </article>
+                    <!--article-->
+                </div>
+                <!--owl-carousel-->
+            </div>
+            <!--articleWrap-->
+        </div>
+    </div>
+
+    <div class="tabsPanels">
+                        <div id="tab01" class="tabsPanel active">
+                            <div class="products-panel shadow-around">
+                                <div class="product-panel clearfix">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-3 col-sm-4">
+                                            <div class="ts-slide">
+                                                <figure>
+                                                    <a href="#"><img src="/Duanmautemplate/assets/img/product/pro3.jpg" alt="" /></a>
+                                                </figure>
+                                                <div class="ts-slide-content">
+                                                    <h6><a href="#">Nước mắt nhân tạo Eye Drops Vitamin A & E (Chai 10ml)</a></h6>
+
+                                                    <span class="price">500.000 VNĐ</span>
+                                                </div>
+                                            </div>
+                                            <!--ts-slide-->
+                                        </div>
+                                        <!--column-->
+                                        <div class="col-xs-12 col-md-3 col-sm-4">
+                                            <div class="ts-slide">
+                                                <figure>
+                                                    <a href="#"><img src="/Duanmautemplate/assets/img/product/pro3.jpg" alt="" /></a>
+                                                </figure>
+                                                <div class="ts-slide-content">
+                                                    <h6><a href="#">Nước mắt nhân tạo Eye Drops Vitamin A & E (Chai 10ml)</a></h6>
+
+                                                    <span class="price">500.000 VNĐ</span>
+                                                </div>
+                                            </div>
+                                            <!--ts-slide-->
+                                        </div>
+                                        <!--column-->
+                                        <div class="col-xs-12 col-md-3 col-sm-4">
+                                            <div class="ts-slide">
+                                                <figure>
+                                                    <a href="#"><img src="/Duanmautemplate/assets/img/product/pro3.jpg" alt="" /></a>
+                                                </figure>
+                                                <div class="ts-slide-content">
+                                                    <h6><a href="#">Nước mắt nhân tạo Eye Drops Vitamin A & E (Chai 10ml)</a></h6>
+
+                                                    <span class="price">500.000 VNĐ</span>
+                                                </div>
+                                            </div>
+                                            <!--ts-slide-->
+                                        </div>
+                                        <!--column-->
+                                        <div class="col-xs-12 col-md-3 col-sm-4">
+                                            <div class="ts-slide">
+                                                <figure>
+                                                    <a href="#"><img src="/Duanmautemplate/assets/img/product/pro3.jpg" alt="" /></a>
+                                                </figure>
+                                                <div class="ts-slide-content">
+                                                    <h6><a href="#">Nước mắt nhân tạo Eye Drops Vitamin A & E (Chai 10ml)</a></h6>
+
+                                                    <span class="price">500.000 VNĐ</span>
+                                                </div>
+                                            </div>
+                                            <!--ts-slide-->
+                                        </div>
+                                        <!--column-->
+
+                                        <div class="col-xs-12 col-md-3 col-sm-4">
+                                            <div class="ts-slide">
+                                                <figure>
+                                                    <a href="#"><img src="/Duanmautemplate/assets/img/product/pro3.jpg" alt="" /></a>
+                                                </figure>
+                                                <div class="ts-slide-content">
+                                                    <h6><a href="#">Nước mắt nhân tạo Eye Drops Vitamin A & E (Chai 10ml)</a></h6>
+
+                                                    <span class="price">500.000 VNĐ</span>
+                                                </div>
+                                            </div>
+                                            <!--ts-slide-->
+                                        </div>
+                                        <!--column-->
+                                        <div class="col-xs-12 col-md-3 col-sm-4">
+                                            <div class="ts-slide">
+                                                <figure>
+                                                    <a href="#"><img src="/Duanmautemplate/assets/img/product/pro3.jpg" alt="" /></a>
+                                                </figure>
+                                                <div class="ts-slide-content">
+                                                    <h6><a href="#">Nước mắt nhân tạo Eye Drops Vitamin A & E (Chai 10ml)</a></h6>
+
+                                                    <span class="price">500.000 VNĐ</span>
+                                                </div>
+                                            </div>
+                                            <!--ts-slide-->
+                                        </div>
+                                        <!--column-->
+                                        <div class="col-xs-12 col-md-3 col-sm-4">
+                                            <div class="ts-slide">
+                                                <figure>
+                                                    <a href="#"><img src="/Duanmautemplate/assets/img/product/pro3.jpg" alt="" /></a>
+                                                </figure>
+                                                <div class="ts-slide-content">
+                                                    <h6><a href="#">Nước mắt nhân tạo Eye Drops Vitamin A & E (Chai 10ml)</a></h6>
+
+                                                    <span class="price">500.000 VNĐ</span>
+                                                </div>
+                                            </div>
+                                            <!--ts-slide-->
+                                        </div>
+                                        <!--column-->
+                                        <div class="col-xs-12 col-md-3 col-sm-4">
+                                            <div class="ts-slide">
+                                                <figure>
+                                                    <a href="#"><img src="/Duanmautemplate/assets/img/product/pro3.jpg" alt="" /></a>
+                                                </figure>
+                                                <div class="ts-slide-content">
+                                                    <h6><a href="#">Nước mắt nhân tạo Eye Drops Vitamin A & E (Chai 10ml)</a></h6>
+
+                                                    <span class="price">500.000 VNĐ</span>
+                                                </div>
+                                            </div>
+                                            <!--ts-slide-->
+                                        </div>
+                                        <!--column-->
+
+                                        <div class="col-xs-12 col-md-3 col-sm-4">
+                                            <div class="ts-slide">
+                                                <figure>
+                                                    <a href="#"><img src="/Duanmautemplate/assets/img/product/pro3.jpg" alt="" /></a>
+                                                </figure>
+                                                <div class="ts-slide-content">
+                                                    <h6><a href="#">Nước mắt nhân tạo Eye Drops Vitamin A & E (Chai 10ml)</a></h6>
+
+                                                    <span class="price">500.000 VNĐ</span>
+                                                </div>
+                                            </div>
+                                            <!--ts-slide-->
+                                        </div>
+                                        <!--column-->
+                                        <div class="col-xs-12 col-md-3 col-sm-4">
+                                            <div class="ts-slide">
+                                                <figure>
+                                                    <a href="#"><img src="/Duanmautemplate/assets/img/product/pro3.jpg" alt="" /></a>
+                                                </figure>
+                                                <div class="ts-slide-content">
+                                                    <h6><a href="#">Nước mắt nhân tạo Eye Drops Vitamin A & E (Chai 10ml)</a></h6>
+
+                                                    <span class="price">500.000 VNĐ</span>
+                                                </div>
+                                            </div>
+                                            <!--ts-slide-->
+                                        </div>
+                                        <!--column-->
+                                        <div class="col-xs-12 col-md-3 col-sm-4">
+                                            <div class="ts-slide">
+                                                <figure>
+                                                    <a href="#"><img src="/Duanmautemplate/assets/img/product/pro3.jpg" alt="" /></a>
+                                                </figure>
+                                                <div class="ts-slide-content">
+                                                    <h6><a href="#">Nước mắt nhân tạo Eye Drops Vitamin A & E (Chai 10ml)</a></h6>
+
+                                                    <span class="price">500.000 VNĐ</span>
+                                                </div>
+                                            </div>
+                                            <!--ts-slide-->
+                                        </div>
+                                        <!--column-->
+                                        <div class="col-xs-12 col-md-3 col-sm-4">
+                                            <div class="ts-slide">
+                                                <figure>
+                                                    <a href="#"><img src="/Duanmautemplate/assets/img/product/pro3.jpg" alt="" /></a>
+                                                </figure>
+                                                <div class="ts-slide-content">
+                                                    <h6><a href="#">Nước mắt nhân tạo Eye Drops Vitamin A & E (Chai 10ml)</a></h6>
+
+                                                    <span class="price">500.000 VNĐ</span>
+                                                </div>
+                                            </div>
+                                            <!--ts-slide-->
+                                        </div>
+                                        <!--ts-slide-->
+                                    </div>
+                                    <!--column-->
+
+
+                                    <!--column-->
+
+                                    <!--ts-slide-->
+                                </div>
+                                <!--column-->
+                                <!--product-panel-->
+                            </div>
+                            <!--products-panel-->
+                        </div>
