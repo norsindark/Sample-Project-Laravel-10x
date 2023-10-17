@@ -54,22 +54,22 @@
                 </div>
                 <div class="form-group">
                     <label for="Description">Description</label>
-                    <input class="form-control" type="text" id="Description" name="Description" required>
+                    <textarea class="form-control" type="text" id="Description" name="Description" required></textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="Description">Uses</label>
-                    <input class="form-control" type="text" id="uses" name="uses" required>
+                    <textarea class="form-control" type="text" id="uses" name="uses" required></textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="Description">How To Use</label>
-                    <input class="form-control" type="text" id="howToUse" name="howToUse" required>
+                    <textarea class="form-control" type="text" id="howToUse" name="howToUse" required></textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="Description">Side Effects</label>
-                    <input class="form-control" type="text" id="sideEffects" name="sideEffects" required>
+                    <textarea class="form-control" type="text" id="sideEffects" name="sideEffects" required></textarea>
                 </div>
 
                 <div class="form-group">

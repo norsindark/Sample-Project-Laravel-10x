@@ -200,7 +200,7 @@ new items
                                         @endphp
                                         @foreach ($product_images as $product_image)
                                         @if ($product_image->ProductId == $product->ProductId && !$firstImageDisplayed)
-                                        <a href="{{ route('product.details', ['productName' => $product->ProductName, 'ProductId' => $product->ProductId]) }}"><img style="width: 180px;" src="{{ asset('storage/' . $product_image->path) }}" alt="Product Image"></a>
+                                        <a href="{{ route('product.details', ['productName' => $product->ProductName, 'ProductId' => $product->ProductId]) }}"><img style="width: 220px; margin: auto" src="{{ asset('storage/' . $product_image->path) }}" alt="Product Image"></a>
                                         @php
                                         $firstImageDisplayed = true;
                                         @endphp
@@ -221,14 +221,14 @@ new items
                                         </figcaption> -->
                                     </figure>
                                     <div class="xv-product-content">
-                                        <h3>
-                                            <a href="{{ route('product.details', ['productName' => $product->ProductName, 'ProductId' => $product->ProductId]) }}">{{ $product->ProductName }}</a>
+                                        <h3 style="font-weight: 600; font-size: 16px">
+                                            <a  href="{{ route('product.details', ['productName' => $product->ProductName, 'ProductId' => $product->ProductId]) }}">{{ $product->ProductName }}</a>
                                         </h3>
-                                        <div class="color-opt">
-                                            <p>{{ $product->Description }}</p>
-                                        </div>
+                                      {{--  <div class="color-opt" style="">
+                                            <p style="">{{ $product->Description }}</p>
+                                        </div>--}}
                                         <span class="xv-price">{{ number_format($product->Price, 0, ',', ' ') }} VNĐ</span>
-                                        <a data-qv-tab="#qvt-cart" href="#" class="product-buy flytoQuickView">MUA</a>
+                                        <a data-qv-tab="#qvt-cart" href="{{ route('product.details', ['productName' => $product->ProductName, 'ProductId' => $product->ProductId]) }}" class="product-buy flytoQuickView">MUA</a>
                                     </div>
                                 </div>
                                 @endforeach
@@ -560,7 +560,7 @@ sign up
                 <button type="submit">Đăng kí</button>
             </form> -->
             <a href="{{route('register')}}">
-                <button type="submit" style="background-color: #ff4575; border-radius: 30px; height: 60px; width:170px;border:none;color:#fff;">Đăng kí</button>
+                <button type="submit" style="background-color: #ff4575; border-radius: 30px; height: 43px; width:170px;border:none;color:#fff;font-size: 16px;">Đăng kí</button>
             </a>
             <!-- <p>
                 Vui lòng đăng ký vào danh sách gửi thư để nhận được thông tin cập nhật mới, <br />

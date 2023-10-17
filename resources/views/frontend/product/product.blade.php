@@ -188,7 +188,7 @@
                 <li><a href="#tab02" class="btn-cart">Công dụng</a></li>
                 <li><a href="#tab03" class="btn-cart">Cách dùng</a></li>
                 <li><a href="#tab04" class="btn-cart">Tác dụng phụ</a></li>
-                <li><a href="#tab05" class="btn-cart">Đánh giá</a></li>
+               {{-- <li><a href="#tab05" class="btn-cart">Đánh giá</a></li>--}}
             </ul>
             <div class="tab-panels">
                 <div id="tab01" class="tab-content active">

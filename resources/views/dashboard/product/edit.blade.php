@@ -52,26 +52,26 @@
                 </div>
                 <div class="form-group">
                     <label for="Description">Description</label>
-                    <input class="form-control" type="text" id="Description" name="Description" value="{{$product->Description}}" >
+                    <textarea class="form-control" type="text" id="Description" name="Description" value="{{$product->Description}}" ></textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="Description">Uses</label>
 
-                    <input class="form-control" type="text" id="uses" name="uses"  value="{{$product->Description}}">
+                    <textarea class="form-control" type="text" id="uses" name="uses"  value="{{$product->Description}}"></textarea>
 
                 </div>
 
                 <div class="form-group">
                     <label for="Description">How To Use</label>
 
-                    <input class="form-control" type="text" id="howToUse" name="howToUse"  value="{{$product->Description}}">
+                    <textarea class="form-control" type="text" id="howToUse" name="howToUse"  value="{{$product->Description}}"> </textarea>
 
                 </div>
 
                 <div class="form-group">
                     <label for="Description">Side Effects</label>
-                    <input class="form-control" type="text" id="sideEffects" name="sideEffects"  value="{{$product->Description}}">
+                    <textarea class="form-control" type="text" id="sideEffects" name="sideEffects"  value="{{$product->Description}}"> </textarea>
 
                 </div>
 
