@@ -95,6 +95,7 @@
                     <div class="xv-product-slides grid-view products" data-thumbnail="figure .xv-superimage" data-product=".xv-product-unit">
                         <div class="row">
                             <!-- show products theo category  -->
+                            @if($Sproducts != null)
                             @foreach($Sproducts as $product)
                             <div data-pid="{{ $product->ProductId }}" data-name="{{ $product->ProductName }}" data-price="{{ $product->Price }}" class="xv-product-unit">
                                 <div class="xv-product mb-15 mt-15 shadow-around">
@@ -142,21 +143,69 @@
                                 </div>
                             </div>
                             @endforeach
+                            {{$Sproducts->links()}}
+                            @else
+                            @foreach($productss as $product)
+                            <div data-pid="{{ $product->ProductId }}" data-name="{{ $product->ProductName }}" data-price="{{ $product->Price }}" class="xv-product-unit">
+                                <div class="xv-product mb-15 mt-15 shadow-around">
+                                    <figure>
+                                        @php
+                                        $firstImageDisplayed = false;
+                                        @endphp
+                                        @foreach ($product_images as $product_image)
+                                        @if ($product_image->ProductId == $product->ProductId && !$firstImageDisplayed)
+                                        <a href="#"><img style="width: 180px;" src="{{ asset('storage/' . $product_image->path) }}" alt="Product Image"></a>
+                                        @php
+                                        $firstImageDisplayed = true;
+                                        @endphp
+                                        @endif
+                                        @endforeach
 
+                                        <figcaption>
+                                            <ul class="style1">
+                                                <li><a data-qv-tab="#qvt-wishlist" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-heart"></i></a></li>
+                                                <li><a data-qv-tab="#qvt-compare" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-exchange"></i></a></li>
+                                                <li><a class="btn-cart btn-square btn-blue" href="#"><i class="fa fa-expand"></i></a></li>
+                                            </ul>
+                                        </figcaption>
+                                    </figure>
+                                    <div class="xv-product-content">
+                                        <h3 style="line-height: 20px; font-weight: 600"><a href="{{ route('product.details', ['productName' => $product->ProductName , 'ProductId' => $product->ProductId]) }}">{{ $product->ProductName }}</a></h3>
+
+                                        <p style=" height: 3em;white-space: nowrap;text-overflow: ellipsis; overflow: hidden;">{{ $product->Description }}</p>
+
+                                        <ul class="extra-links">
+                                            <li><a href="#"><i class="fa fa-heart"></i>Wishlist</a></li>
+                                            <li><a href="#"><i class="fa fa-exchange"></i>Compare</a></li>
+                                            <li><a href="#"><i class="fa fa-expand"></i>Expand</a></li>
+                                        </ul>
+                                        <div class="xv-rating stars-5"></div>
+                                        <!-- <span class="xv-price">{{ $product->Price }} VNĐ</span> -->
+                                        @if ($product->Sale >= 1)
+                                        <span class="xv-price">{{ ($product->Price - ($product->Sale/100*$product->Price))  }} VNĐ</span>
+                                        <del class="">{{ $product->Price }} VNĐ</del>
+                                        @else
+                                        <span class="xv-price">{{ $product->Price }} VNĐ</span>
+                                        @endif
+                                        <a data-qv-tab="#qvt-cart" href="#" class="product-buy flytoQuickView">MUA</a>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                            {{$productss->links()}}
+                            @endif
                         </div>
                     </div>
-
-                    <div class="pagination text-center pt-10 pb-05">
+                    <!-- <div class="pagination text-center pt-10 pb-05">
                         <ul>
                             <li><a href="#">Trước</a></li>
                             <li><a href="#">1</a></li>
+                            
                             <li class="active"><a href="#">2</a></li>
                             <li><a href="#">3</a></li>
                             <li><a href="#">Sau</a></li>
                         </ul>
-                    </div>
-
-
+                    </div>  -->
                 </div>
             </div>
         </div>
@@ -188,499 +237,51 @@
                 <div class="category-wrap style">
                     <span class="categorise"><i class="fa fa-bars"></i>Danh mục sản phẩm<i class="fa style fa-caret-down"></i></span>
                     <ul class="cat-dropDown">
-                        <li><a href="#">Dinh dưỡng</a></li>
-                        <li><a href="#">Vitamin & Khoáng chất</a></li>
-                        <li><a href="#">Sức khoẻ tim mạch</a></li>
-                        <li><a href="#">Tăng sức đề kháng, miễn dịch</a></li>
-                        <li><a href="#">Hỗ trợ tiêu hóa</a></li>
+                        @if(!empty($categories))
+                        @foreach ($categories as $category)
+                        <li>
+                            <a href="{{ route('show-products', ['categoryName' => $category->CategoryName ,'categoryId' => $category->CategoryId]) }}" {{ $category->CategoryId }}>{{ $category->CategoryName }}</a>
+                        </li>
+                        @endforeach
+                        @endif
                     </ul>
                 </div>
                 <h2><span>KHUYẾN MÃI</span></h2>
-                <span>Tháng 10 - 2023</span>
+                <span>Cập nhật {{$currentDate}}</span>
             </header>
             <!--header-->
             <div class="owl-carousel slider_controls1 mb-30 mt-30 shadow-around products" data-thumbnail="figure .xv-superimage" data-product=".xv-accessories" data-dots="false" data-prev="fa fa-angle-left" data-next="fa fa-angle-right" data-margin="0" data-slides="1" data-slides-md="1" data-slides-sm="1" data-loop="true" data-nav="true">
+                @foreach($bestSale as $product)
+                @if($product->Sale > 0)
                 <div class="xv-best-seller">
                     <div class="row border-bottom">
                         <div class="col-xs-12 col-sm-4 col-md-3 no-pad">
-                            <div data-pid="xyz401" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
+                            <div data-pid="{{ $product->ProductId }}" data-name="{{ $product->ProductName }}" data-category="{{ $product->Category }}" data-price="{{ $product->Price }}" class="xv-accessories text-center pt-30 pb-30 border-right">
                                 <figure>
-                                    <img class="xv-superimage" src="/Duanmautemplate/assets/img/product/sell1.jpg" alt="" />
-                                    <figcaption>
-                                        <ul class="style1">
-                                            <li>
-                                                <a data-qv-tab="#qvt-cart" class="btn-cart btn-rectangle btn-blue flytoQuickView" href="#"><i class="fa fa-shopping-cart"></i>Thêm Vào Giỏ</a>
-                                            </li>
-                                            <li>
-                                                <a data-qv-tab="#qvt-wishlist" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-heart"></i></a>
-                                            </li>
-                                            <li>
-                                                <a data-qv-tab="#qvt-compare" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-exchange"></i></a>
-                                            </li>
-                                            <li>
-                                                <a class="btn-cart btn-square btn-blue" href="#"><i class="fa fa-expand"></i></a>
-                                            </li>
-                                        </ul>
-                                    </figcaption>
+                                    @php
+                                    $firstImageDisplayed = false;
+                                    @endphp
+                                    @foreach ($product_images as $product_image)
+                                    @if ($product_image->ProductId == $product->ProductId && !$firstImageDisplayed)
+                                    <a href="{{ route('product.details', ['productName' => $product->ProductName, 'ProductId' => $product->ProductId]) }}"><img style="width: 180px;" src="{{ asset('storage/' . $product_image->path) }}" alt="Product Image"></a>
+                                    @php
+                                    $firstImageDisplayed = true;
+                                    @endphp
+                                    @endif
+                                    @endforeach
                                 </figure>
-                                <a href="detail1.html" class="pb-10">Khẩu trang 3 lớp cho trẻ 2-5 tuổi 3D Mask For Kids (Hộp 10 cái)</a>
-                                <a href="#"><span>195.000 VNĐ</span></a>
-                                <a href="#"><del>220.000 VNĐ</del></a>
+                                <a href="detail1.html" class="pb-10">{{ $product->ProductName }}</a>
+                                <a href="{{ route('product.details', ['productName' => $product->ProductName, 'ProductId' => $product->ProductId]) }}"><span class="xv-price">{{ ($product->Price - ($product->Sale/100*$product->Price))  }} VNĐ</span></a>
+                                <a href="{{ route('product.details', ['productName' => $product->ProductName, 'ProductId' => $product->ProductId]) }}"><del class="">{{ $product->Price }} VNĐ</del></a>
                             </div>
-                            <!--accessories-->
                         </div>
-                        <!--column-->
-
-                        <div class="col-xs-12 col-sm-4 col-md-3 no-pad">
-                            <div data-pid="xyz401" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
-                                <figure>
-                                    <img class="xv-superimage" src="/Duanmautemplate/assets/img/product/sell1.jpg" alt="" />
-                                    <figcaption>
-                                        <ul class="style1">
-                                            <li>
-                                                <a data-qv-tab="#qvt-cart" class="btn-cart btn-rectangle btn-blue flytoQuickView" href="#"><i class="fa fa-shopping-cart"></i>Thêm Vào Giỏ</a>
-                                            </li>
-                                            <li>
-                                                <a data-qv-tab="#qvt-wishlist" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-heart"></i></a>
-                                            </li>
-                                            <li>
-                                                <a data-qv-tab="#qvt-compare" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-exchange"></i></a>
-                                            </li>
-                                            <li>
-                                                <a class="btn-cart btn-square btn-blue" href="#"><i class="fa fa-expand"></i></a>
-                                            </li>
-                                        </ul>
-                                    </figcaption>
-                                </figure>
-                                <a href="detail1.html" class="pb-10">Khẩu trang 3 lớp cho trẻ 2-5 tuổi 3D Mask For Kids (Hộp 10 cái)</a>
-                                <a href="#"><span>195.000 VNĐ</span></a>
-                                <a href="#"><del>220.000 VNĐ</del></a>
-                            </div>
-                            <!--accessories-->
-                        </div>
-                        <!--column-->
-
-                        <div class="col-xs-12 col-sm-4 col-md-3 no-pad">
-                            <div data-pid="xyz401" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
-                                <figure>
-                                    <img class="xv-superimage" src="/Duanmautemplate/assets/img/product/sell1.jpg" alt="" />
-                                    <figcaption>
-                                        <ul class="style1">
-                                            <li>
-                                                <a data-qv-tab="#qvt-cart" class="btn-cart btn-rectangle btn-blue flytoQuickView" href="#"><i class="fa fa-shopping-cart"></i>Thêm Vào Giỏ</a>
-                                            </li>
-                                            <li>
-                                                <a data-qv-tab="#qvt-wishlist" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-heart"></i></a>
-                                            </li>
-                                            <li>
-                                                <a data-qv-tab="#qvt-compare" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-exchange"></i></a>
-                                            </li>
-                                            <li>
-                                                <a class="btn-cart btn-square btn-blue" href="#"><i class="fa fa-expand"></i></a>
-                                            </li>
-                                        </ul>
-                                    </figcaption>
-                                </figure>
-                                <a href="detail1.html" class="pb-10">Khẩu trang 3 lớp cho trẻ 2-5 tuổi 3D Mask For Kids (Hộp 10 cái)</a>
-                                <a href="#"><span>195.000 VNĐ</span></a>
-                                <a href="#"><del>220.000 VNĐ</del></a>
-                            </div>
-                            <!--accessories-->
-                        </div>
-                        <!--column-->
-
-                        <div class="col-xs-12 col-sm-4 col-md-3 no-pad">
-                            <div data-pid="xyz401" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
-                                <figure>
-                                    <img class="xv-superimage" src="/Duanmautemplate/assets/img/product/sell1.jpg" alt="" />
-                                    <figcaption>
-                                        <ul class="style1">
-                                            <li>
-                                                <a data-qv-tab="#qvt-cart" class="btn-cart btn-rectangle btn-blue flytoQuickView" href="#"><i class="fa fa-shopping-cart"></i>Thêm Vào Giỏ</a>
-                                            </li>
-                                            <li>
-                                                <a data-qv-tab="#qvt-wishlist" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-heart"></i></a>
-                                            </li>
-                                            <li>
-                                                <a data-qv-tab="#qvt-compare" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-exchange"></i></a>
-                                            </li>
-                                            <li>
-                                                <a class="btn-cart btn-square btn-blue" href="#"><i class="fa fa-expand"></i></a>
-                                            </li>
-                                        </ul>
-                                    </figcaption>
-                                </figure>
-                                <a href="detail1.html" class="pb-10">Khẩu trang 3 lớp cho trẻ 2-5 tuổi 3D Mask For Kids (Hộp 10 cái)</a>
-                                <a href="#"><span>195.000 VNĐ</span></a>
-                                <a href="#"><del>220.000 VNĐ</del></a>
-                            </div>
-                            <!--accessories-->
-                        </div>
-                        <!--column-->
                     </div>
-                    <!--top-row-->
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-4 col-md-3 no-pad">
-                            <div data-pid="xyz401" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
-                                <figure>
-                                    <img class="xv-superimage" src="/Duanmautemplate/assets/img/product/sell1.jpg" alt="" />
-                                    <figcaption>
-                                        <ul class="style1">
-                                            <li>
-                                                <a data-qv-tab="#qvt-cart" class="btn-cart btn-rectangle btn-blue flytoQuickView" href="#"><i class="fa fa-shopping-cart"></i>Thêm Vào Giỏ</a>
-                                            </li>
-                                            <li>
-                                                <a data-qv-tab="#qvt-wishlist" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-heart"></i></a>
-                                            </li>
-                                            <li>
-                                                <a data-qv-tab="#qvt-compare" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-exchange"></i></a>
-                                            </li>
-                                            <li>
-                                                <a class="btn-cart btn-square btn-blue" href="#"><i class="fa fa-expand"></i></a>
-                                            </li>
-                                        </ul>
-                                    </figcaption>
-                                </figure>
-                                <a href="detail1.html" class="pb-10">Khẩu trang 3 lớp cho trẻ 2-5 tuổi 3D Mask For Kids (Hộp 10 cái)</a>
-                                <a href="#"><span>195.000 VNĐ</span></a>
-                                <a href="#"><del>220.000 VNĐ</del></a>
-                            </div>
-                            <!--accessories-->
-                        </div>
-                        <!--column-->
-
-                        <div class="col-xs-12 col-sm-4 col-md-3 no-pad">
-                            <div data-pid="xyz401" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
-                                <figure>
-                                    <img class="xv-superimage" src="/Duanmautemplate/assets/img/product/sell1.jpg" alt="" />
-                                    <figcaption>
-                                        <ul class="style1">
-                                            <li>
-                                                <a data-qv-tab="#qvt-cart" class="btn-cart btn-rectangle btn-blue flytoQuickView" href="#"><i class="fa fa-shopping-cart"></i>Thêm Vào Giỏ</a>
-                                            </li>
-                                            <li>
-                                                <a data-qv-tab="#qvt-wishlist" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-heart"></i></a>
-                                            </li>
-                                            <li>
-                                                <a data-qv-tab="#qvt-compare" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-exchange"></i></a>
-                                            </li>
-                                            <li>
-                                                <a class="btn-cart btn-square btn-blue" href="#"><i class="fa fa-expand"></i></a>
-                                            </li>
-                                        </ul>
-                                    </figcaption>
-                                </figure>
-                                <a href="detail1.html" class="pb-10">Khẩu trang 3 lớp cho trẻ 2-5 tuổi 3D Mask For Kids (Hộp 10 cái)</a>
-                                <a href="#"><span>195.000 VNĐ</span></a>
-                                <a href="#"><del>220.000 VNĐ</del></a>
-                            </div>
-                            <!--accessories-->
-                        </div>
-                        <!--column-->
-
-                        <div class="col-xs-12 col-sm-4 col-md-3 no-pad">
-                            <div data-pid="xyz401" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
-                                <figure>
-                                    <img class="xv-superimage" src="/Duanmautemplate/assets/img/product/sell1.jpg" alt="" />
-                                    <figcaption>
-                                        <ul class="style1">
-                                            <li>
-                                                <a data-qv-tab="#qvt-cart" class="btn-cart btn-rectangle btn-blue flytoQuickView" href="#"><i class="fa fa-shopping-cart"></i>Thêm Vào Giỏ</a>
-                                            </li>
-                                            <li>
-                                                <a data-qv-tab="#qvt-wishlist" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-heart"></i></a>
-                                            </li>
-                                            <li>
-                                                <a data-qv-tab="#qvt-compare" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-exchange"></i></a>
-                                            </li>
-                                            <li>
-                                                <a class="btn-cart btn-square btn-blue" href="#"><i class="fa fa-expand"></i></a>
-                                            </li>
-                                        </ul>
-                                    </figcaption>
-                                </figure>
-                                <a href="detail1.html" class="pb-10">Khẩu trang 3 lớp cho trẻ 2-5 tuổi 3D Mask For Kids (Hộp 10 cái)</a>
-                                <a href="#"><span>195.000 VNĐ</span></a>
-                                <a href="#"><del>220.000 VNĐ</del></a>
-                            </div>
-                            <!--accessories-->
-                        </div>
-                        <!--column-->
-
-                        <div class="col-xs-12 col-sm-4 col-md-3 no-pad">
-                            <div data-pid="xyz401" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
-                                <figure>
-                                    <img class="xv-superimage" src="/Duanmautemplate/assets/img/product/sell1.jpg" alt="" />
-                                    <figcaption>
-                                        <ul class="style1">
-                                            <li>
-                                                <a data-qv-tab="#qvt-cart" class="btn-cart btn-rectangle btn-blue flytoQuickView" href="#"><i class="fa fa-shopping-cart"></i>Thêm Vào Giỏ</a>
-                                            </li>
-                                            <li>
-                                                <a data-qv-tab="#qvt-wishlist" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-heart"></i></a>
-                                            </li>
-                                            <li>
-                                                <a data-qv-tab="#qvt-compare" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-exchange"></i></a>
-                                            </li>
-                                            <li>
-                                                <a class="btn-cart btn-square btn-blue" href="#"><i class="fa fa-expand"></i></a>
-                                            </li>
-                                        </ul>
-                                    </figcaption>
-                                </figure>
-                                <a href="detail1.html" class="pb-10">Khẩu trang 3 lớp cho trẻ 2-5 tuổi 3D Mask For Kids (Hộp 10 cái)</a>
-                                <a href="#"><span>195.000 VNĐ</span></a>
-                                <a href="#"><del>220.000 VNĐ</del></a>
-                            </div>
-                            <!--accessories-->
-                        </div>
-                        <!--column-->
-                    </div>
-                    <!--bottom-row-->
                 </div>
-                <!--xv-best-seller-->
-                <div class="xv-best-seller">
-                    <div class="row border-bottom">
-                        <div class="col-xs-12 col-sm-4 col-md-3 no-pad">
-                            <div data-pid="xyz401" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
-                                <figure>
-                                    <img class="xv-superimage" src="/Duanmautemplate/assets/img/product/sell1.jpg" alt="" />
-                                    <figcaption>
-                                        <ul class="style1">
-                                            <li>
-                                                <a data-qv-tab="#qvt-cart" class="btn-cart btn-rectangle btn-blue flytoQuickView" href="#"><i class="fa fa-shopping-cart"></i>Thêm Vào Giỏ</a>
-                                            </li>
-                                            <li>
-                                                <a data-qv-tab="#qvt-wishlist" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-heart"></i></a>
-                                            </li>
-                                            <li>
-                                                <a data-qv-tab="#qvt-compare" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-exchange"></i></a>
-                                            </li>
-                                            <li>
-                                                <a class="btn-cart btn-square btn-blue" href="#"><i class="fa fa-expand"></i></a>
-                                            </li>
-                                        </ul>
-                                    </figcaption>
-                                </figure>
-                                <a href="detail1.html" class="pb-10">Khẩu trang 3 lớp cho trẻ 2-5 tuổi 3D Mask For Kids (Hộp 10 cái)</a>
-                                <a href="#"><span>195.000 VNĐ</span></a>
-                                <a href="#"><del>220.000 VNĐ</del></a>
-                            </div>
-                            <!--accessories-->
-                        </div>
-                        <!--column-->
-
-                        <div class="col-xs-12 col-sm-4 col-md-3 no-pad">
-                            <div data-pid="xyz401" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
-                                <figure>
-                                    <img class="xv-superimage" src="/Duanmautemplate/assets/img/product/sell1.jpg" alt="" />
-                                    <figcaption>
-                                        <ul class="style1">
-                                            <li>
-                                                <a data-qv-tab="#qvt-cart" class="btn-cart btn-rectangle btn-blue flytoQuickView" href="#"><i class="fa fa-shopping-cart"></i>Thêm Vào Giỏ</a>
-                                            </li>
-                                            <li>
-                                                <a data-qv-tab="#qvt-wishlist" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-heart"></i></a>
-                                            </li>
-                                            <li>
-                                                <a data-qv-tab="#qvt-compare" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-exchange"></i></a>
-                                            </li>
-                                            <li>
-                                                <a class="btn-cart btn-square btn-blue" href="#"><i class="fa fa-expand"></i></a>
-                                            </li>
-                                        </ul>
-                                    </figcaption>
-                                </figure>
-                                <a href="detail1.html" class="pb-10">Khẩu trang 3 lớp cho trẻ 2-5 tuổi 3D Mask For Kids (Hộp 10 cái)</a>
-                                <a href="#"><span>195.000 VNĐ</span></a>
-                                <a href="#"><del>220.000 VNĐ</del></a>
-                            </div>
-                            <!--accessories-->
-                        </div>
-                        <!--column-->
-
-                        <div class="col-xs-12 col-sm-4 col-md-3 no-pad">
-                            <div data-pid="xyz401" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
-                                <figure>
-                                    <img class="xv-superimage" src="/Duanmautemplate/assets/img/product/sell1.jpg" alt="" />
-                                    <figcaption>
-                                        <ul class="style1">
-                                            <li>
-                                                <a data-qv-tab="#qvt-cart" class="btn-cart btn-rectangle btn-blue flytoQuickView" href="#"><i class="fa fa-shopping-cart"></i>Thêm Vào Giỏ</a>
-                                            </li>
-                                            <li>
-                                                <a data-qv-tab="#qvt-wishlist" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-heart"></i></a>
-                                            </li>
-                                            <li>
-                                                <a data-qv-tab="#qvt-compare" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-exchange"></i></a>
-                                            </li>
-                                            <li>
-                                                <a class="btn-cart btn-square btn-blue" href="#"><i class="fa fa-expand"></i></a>
-                                            </li>
-                                        </ul>
-                                    </figcaption>
-                                </figure>
-                                <a href="detail1.html" class="pb-10">Khẩu trang 3 lớp cho trẻ 2-5 tuổi 3D Mask For Kids (Hộp 10 cái)</a>
-                                <a href="#"><span>195.000 VNĐ</span></a>
-                                <a href="#"><del>220.000 VNĐ</del></a>
-                            </div>
-                            <!--accessories-->
-                        </div>
-                        <!--column-->
-
-                        <div class="col-xs-12 col-sm-4 col-md-3 no-pad">
-                            <div data-pid="xyz401" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
-                                <figure>
-                                    <img class="xv-superimage" src="/Duanmautemplate/assets/img/product/sell1.jpg" alt="" />
-                                    <figcaption>
-                                        <ul class="style1">
-                                            <li>
-                                                <a data-qv-tab="#qvt-cart" class="btn-cart btn-rectangle btn-blue flytoQuickView" href="#"><i class="fa fa-shopping-cart"></i>Thêm Vào Giỏ</a>
-                                            </li>
-                                            <li>
-                                                <a data-qv-tab="#qvt-wishlist" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-heart"></i></a>
-                                            </li>
-                                            <li>
-                                                <a data-qv-tab="#qvt-compare" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-exchange"></i></a>
-                                            </li>
-                                            <li>
-                                                <a class="btn-cart btn-square btn-blue" href="#"><i class="fa fa-expand"></i></a>
-                                            </li>
-                                        </ul>
-                                    </figcaption>
-                                </figure>
-                                <a href="detail1.html" class="pb-10">Khẩu trang 3 lớp cho trẻ 2-5 tuổi 3D Mask For Kids (Hộp 10 cái)</a>
-                                <a href="#"><span>195.000 VNĐ</span></a>
-                                <a href="#"><del>220.000 VNĐ</del></a>
-                            </div>
-                            <!--accessories-->
-                        </div>
-                        <!--column-->
-                    </div>
-                    <!--top-row-->
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-4 col-md-3 no-pad">
-                            <div data-pid="xyz401" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
-                                <figure>
-                                    <img class="xv-superimage" src="/Duanmautemplate/assets/img/product/sell1.jpg" alt="" />
-                                    <figcaption>
-                                        <ul class="style1">
-                                            <li>
-                                                <a data-qv-tab="#qvt-cart" class="btn-cart btn-rectangle btn-blue flytoQuickView" href="#"><i class="fa fa-shopping-cart"></i>Thêm Vào Giỏ</a>
-                                            </li>
-                                            <li>
-                                                <a data-qv-tab="#qvt-wishlist" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-heart"></i></a>
-                                            </li>
-                                            <li>
-                                                <a data-qv-tab="#qvt-compare" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-exchange"></i></a>
-                                            </li>
-                                            <li>
-                                                <a class="btn-cart btn-square btn-blue" href="#"><i class="fa fa-expand"></i></a>
-                                            </li>
-                                        </ul>
-                                    </figcaption>
-                                </figure>
-                                <a href="detail1.html" class="pb-10">Khẩu trang 3 lớp cho trẻ 2-5 tuổi 3D Mask For Kids (Hộp 10 cái)</a>
-                                <a href="#"><span>195.000 VNĐ</span></a>
-                                <a href="#"><del>220.000 VNĐ</del></a>
-                            </div>
-                            <!--accessories-->
-                        </div>
-                        <!--column-->
-
-                        <div class="col-xs-12 col-sm-4 col-md-3 no-pad">
-                            <div data-pid="xyz401" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
-                                <figure>
-                                    <img class="xv-superimage" src="/Duanmautemplate/assets/img/product/sell1.jpg" alt="" />
-                                    <figcaption>
-                                        <ul class="style1">
-                                            <li>
-                                                <a data-qv-tab="#qvt-cart" class="btn-cart btn-rectangle btn-blue flytoQuickView" href="#"><i class="fa fa-shopping-cart"></i>Thêm Vào Giỏ</a>
-                                            </li>
-                                            <li>
-                                                <a data-qv-tab="#qvt-wishlist" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-heart"></i></a>
-                                            </li>
-                                            <li>
-                                                <a data-qv-tab="#qvt-compare" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-exchange"></i></a>
-                                            </li>
-                                            <li>
-                                                <a class="btn-cart btn-square btn-blue" href="#"><i class="fa fa-expand"></i></a>
-                                            </li>
-                                        </ul>
-                                    </figcaption>
-                                </figure>
-                                <a href="detail1.html" class="pb-10">Khẩu trang 3 lớp cho trẻ 2-5 tuổi 3D Mask For Kids (Hộp 10 cái)</a>
-                                <a href="#"><span>195.000 VNĐ</span></a>
-                                <a href="#"><del>220.000 VNĐ</del></a>
-                            </div>
-                            <!--accessories-->
-                        </div>
-                        <!--column-->
-
-                        <div class="col-xs-12 col-sm-4 col-md-3 no-pad">
-                            <div data-pid="xyz401" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
-                                <figure>
-                                    <img class="xv-superimage" src="/Duanmautemplate/assets/img/product/sell1.jpg" alt="" />
-                                    <figcaption>
-                                        <ul class="style1">
-                                            <li>
-                                                <a data-qv-tab="#qvt-cart" class="btn-cart btn-rectangle btn-blue flytoQuickView" href="#"><i class="fa fa-shopping-cart"></i>Thêm Vào Giỏ</a>
-                                            </li>
-                                            <li>
-                                                <a data-qv-tab="#qvt-wishlist" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-heart"></i></a>
-                                            </li>
-                                            <li>
-                                                <a data-qv-tab="#qvt-compare" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-exchange"></i></a>
-                                            </li>
-                                            <li>
-                                                <a class="btn-cart btn-square btn-blue" href="#"><i class="fa fa-expand"></i></a>
-                                            </li>
-                                        </ul>
-                                    </figcaption>
-                                </figure>
-                                <a href="detail1.html" class="pb-10">Khẩu trang 3 lớp cho trẻ 2-5 tuổi 3D Mask For Kids (Hộp 10 cái)</a>
-                                <a href="#"><span>195.000 VNĐ</span></a>
-                                <a href="#"><del>220.000 VNĐ</del></a>
-                            </div>
-                            <!--accessories-->
-                        </div>
-                        <!--column-->
-
-                        <div class="col-xs-12 col-sm-4 col-md-3 no-pad">
-                            <div data-pid="xyz401" data-name="Smartphone Apple iPhone 5 64GB" data-category="mobiles" data-price="250" class="xv-accessories text-center pt-30 pb-30 border-right">
-                                <figure>
-                                    <img class="xv-superimage" src="/Duanmautemplate/assets/img/product/sell1.jpg" alt="" />
-                                    <figcaption>
-                                        <ul class="style1">
-                                            <li>
-                                                <a data-qv-tab="#qvt-cart" class="btn-cart btn-rectangle btn-blue flytoQuickView" href="#"><i class="fa fa-shopping-cart"></i>Thêm Vào Giỏ</a>
-                                            </li>
-                                            <li>
-                                                <a data-qv-tab="#qvt-wishlist" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-heart"></i></a>
-                                            </li>
-                                            <li>
-                                                <a data-qv-tab="#qvt-compare" class="btn-cart flytoQuickView btn-square btn-blue" href="#"><i class="fa fa-exchange"></i></a>
-                                            </li>
-                                            <li>
-                                                <a class="btn-cart btn-square btn-blue" href="#"><i class="fa fa-expand"></i></a>
-                                            </li>
-                                        </ul>
-                                    </figcaption>
-                                </figure>
-                                <a href="detail1.html" class="pb-10">Khẩu trang 3 lớp cho trẻ 2-5 tuổi 3D Mask For Kids (Hộp 10 cái)</a>
-                                <a href="#"><span>195.000 VNĐ</span></a>
-                                <a href="#"><del>220.000 VNĐ</del></a>
-                            </div>
-                            <!--accessories-->
-                        </div>
-                        <!--column-->
-                    </div>
-                    <!--bottom-row-->
-                </div>
-                <!--xv-best-seller-->
+                @endif
+                @endforeach
             </div>
         </div>
-    </div><!--container-->
+    </div>
     <!--========================================
         sign up
         ===========================================-->
