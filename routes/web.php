@@ -120,9 +120,9 @@ Route::get('/search', [HomeController::class, 'search'])->name('search');
 
 Route::prefix('/')->group(function () {
     Route::prefix('/')->group(function () {
-        Route::get('/', [CategoryController::class, 'dropListCategories'])->name('drop-List-Category');
+        // Route::get('/', [CategoryController::class, 'dropListCategories'])->name('drop-List-Category');
         Route::get('/home', [HomeController::class, 'checkRoleUser'])->name('checkRole');
-        Route::get('/trang-chu', [HomeController::class, 'home'])->name('home');
+        Route::get('/', [HomeController::class, 'home'])->name('home');
         Route::get('/tin-tuc', 'App\Http\Controllers\User\BlogController@index')->name('tin-tuc');
 
         // Route::get('/products', 'ProductController@index')->name('products.index');
