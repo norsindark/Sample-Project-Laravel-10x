@@ -119,8 +119,12 @@
                                             <li><a href="#"><i class="fa fa-expand"></i>Expand</a></li>
                                         </ul>
                                         <div class="xv-rating stars-5"></div>
+                                        @if ($product->Sale >= 1)
+                                        <span class="xv-price">{{ ($product->Price - ($product->Sale/100*$product->Price))  }} VNĐ</span>
+                                        <del class="">{{ $product->Price }} VNĐ</del>
+                                        @else
                                         <span class="xv-price">{{ $product->Price }} VNĐ</span>
-                                        <del class="">giá giiảm VNĐ</del>
+                                        @endif
                                         <a data-qv-tab="#qvt-cart" href="#" class="product-buy flytoQuickView">MUA</a>
                                     </div>
                                 </div>

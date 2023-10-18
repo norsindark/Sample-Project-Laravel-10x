@@ -19,7 +19,7 @@ class ProductControllder extends Controller
         $categories = Categories::all();
         $products = Products::all();
 
-        $products = Products::with('categories')->paginate(9);
+        $products = Products::with('categories')->get();
         $product_images = ProductImage::all();
         return view('dashboard.product.index', compact('products', 'categories', 'product_images'));
     }
